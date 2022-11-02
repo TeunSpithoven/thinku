@@ -1,5 +1,6 @@
 <template>
     <div>
+        <CreateQuiz/>
         Maak een quiz!
         <br/>
         <button v-on:click="increment()">increment</button>
@@ -7,11 +8,12 @@
     </div>
 </template>
 
-<script>  
+<script>
+import CreateQuiz from '@/components/quiz/CreateQuiz.vue'
 export default {
     name: 'CreateQuizView',
     components: {
-
+        CreateQuiz,
     },
     methods: {
         increment() {

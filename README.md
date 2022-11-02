@@ -1,8 +1,6 @@
 # thinku-frontend
 #### toolbox
-vue
-vue router
-vuex
+vue, vue router, vuex
 
 sonarcloud
 
@@ -35,3 +33,6 @@ npm run build
 ```
 npm run lint
 ```
+## Deployment
+#### Configure a catch-all fallback for routing
+https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations
