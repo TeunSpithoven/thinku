@@ -1,10 +1,6 @@
 <template>
     <div>
         <CreateQuiz/>
-        Maak een quiz!
-        <br/>
-        <button v-on:click="increment()">increment</button>
-        {{ this.$store.state.count }}
     </div>
 </template>
 
@@ -14,11 +10,6 @@ export default {
     name: 'CreateQuizView',
     components: {
         CreateQuiz,
-    },
-    methods: {
-        increment() {
-            this.$store.commit('increment');
-        }
     },
 }
 </script>

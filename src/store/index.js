@@ -2,14 +2,20 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    count: 0,
+    createQuizInfo: {
+      userId: -1,
+      title: '',
+      description: '',
+      giphyUrl: '',
+    },
   },
   getters: {
   },
   mutations: {
-    increment (state) {
-      state.count++
-    }
+    updateQuizInfo (state, n) {
+      state.title = n.title;
+      state.description = n.description;
+    },
   },
   actions: {
   },
