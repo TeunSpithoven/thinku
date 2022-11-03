@@ -4,15 +4,15 @@
       {{ this.$store.state.description }}
     <div id="titel">
       <div class="label">Titel</div>
-      <div type="text" id="titelInput">
+      <div type="text" class="inputContainer">
         <input class="inputs" type="text" v-model="title" @keyup="updateQuizInfoState()">
       </div>
     </div>
 
     <div id="beschrijving">
       <div class="label">Beschrijving</div>
-      <div type="text" id="beschrijvingInput">
-        <input class="inputs" type="text" v-model="description" @keyup="updateQuizInfoState()">
+      <div type="text" class="inputContainer">
+        <textarea class="inputs" type="text" v-model="description" @keyup="updateQuizInfoState()"></textarea>
       </div>
     </div>
 
@@ -61,29 +61,31 @@ export default {
     border-radius: 10px;
 }
 .inputs {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 }
 #titel {
   position: absolute;
-  width: 416px;
   height: 81px;
   left: 45px;
+  right: 550px;
   top: 33px;
 }
 #beschrijving {
   position: absolute;
-  width: 416px;
   height: 132px;
   left: 45px;
+  right: 550px;
   top: 122px;
 }
 .label {
   position: absolute;
-  width: 416px;
+  width: 100%;
+  /* width: 416px; */
   height: 30px;
   left: 0px;
+  right: 0px;
   top: 0px;
 
   font-family: "Inter";
@@ -91,26 +93,15 @@ export default {
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;
+  text-align: left;
 
   color: #000000;
 }
 
-#titelInput {
+.inputContainer {
   box-sizing: border-box;
   position: absolute;
 
-  left: 0px;
-  right: 0px;
-  top: 36px;
-  bottom: 0px;
-
-  border: 1px solid #000000;
-  border-radius: 5px;
-}
-#beschrijvingInput {
-  box-sizing: border-box;
-
-  position: absolute;
   left: 0px;
   right: 0px;
   top: 36px;
@@ -125,7 +116,8 @@ export default {
   position: absolute;
   width: 275px;
   height: 30px;
-  left: 677px;
+  /* left: 596px; */
+  right: 133px;
   top: 50px;
 
   border: 1px solid #000000;
@@ -136,9 +128,13 @@ export default {
   position: absolute;
   width: 356px;
   height: 178px;
-  left: 596px;
+  /* left: 596px; */
+  right: 133px;
   top: 86px;
 
   border: 1px solid #000000;
+}
+textarea {
+  resize: none;
 }
 </style>
