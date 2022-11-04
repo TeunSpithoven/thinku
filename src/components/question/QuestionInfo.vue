@@ -77,7 +77,7 @@ export default {
   font-size: 30px;
 
   font-weight: 400;
-  font-size: 20px;
+  /* font-size: 20px; */
   line-height: 10px;
 
   color: #000000;
