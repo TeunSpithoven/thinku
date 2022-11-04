@@ -1,37 +1,33 @@
 <template>
-  <div>
-    <QuizInfo />
-    <ul id="questionList">
-      <li v-for="q in questions" :key="q.question">
-        <QuestionCard
-          :question="q.question"
-          :type="q.type"
-          :answers="q.answers"
-          :number="q.number"
-        ></QuestionCard>
-      </li>
-
-      <div class="vraagToevoegenContainer">
-        <button class="vraagToevoegen">Vraag Toevoegen</button>
+  <div id="createQuiz" class="gridContainer">
+    <!-- <div class="gridContainer"> -->
+      <div class="grid-item">
+        <QuizInfo />
       </div>
-    </ul>
-    <div id="knoppen">
-      <button id="annuleerKnop" @click="this.$router.push({ path: '/' })">
-        Annuleer
-      </button>
-      <button id="opslaanKnop" @click="submit()">Opslaan</button>
-    </div>
+      <div class="grid-item">
+        <QuestionList />
+      </div>
+      <div class="grid-item">
+        <div id="knoppen">
+          <button id="annuleerKnop" @click="this.$router.push({ path: '/' })">
+            Annuleer
+          </button>
+          <button id="opslaanKnop" @click="submit()">Opslaan</button>
+        </div>
+      </div>
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
 import QuizInfo from "@/components/quiz/QuizInfo.vue";
-import QuestionCard from "@/components/question/QuestionCard.vue";
+import QuestionList from "@/components/question/QuestionList.vue";
+
 export default {
   name: "CreateQuiz",
   components: {
     QuizInfo,
-    QuestionCard,
+    QuestionList,
   },
   data() {
     return {
@@ -59,29 +55,38 @@ export default {
       alert("Opslaan");
     },
   },
+  mounted() {
+    this.$store.state.questions = this.questions;
+  },
 };
 </script>
 
 <style scoped>
-#questionList {
-  overflow: auto;
-  box-sizing: border-box;
-
-  position: absolute;
-  min-height: 375px;
-  left: 178px;
-  right: 177px;
-  top: 405px;
-
-  border: 1px solid #000000;
-  border-radius: 10px;
+.gridContainer {
+  background-color: #2196f3;
+  display: grid;
+  gap: 10px;
+  padding: 10px;
 }
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  grid-column: 1 / 5;
+}
+#createQuiz {
+  display: grid;
+  row-gap: 20px;
+}
+
 #knoppen {
-  position: absolute;
+  /* deze moet naar onder worden geduuwd door questionlist */
+  position: relative;
   height: 114px;
-  left: 178px;
-  right: 177px;
-  top: 509px;
+  /* left: 178px;
+  right: 177px; */
+  /* top: 750px; */
 }
 #annuleerKnop {
   box-sizing: border-box;
@@ -106,36 +111,5 @@ export default {
 
   border: 1px solid #000000;
   border-radius: 10px;
-}
-.vraagToevoegenContainer {
-  box-sizing: border-box;
-
-  position: absolute;
-  height: 51px;
-  left: 285px;
-  right: 286px;
-  bottom: 20px;
-
-  border: 1px solid #000000;
-  border-radius: 10px;
-}
-
-.vraagToevoegen {
-  position: absolute;
-  width: 100%;
-  left: 0px;
-  right: 0px;
-  top: 4.62%;
-  bottom: 4.62%;
-
-  /* font-family: "Inter"; */
-  /* font-style */
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
 }
 </style>

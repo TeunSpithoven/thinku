@@ -51,11 +51,11 @@ export default {
 #quizInfo {
     box-sizing: border-box;
 
-    position: absolute;
+    position: relative;
     height: 293px;
-    left: 178px;
-    right: 177px;
-    top: 86px;
+    /* left: 178px;
+    right: 177px; */
+    /* top: 86px; */
 
     border: 1px solid #000000;
     border-radius: 10px;
