@@ -88,8 +88,8 @@ export default {
   right: 0px;
   top: 0px;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;

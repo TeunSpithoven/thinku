@@ -128,8 +128,8 @@ export default {
   top: 4.62%;
   bottom: 4.62%;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;

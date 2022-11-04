@@ -63,8 +63,8 @@ export default {
 
   border: 1px solid #000000;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
@@ -79,8 +79,8 @@ export default {
   right: 110px;
   top: 0px;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
@@ -96,8 +96,8 @@ export default {
   height: 51px;
   right: 54px;
   top: 0px;
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -112,8 +112,8 @@ export default {
   right: 0px;
   top: 0px;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
@@ -128,8 +128,8 @@ export default {
   left: calc(50% - 305px / 2 - 278.5px);
   top: 60px;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
@@ -147,8 +147,8 @@ export default {
   right: 225px;
   top: 60px;
 
-  font-family: "Inter";
-  font-style: normal;
+  /* font-family: "Inter"; */
+  /* font-style */
   font-weight: 400;
   font-size: 36px;
   line-height: 44px;
