@@ -35,14 +35,14 @@ export default {
 #questionCard {
   box-sizing: border-box;
 
-  position: absolute;
+  position: relative;
   height: 300px;
-  float:left;
+  /* float:left;
   left: 16px;
   right: 20px;
-  top: 14px;
+  top: 14px; */
 
-  background: #ffffff;
+  /* background: #ffffff; */
   border: 1px solid #000000;
   border-radius: 5px;
 }

@@ -1,18 +1,21 @@
 <template>
-  <ul id="questionList">
-    <li v-for="q in questions" :key="q.question">
-      <QuestionCard
-        :question="q.question"
-        :type="q.type"
-        :answers="q.answers"
-        :number="q.number"
-      ></QuestionCard>
-    </li>
-
-    <div class="vraagToevoegenContainer">
+  <div id="questionListContainer" class="gridContainer">
+    <div class="grid-item">
+      <ul id="questionList" class="gridContainer">
+        <li class="grid-item" v-for="q in questions" :key="q.question">
+          <QuestionCard
+            :question="q.question"
+            :type="q.type"
+            :answers="q.answers"
+            :number="q.number"
+          ></QuestionCard>
+        </li>
+      </ul>
+    </div>
+    <div class="vraagToevoegenContainer grid-item">
       <button class="vraagToevoegen">Vraag Toevoegen</button>
     </div>
-  </ul>
+  </div>
 </template>
 
 <script>
@@ -25,8 +28,8 @@ export default {
   },
   data() {
     return {
-        questions: this.$store.state.questions,
-    }
+      questions: this.$store.state.questions,
+    };
   },
 };
 </script>
@@ -45,35 +48,33 @@ export default {
   border: 1px solid #000000;
   border-radius: 10px;
 }
+#questionListContainer {
+  padding: 10px;
+}
+.gridContainer {
+  background-color: #8d8d8d;
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  /* padding: 20px; */
+  font-size: 30px;
+  grid-column: 1 / 5;
+}
 .vraagToevoegenContainer {
-  box-sizing: border-box;
-
-  position: absolute;
-  height: 51px;
-  left: 285px;
-  right: 286px;
-  bottom: 20px;
-
-  border: 1px solid #000000;
-  border-radius: 10px;
+  position: relative;
+  height: 80px;
+  width: 100%;
 }
 
 .vraagToevoegen {
-  position: absolute;
-  width: 100%;
-  left: 0px;
-  right: 0px;
-  top: 4.62%;
-  bottom: 4.62%;
+  position: relative;
+  box-sizing: border-box;
 
-  /* font-family: "Inter"; */
-  /* font-style */
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-  align-items: center;
-  text-align: center;
-
-  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 10px;
 }
 </style>

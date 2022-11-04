@@ -47,6 +47,21 @@ export default {
             },
           ],
         },
+        {
+          question: "Tweede vraag",
+          type: "meerkeuze",
+          number: 1,
+          answers: [
+            {
+              answer: "antwoord een",
+              isCorrect: true,
+            },
+            {
+              answer: "antwoord twee",
+              isCorrect: false,
+            },
+          ],
+        },
       ],
     };
   },
@@ -63,14 +78,17 @@ export default {
 
 <style scoped>
 .gridContainer {
-  background-color: #2196f3;
+  background-color: #8d8d8d;
   display: grid;
   gap: 10px;
-  padding: 10px;
+  /* padding: 10px; */
+  padding-left: 10%;
+  padding-right: 10%;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
+  /* deze padding weghalen */
   padding: 20px;
   font-size: 30px;
   grid-column: 1 / 5;
