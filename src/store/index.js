@@ -2,6 +2,15 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    editQuestion: 1,
+
+    createQuiz: {
+      userId: -1,
+      title: '',
+      description: '',
+      giphyUrl: '',
+      questions: [],
+    },
     questions: [],
     createQuizInfo: {
       userId: -1,

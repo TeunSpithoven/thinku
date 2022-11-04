@@ -33,32 +33,44 @@ export default {
     return {
       questions: [
         {
+          id: 1,
           question: "Eerste vraag",
           type: "meerkeuze",
+          time: 20,
           number: 1,
           answers: [
-            {
+          {
+              id: 1,
+              index: 1,
               answer: "antwoord een",
               isCorrect: true,
             },
             {
+              id: 2,
+              index: 2,
               answer: "antwoord twee",
               isCorrect: false,
             },
           ],
         },
         {
+          id: 2,
           question: "Tweede vraag",
           type: "meerkeuze",
+          time: 20,
           number: 1,
           answers: [
             {
+              id: 1,
+              index: 1,
               answer: "antwoord een",
               isCorrect: true,
             },
             {
+              id: 2,
+              index: 2,
               answer: "antwoord twee",
-              isCorrect: false,
+              isCorrect: true,
             },
           ],
         },
@@ -70,7 +82,7 @@ export default {
       alert("Opslaan");
     },
   },
-  mounted() {
+  created() {
     this.$store.state.questions = this.questions;
   },
 };

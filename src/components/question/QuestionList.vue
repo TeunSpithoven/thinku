@@ -4,8 +4,10 @@
       <ul id="questionList" class="gridContainer">
         <li class="grid-item" v-for="q in questions" :key="q.question">
           <QuestionCard
+            :id="q.id"
             :question="q.question"
             :type="q.type"
+            :time="q.time"
             :answers="q.answers"
             :number="q.number"
           ></QuestionCard>
@@ -60,13 +62,13 @@ export default {
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  /* padding: 20px; */
+  padding: 10px;
   font-size: 30px;
   grid-column: 1 / 5;
 }
 .vraagToevoegenContainer {
   position: relative;
-  height: 80px;
+  /* height: 80px; */
   width: 100%;
 }
 
