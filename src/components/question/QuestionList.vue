@@ -83,9 +83,6 @@ export default {
           },
         ],
       },
-
-      console.log('state.questions after');
-      console.log(this.$store.state.cQ.questions);
     },
     huts() {
       console.log(this.$store.getters.sortedQuestions)
