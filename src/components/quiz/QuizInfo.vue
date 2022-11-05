@@ -1,16 +1,14 @@
 <template>
   <div id="quizInfo">
-    {{ this.$store.state.cQ.editQuestion }}
-    {{ this.$store.state.cQ.title }}
-    {{ this.$store.state.cQ.description }}
     <div id="titel">
       <div class="label">Titel</div>
       <div type="text" class="inputContainer">
         <input
+          id="titleInput"
           class="inputs"
           type="text"
-          v-model="title"
-          @keyup="updateQuizInfoState()"
+          placeholder="titel"
+          @change="updateQuizInfoState()"
         />
       </div>
     </div>
@@ -19,10 +17,11 @@
       <div class="label">Beschrijving</div>
       <div type="text" class="inputContainer">
         <textarea
+          id="descriptionInput"
           class="inputs"
           type="text"
-          v-model="description"
-          @keyup="updateQuizInfoState()"
+          placeholder="description"
+          @change="updateQuizInfoState()"
         ></textarea>
       </div>
     </div>
@@ -44,9 +43,12 @@ export default {
   },
   methods: {
     updateQuizInfoState() {
+      var newTitle = document.getElementById("titleInput").value;
+      var newDescription = document.getElementById("descriptionInput").value;
+      console.log(newTitle);
       this.$store.commit("updateQuizInfo", {
-        title: this.title,
-        description: this.description,
+        title: newTitle,
+        description: newDescription,
       });
     },
   },

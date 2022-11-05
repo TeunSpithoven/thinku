@@ -17,10 +17,9 @@
 export default {
     name: 'AnswerCard',
     props: {
-    id: Number,
+    number: Number,
     answer: String,
     isCorrect: Boolean,
-    index: Number,
   },
 }
 </script>

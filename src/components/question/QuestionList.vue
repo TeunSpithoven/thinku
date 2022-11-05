@@ -2,9 +2,8 @@
   <div id="questionListContainer" class="gridContainer">
     <div class="grid-item">
       <ul id="questionList" class="gridContainer">
-        <li class="grid-item" v-for="q in questions" :key="q.question">
+        <li class="grid-item" v-for="q in this.$store.getters.sortedQuestions" :key="q.number">
           <QuestionCard
-            :id="q.id"
             :question="q.question"
             :type="q.type"
             :time="q.time"
@@ -17,6 +16,9 @@
     <div class="vraagToevoegenContainer grid-item">
       <button class="vraagToevoegen" @click="addQuestion()">
         Vraag Toevoegen
+      </button>
+      <button @click="huts()">
+        sortedQuestions
       </button>
     </div>
   </div>
@@ -33,43 +35,65 @@ export default {
   data() {
     return {
       newQuestion: {
-        id: 1,
         question: "Nieuwe Vraag",
         type: "meerkeuze",
         time: 10,
         number: 1,
         answers: [
           {
-            id: 1,
-            index: 1,
+            number: 1,
             answer: "antwoord een",
             isCorrect: false,
           },
           {
-            id: 2,
-            index: 2,
+            number: 2,
             answer: "antwoord twee",
             isCorrect: true,
           },
         ],
       },
-      // questions: this.$store.state.cQ.questions,
-      questions: this.$store.getters.sortedQuestions,
     };
   },
   methods: {
     addQuestion() {
-      var lastIndex = this.$store.state.cQ.questions.length;
-      console.log(lastIndex);
-      this.newQuestion.number = lastIndex + 2;
-      this.newQuestion.id = lastIndex + 2;
-      console.log(this.newQuestion.number);
+      this.newQuestion.number = this.$store.state.cQ.questions.length + 1;
+
+      console.log('state.questions before');
+      console.log(this.$store.state.cQ.questions);
+
       this.$store.commit("addQuestion", {
         question: this.newQuestion,
       });
-      // this.questions = this.$store.getters.sortedQuestions;
-      console.log(this.$store.getters.sortedQuestions);
+
+      this.newQuestion = {
+        question: "Nieuwe Vraag",
+        type: "meerkeuze",
+        time: 10,
+        number: 1,
+        answers: [
+          {
+            number: 1,
+            answer: "antwoord een",
+            isCorrect: false,
+          },
+          {
+            number: 2,
+            answer: "antwoord twee",
+            isCorrect: true,
+          },
+        ],
+      },
+
+      console.log('state.questions after');
+      console.log(this.$store.state.cQ.questions);
     },
+    huts() {
+      console.log(this.$store.getters.sortedQuestions)
+    },
+  },
+  mounted() {
+    console.log('question list mounted');
+    console.log(this.$store.state.cQ.questions);
   },
 };
 </script>

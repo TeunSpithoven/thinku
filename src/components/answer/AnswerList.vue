@@ -1,11 +1,10 @@
 <template>
   <ul>
-    <li v-for="answer in this.answers" :key="answer.answer">
+    <li v-for="answer in this.answers" :key="answer.number">
       <AnswerCard
-        :id="answer.id"
+        :number="answer.number"
         :answer="answer.answer"
         :isCorrect="answer.isCorrect"
-        :index="answer.index"
       />
     </li>
   </ul>

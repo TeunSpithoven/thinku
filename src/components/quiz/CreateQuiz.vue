@@ -32,49 +32,60 @@ export default {
   data() {
     return {
       createQuiz: {
-        id: 1,
         userId: 1,
-        title: "titel",
-        description: "beschrijving",
+        title: "mijn quiz",
+        description: "een super coole quiz",
         giphyUrl: "",
         questions: [
-          {
-            id: 1,
-            question: "Eerste vraag",
+        {
+            question: "Derde vraag",
             type: "meerkeuze",
             time: 20,
-            number: 2,
+            number: 3,
             answers: [
               {
-                id: 1,
-                index: 1,
+                number: 1,
                 answer: "antwoord een",
                 isCorrect: true,
               },
               {
-                id: 2,
-                index: 2,
+                number: 2,
                 answer: "antwoord twee",
                 isCorrect: false,
               },
             ],
           },
           {
-            id: 2,
+            question: "Eerste vraag",
+            type: "meerkeuze",
+            time: 20,
+            number: 2,
+            answers: [
+              {
+                number: 1,
+                answer: "antwoord een",
+                isCorrect: true,
+              },
+              {
+                number: 2,
+                answer: "antwoord twee",
+                isCorrect: false,
+              },
+            ],
+          },
+          {
             question: "Tweede vraag",
             type: "meerkeuze",
             time: 20,
             number: 1,
             answers: [
               {
-                id: 1,
-                index: 1,
+                number: 1,
                 answer: "antwoord een",
                 isCorrect: true,
               },
               {
-                id: 2,
-                index: 2,
+                number: 2,
                 answer: "antwoord twee",
                 isCorrect: true,
               },
@@ -93,7 +104,6 @@ export default {
     // console.log(this.$store.state.cQ);
 
     this.$store.commit("updateCreateQuizInfo", {
-      id: this.createQuiz.id,
       userId: this.createQuiz.userId,
       title: this.createQuiz.title,
       description: this.createQuiz.description,

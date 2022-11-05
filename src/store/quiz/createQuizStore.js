@@ -1,13 +1,12 @@
 const createQuizStore = {
   state: {
-    id: 1,
     userId: 1,
     title: "",
     description: "",
     giphyUrl: "",
     questions: [],
 
-    editQuestion: 69,
+    editQuestion: -1,
     error: "",
   },
   getters: {
@@ -19,11 +18,14 @@ const createQuizStore = {
   },
   mutations: {
     updateCreateQuizInfo(state, n) {
-      state.id = n.id;
       state.userId = n.userId;
       state.title = n.title;
       state.description = n.description;
       state.giphyUrl = n.giphyUrl;
+    },
+    updateQuizInfo (state, n) {
+      state.title = n.title;
+      state.description = n.description;
     },
     updateCreateQuizQuestions(state, n) {
       state.questions = n.questions;
@@ -32,15 +34,14 @@ const createQuizStore = {
       state.editQuestion = n.editQuestion;
     },
     addQuestion(state, n) {
-      console.log(n.question);
       state.questions.push(n.question);
     },
     updateQuestion(state, n) {
       var index = state.questions
         .map((x) => {
-          return x.id;
+          return x.number;
         })
-        .indexOf(n.id);
+        .indexOf(n.number);
 
       state.questions[index].question = n.question;
     },
@@ -48,9 +49,9 @@ const createQuizStore = {
       if (state.questions.length > 1) {
         var index = state.questions
           .map((x) => {
-            return x.id;
+            return x.number;
           })
-          .indexOf(n.id);
+          .indexOf(n.number);
 
         state.questions.splice(index, 1);
       } else {

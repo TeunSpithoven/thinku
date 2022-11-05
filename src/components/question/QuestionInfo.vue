@@ -17,7 +17,7 @@
     <button
       id="editButton"
       class="gridItem item3"
-      @click="this.$store.state.editQuestion = this.id"
+      @click="this.$store.state.editQuestion = this.number"
     >
       <font-awesome-icon icon="fa-solid fa-pen-to-square" />
     </button>
@@ -38,7 +38,6 @@
 export default {
   name: "QuestionInfo",
   props: {
-    id: Number,
     question: String,
     number: Number,
     type: String,
@@ -59,19 +58,19 @@ export default {
   methods: {
     deleteQuestion() {
       this.$store.commit("deleteQuestion", {
-        id: this.id,
+        number: this.number,
       });
     },
     toggleTypeDropdown() {
       this.typeDropdown = !this.typeDropdown;
     },
     updateQuestion() {
-      console.log("updateQuestion")
+      console.log("updateQuestion" + this.number + " " + this.questionData)
       this.$store.commit('updateQuestion', {
-        id: this.id,
+        number: this.number,
         question: this.questionData,
       })
-      this.questionData = this.question;
+      // this.questionData = this.questionData;
     }
   },
   mounted() {

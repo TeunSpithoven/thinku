@@ -2,7 +2,6 @@
   <div id="questionCard" class="gridContainer">
     <div id="quesionInfoContainter" class="gridItem">
       <QuestionInfo
-        :id="this.id"
         :question="this.question"
         :number="this.number"
         :type="this.type"
@@ -29,7 +28,6 @@ export default {
     AnswerList,
   },
   props: {
-    id: Number,
     question: String,
     answers: Array,
     number: Number,
