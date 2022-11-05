@@ -4,14 +4,13 @@
       {{ this.number }}
     </div>
     <div id="title" class="gridItem item2">
-      <!-- {{this.$store.state.questions[0].id }} -->
-      <!-- {{this.id}} -->
-      <!-- {{this.$store.state.editQuestion}} -->
-      <div v-if="this.$store.state.editQuestion !== this.id">
+      <!-- <div v-if="this.$store.state.editQuestion !== this.id">
         {{ question }}
-      </div>
+      </div> -->
       <input
-        v-if="this.$store.state.editQuestion === this.id"
+        class="questionInput"
+        v-model="questionData"
+        @change="updateQuestion()"
         :placeholder="this.question"
       />
     </div>
@@ -20,9 +19,11 @@
       class="gridItem item3"
       @click="this.$store.state.editQuestion = this.id"
     >
-      Bewerk
+      <font-awesome-icon icon="fa-solid fa-pen-to-square" />
     </button>
-    <button id="deleteButton" class="gridItem item4" @click="deleteQuestion()">Verwijderen</button>
+    <button id="deleteButton" class="gridItem item4" @click="deleteQuestion()">
+      <font-awesome-icon icon="fa-solid fa-trash-can" />
+    </button>
     <div id="type" class="gridItem item5">
       <button @click="toggleTypeDropdown">{{ this.type }}</button>
     </div>
@@ -45,6 +46,7 @@ export default {
   },
   data() {
     return {
+      questionData: '',
       typeDropdown: false,
       types: ["meerkeuze", "open", "woordwolk", "goedfout"],
     };
@@ -63,10 +65,18 @@ export default {
     toggleTypeDropdown() {
       this.typeDropdown = !this.typeDropdown;
     },
+    updateQuestion() {
+      console.log("updateQuestion")
+      this.$store.commit('updateQuestion', {
+        id: this.id,
+        question: this.questionData,
+      })
+      this.questionData = this.question;
+    }
   },
-  // mounted() {
-  //   console.log(this.id);
-  // },
+  mounted() {
+    this.questionData = this.question;
+  },
 };
 </script>
 
@@ -80,6 +90,10 @@ export default {
   top: 11px; */
   padding: 10px;
 }
+.questionInput {
+  width: 100%;
+  height: 100%;
+}
 .gridContainer {
   display: grid;
   gap: 10px;
@@ -89,7 +103,7 @@ export default {
 .gridItem {
   background-color: rgba(255, 255, 255, 0.8);
   /* text-align: center; */
-  padding: 20px;
+  padding: 10px;
   font-size: 30px;
 
   font-weight: 400;
@@ -102,10 +116,12 @@ export default {
 .item1 {
   grid-column: 1 / span 1;
   grid-row: 1;
+  text-align: center;
 }
 .item2 {
   grid-column: 2 / span 6;
   grid-row: 1;
+  padding: 0px;
 }
 .item3 {
   grid-column: 8 / span 1;

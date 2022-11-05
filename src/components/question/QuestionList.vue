@@ -53,14 +53,22 @@ export default {
           },
         ],
       },
-      questions: this.$store.state.cQ.questions,
+      // questions: this.$store.state.cQ.questions,
+      questions: this.$store.getters.sortedQuestions,
     };
   },
   methods: {
     addQuestion() {
+      var lastIndex = this.$store.state.cQ.questions.length;
+      console.log(lastIndex);
+      this.newQuestion.number = lastIndex + 2;
+      this.newQuestion.id = lastIndex + 2;
+      console.log(this.newQuestion.number);
       this.$store.commit("addQuestion", {
         question: this.newQuestion,
       });
+      // this.questions = this.$store.getters.sortedQuestions;
+      console.log(this.$store.getters.sortedQuestions);
     },
   },
 };

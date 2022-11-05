@@ -43,7 +43,7 @@ export default {
             question: "Eerste vraag",
             type: "meerkeuze",
             time: 20,
-            number: 1,
+            number: 2,
             answers: [
               {
                 id: 1,
@@ -90,7 +90,7 @@ export default {
     },
   },
   created() {
-    console.log(this.$store.state.cQ);
+    // console.log(this.$store.state.cQ);
 
     this.$store.commit("updateCreateQuizInfo", {
       id: this.createQuiz.id,
@@ -102,7 +102,7 @@ export default {
     this.$store.commit("updateCreateQuizQuestions", {
       questions: this.createQuiz.questions,
     });
-    console.log(this.$store.state.cQ);
+    // console.log(this.$store.state.cQ);
   },
 };
 </script>

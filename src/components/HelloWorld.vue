@@ -1,7 +1,5 @@
 <template>
   <div class="hello">
-    <font-awesome-icon icon="fa-solid fa-user-secret" />
-    <font-awesome-icon icon="fa-solid fa-trash-can" />
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>

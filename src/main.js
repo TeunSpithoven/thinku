@@ -8,11 +8,14 @@ import './assets/tailwind.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+
 import { faCircle } from '@fortawesome/free-regular-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
+    faPenToSquare,
     faCircle,
     faCircleCheck,
     faTrashCan,

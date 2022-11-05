@@ -6,11 +6,17 @@ const createQuizStore = {
     description: "",
     giphyUrl: "",
     questions: [],
-    
+
     editQuestion: 69,
     error: "",
   },
-  getters: {},
+  getters: {
+    sortedQuestions (state) {
+      return state.questions.sort((a, b) => {
+        return a.number - b.number
+      })
+    }
+  },
   mutations: {
     updateCreateQuizInfo(state, n) {
       state.id = n.id;
@@ -26,7 +32,17 @@ const createQuizStore = {
       state.editQuestion = n.editQuestion;
     },
     addQuestion(state, n) {
+      console.log(n.question);
       state.questions.push(n.question);
+    },
+    updateQuestion(state, n) {
+      var index = state.questions
+        .map((x) => {
+          return x.id;
+        })
+        .indexOf(n.id);
+
+      state.questions[index].question = n.question;
     },
     deleteQuestion(state, n) {
       if (state.questions.length > 1) {
