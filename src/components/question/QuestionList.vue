@@ -2,7 +2,11 @@
   <div id="questionListContainer" class="gridContainer">
     <div class="grid-item">
       <ul id="questionList" class="gridContainer">
-        <li class="grid-item" v-for="q in this.$store.getters.sortedQuestions" :key="q.number">
+        <li
+          class="grid-item"
+          v-for="q in this.$store.getters.sortedQuestions"
+          :key="q.number"
+        >
           <QuestionCard
             :question="q.question"
             :type="q.type"
@@ -17,9 +21,7 @@
       <button class="vraagToevoegen" @click="addQuestion()">
         Vraag Toevoegen
       </button>
-      <button @click="huts()">
-        sortedQuestions
-      </button>
+      <button @click="huts()">sortedQuestions</button>
     </div>
   </div>
 </template>
@@ -58,9 +60,6 @@ export default {
     addQuestion() {
       this.newQuestion.number = this.$store.state.cQ.questions.length + 1;
 
-      console.log('state.questions before');
-      console.log(this.$store.state.cQ.questions);
-
       this.$store.commit("addQuestion", {
         question: this.newQuestion,
       });
@@ -83,9 +82,6 @@ export default {
           },
         ],
       },
-    },
-    huts() {
-      console.log(this.$store.getters.sortedQuestions)
     },
   },
   mounted() {
