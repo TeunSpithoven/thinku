@@ -1,20 +1,20 @@
 <template>
   <div id="createQuiz" class="gridContainer">
     <!-- <div class="gridContainer"> -->
-      <div class="grid-item">
-        <QuizInfo />
+    <div class="grid-item">
+      <QuizInfo />
+    </div>
+    <div class="grid-item">
+      <QuestionList />
+    </div>
+    <div class="grid-item">
+      <div id="knoppen">
+        <button id="annuleerKnop" @click="this.$router.push({ path: '/' })">
+          Annuleer
+        </button>
+        <button id="opslaanKnop" @click="submit()">Opslaan</button>
       </div>
-      <div class="grid-item">
-        <QuestionList />
-      </div>
-      <div class="grid-item">
-        <div id="knoppen">
-          <button id="annuleerKnop" @click="this.$router.push({ path: '/' })">
-            Annuleer
-          </button>
-          <button id="opslaanKnop" @click="submit()">Opslaan</button>
-        </div>
-      </div>
+    </div>
     <!-- </div> -->
   </div>
 </template>
@@ -31,50 +31,57 @@ export default {
   },
   data() {
     return {
-      questions: [
-        {
-          id: 1,
-          question: "Eerste vraag",
-          type: "meerkeuze",
-          time: 20,
-          number: 1,
-          answers: [
+      createQuiz: {
+        id: 1,
+        userId: 1,
+        title: "titel",
+        description: "beschrijving",
+        giphyUrl: "",
+        questions: [
           {
-              id: 1,
-              index: 1,
-              answer: "antwoord een",
-              isCorrect: true,
-            },
-            {
-              id: 2,
-              index: 2,
-              answer: "antwoord twee",
-              isCorrect: false,
-            },
-          ],
-        },
-        {
-          id: 2,
-          question: "Tweede vraag",
-          type: "meerkeuze",
-          time: 20,
-          number: 1,
-          answers: [
-            {
-              id: 1,
-              index: 1,
-              answer: "antwoord een",
-              isCorrect: true,
-            },
-            {
-              id: 2,
-              index: 2,
-              answer: "antwoord twee",
-              isCorrect: true,
-            },
-          ],
-        },
-      ],
+            id: 1,
+            question: "Eerste vraag",
+            type: "meerkeuze",
+            time: 20,
+            number: 1,
+            answers: [
+              {
+                id: 1,
+                index: 1,
+                answer: "antwoord een",
+                isCorrect: true,
+              },
+              {
+                id: 2,
+                index: 2,
+                answer: "antwoord twee",
+                isCorrect: false,
+              },
+            ],
+          },
+          {
+            id: 2,
+            question: "Tweede vraag",
+            type: "meerkeuze",
+            time: 20,
+            number: 1,
+            answers: [
+              {
+                id: 1,
+                index: 1,
+                answer: "antwoord een",
+                isCorrect: true,
+              },
+              {
+                id: 2,
+                index: 2,
+                answer: "antwoord twee",
+                isCorrect: true,
+              },
+            ],
+          },
+        ],
+      },
     };
   },
   methods: {
@@ -83,7 +90,19 @@ export default {
     },
   },
   created() {
-    this.$store.state.questions = this.questions;
+    console.log(this.$store.state.cQ);
+
+    this.$store.commit("updateCreateQuizInfo", {
+      id: this.createQuiz.id,
+      userId: this.createQuiz.userId,
+      title: this.createQuiz.title,
+      description: this.createQuiz.description,
+      giphyUrl: this.createQuiz.giphyUrl,
+    });
+    this.$store.commit("updateCreateQuizQuestions", {
+      questions: this.createQuiz.questions,
+    });
+    console.log(this.$store.state.cQ);
   },
 };
 </script>

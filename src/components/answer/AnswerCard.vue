@@ -1,15 +1,14 @@
 <template>
   <div class="answerCardContainer">
     <div class="item1">
-        <div v-if="isCorrect">Correct</div>
-        <div v-if="!isCorrect">X</div>
-        <!-- <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" /> -->
-        <!-- <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle-dashed" /> -->
+        <!-- <div v-if="isCorrect">Correct</div>
+        <div v-if="!isCorrect">X</div> -->
+        <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" />
+        <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
     </div>
     <div class="item2">{{ answer }}</div>
     <div class="item3">
-        Delete
-        <!-- <font-awesome-icon icon="fa-solid fa-trash" /> -->
+      <font-awesome-icon icon="fa-solid fa-trash-can" />
     </div>
   </div>
 </template>

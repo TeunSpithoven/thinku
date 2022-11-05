@@ -1,18 +1,29 @@
 <template>
   <div id="quizInfo">
-      {{ this.$store.state.title }}
-      {{ this.$store.state.description }}
+    {{ this.$store.state.cQ.editQuestion }}
+    {{ this.$store.state.cQ.title }}
+    {{ this.$store.state.cQ.description }}
     <div id="titel">
       <div class="label">Titel</div>
       <div type="text" class="inputContainer">
-        <input class="inputs" type="text" v-model="title" @keyup="updateQuizInfoState()">
+        <input
+          class="inputs"
+          type="text"
+          v-model="title"
+          @keyup="updateQuizInfoState()"
+        />
       </div>
     </div>
 
     <div id="beschrijving">
       <div class="label">Beschrijving</div>
       <div type="text" class="inputContainer">
-        <textarea class="inputs" type="text" v-model="description" @keyup="updateQuizInfoState()"></textarea>
+        <textarea
+          class="inputs"
+          type="text"
+          v-model="description"
+          @keyup="updateQuizInfoState()"
+        ></textarea>
       </div>
     </div>
 
@@ -27,38 +38,38 @@ export default {
   name: "QuizInfo",
   data() {
     return {
-        title: '',
-        description: '',
-    }
+      title: "",
+      description: "",
+    };
   },
   methods: {
     updateQuizInfoState() {
-        this.$store.commit('updateQuizInfo', {
-            title: this.title,
-            description: this.description,
-        });
+      this.$store.commit("updateQuizInfo", {
+        title: this.title,
+        description: this.description,
+      });
     },
   },
   mounted() {
-    // console.log(this.$store.state.createQuizInfo)
-    this.title = this.$store.state.title;
-    this.description = this.$store.state.description;
-  }
+    // console.log(this.$store.state.cQ)
+    this.title = this.$store.state.cQ.title;
+    this.description = this.$store.state.cQ.description;
+  },
 };
 </script>
 
 <style scoped>
 #quizInfo {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    position: relative;
-    height: 293px;
-    /* left: 178px;
+  position: relative;
+  height: 293px;
+  /* left: 178px;
     right: 177px; */
-    /* top: 86px; */
+  /* top: 86px; */
 
-    border: 1px solid #000000;
-    border-radius: 10px;
+  border: 1px solid #000000;
+  border-radius: 10px;
 }
 .inputs {
   width: 100%;

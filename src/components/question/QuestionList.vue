@@ -30,7 +30,7 @@ export default {
   },
   data() {
     return {
-      questions: this.$store.state.questions,
+      questions: this.$store.state.cQ.questions,
     };
   },
 };
