@@ -7,11 +7,22 @@
       <!-- {{this.$store.state.questions[0].id }} -->
       <!-- {{this.id}} -->
       <!-- {{this.$store.state.editQuestion}} -->
-      <div v-if="this.$store.state.editQuestion !== this.id">{{question}}</div>
-      <input v-if="this.$store.state.editQuestion === this.id" :placeholder="this.question">
+      <div v-if="this.$store.state.editQuestion !== this.id">
+        {{ question }}
+      </div>
+      <input
+        v-if="this.$store.state.editQuestion === this.id"
+        :placeholder="this.question"
+      />
     </div>
-    <button id="editButton" class="gridItem item3" @click="this.$store.state.editQuestion = this.id">Bewerk</button>
-    <button id="deleteButton" class="gridItem item4">Verwijderen</button>
+    <button
+      id="editButton"
+      class="gridItem item3"
+      @click="this.$store.state.editQuestion = this.id"
+    >
+      Bewerk
+    </button>
+    <button id="deleteButton" class="gridItem item4" @click="deleteQuestion()">Verwijderen</button>
     <div id="type" class="gridItem item5">
       <button @click="toggleTypeDropdown">{{ this.type }}</button>
     </div>
@@ -44,6 +55,11 @@ export default {
     },
   },
   methods: {
+    deleteQuestion() {
+      this.$store.commit("deleteQuestion", {
+        id: this.id,
+      });
+    },
     toggleTypeDropdown() {
       this.typeDropdown = !this.typeDropdown;
     },

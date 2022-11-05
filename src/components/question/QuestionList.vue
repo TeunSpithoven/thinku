@@ -15,7 +15,9 @@
       </ul>
     </div>
     <div class="vraagToevoegenContainer grid-item">
-      <button class="vraagToevoegen">Vraag Toevoegen</button>
+      <button class="vraagToevoegen" @click="addQuestion()">
+        Vraag Toevoegen
+      </button>
     </div>
   </div>
 </template>
@@ -30,8 +32,36 @@ export default {
   },
   data() {
     return {
+      newQuestion: {
+        id: 1,
+        question: "Nieuwe Vraag",
+        type: "meerkeuze",
+        time: 10,
+        number: 1,
+        answers: [
+          {
+            id: 1,
+            index: 1,
+            answer: "antwoord een",
+            isCorrect: false,
+          },
+          {
+            id: 2,
+            index: 2,
+            answer: "antwoord twee",
+            isCorrect: true,
+          },
+        ],
+      },
       questions: this.$store.state.cQ.questions,
     };
+  },
+  methods: {
+    addQuestion() {
+      this.$store.commit("addQuestion", {
+        question: this.newQuestion,
+      });
+    },
   },
 };
 </script>
@@ -42,7 +72,7 @@ export default {
   box-sizing: border-box;
 
   position: relative;
-  min-height: 375px;
+  /* min-height: 375px; */
   /* left: 178px;
   right: 10%;
   top: 405px; */

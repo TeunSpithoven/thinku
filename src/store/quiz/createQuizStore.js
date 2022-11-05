@@ -1,14 +1,14 @@
 const createQuizStore = {
   state: {
-    editQuestion: 69,
-
     id: 1,
     userId: 1,
     title: "",
     description: "",
     giphyUrl: "",
-
     questions: [],
+    
+    editQuestion: 69,
+    error: "",
   },
   getters: {},
   mutations: {
@@ -24,6 +24,22 @@ const createQuizStore = {
     },
     updateEditQuestion(state, n) {
       state.editQuestion = n.editQuestion;
+    },
+    addQuestion(state, n) {
+      state.questions.push(n.question);
+    },
+    deleteQuestion(state, n) {
+      if (state.questions.length > 1) {
+        var index = state.questions
+          .map((x) => {
+            return x.id;
+          })
+          .indexOf(n.id);
+
+        state.questions.splice(index, 1);
+      } else {
+        state.error = "there must be at least one question in the quiz";
+      }
     },
   },
   actions: {},
