@@ -44,6 +44,7 @@ const createQuizStore = {
         .indexOf(n.number);
 
       state.questions[index].question = n.question;
+      state.questions[index].type = n.type;
     },
     deleteQuestion(state, n) {
       if (state.questions.length > 1) {

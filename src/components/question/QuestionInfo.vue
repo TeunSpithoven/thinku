@@ -1,11 +1,9 @@
 <template>
   <div id="info" class="gridContainer">
     <div id="type" class="gridItem item1">
-      <button @click="toggleTypeDropdown">{{ this.type }}</button>
+      <QuestionTypeDropDown @update-type="updateType" :type=this.type />
     </div>
-    <div id="typeDropdown">
-      <button v-for="t in this.unselectedTypes" :key="t">{{ t }}</button>
-    </div>
+    
     <div id="title" class="gridItem item2">
       <input
         class="questionInput"
@@ -23,8 +21,13 @@
 </template>
 
 <script>
+import QuestionTypeDropDown from './QuestionTypeDropDown.vue';
+
 export default {
   name: "QuestionInfo",
+  components: {
+    QuestionTypeDropDown,
+  },
   props: {
     question: String,
     number: Number,
@@ -34,14 +37,8 @@ export default {
   data() {
     return {
       questionData: '',
-      typeDropdown: false,
-      types: ["meerkeuze", "open", "woordwolk", "goedfout"],
+      questionType: '',
     };
-  },
-  computed: {
-    unselectedTypes() {
-      return this.types !== this.type;
-    },
   },
   methods: {
     deleteQuestion() {
@@ -49,17 +46,19 @@ export default {
         number: this.number,
       });
     },
-    toggleTypeDropdown() {
-      this.typeDropdown = !this.typeDropdown;
-    },
     updateQuestion() {
       console.log("updateQuestion" + this.number + " " + this.questionData)
       this.$store.commit('updateQuestion', {
         number: this.number,
         question: this.questionData,
+        type: this.questionType,
       })
       // this.questionData = this.questionData;
-    }
+    },
+    updateType(t) {
+      this.questionType = t.type;
+      this.updateQuestion();
+    },
   },
   mounted() {
     this.questionData = this.question;
