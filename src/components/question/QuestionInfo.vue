@@ -103,7 +103,7 @@ export default {
   background-color: rgba(255, 255, 255);
   /* text-align: center; */
   padding: 10px;
-  font-size: 30px;
+  /* font-size: 30px; */
 
   font-weight: 400;
   font-size: 24px;
