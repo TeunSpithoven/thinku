@@ -97,7 +97,9 @@ export default {
   },
   methods: {
     submit() {
-      alert("Opslaan");
+      this.$store.commit('saveQuizToDB', {
+        quiz: this.createQuiz,
+      })
     },
   },
   created() {

@@ -81,7 +81,7 @@ export default {
 <style scoped>
 #info {
   position: relative;
-  background-color: #8d8d8d;
+  /* background-color: #8d8d8d; */
   /* height: 111px;
   left: 12px;
   right: 11px;
@@ -91,15 +91,16 @@ export default {
 .questionInput {
   width: 100%;
   height: 100%;
+  background-color: transparent;
 }
 .gridContainer {
   display: grid;
   gap: 5px;
-  background-color: #b9b8b8;
+  background-color: #c0c0c0;
   padding: 5px;
 }
 .gridItem {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255);
   /* text-align: center; */
   padding: 10px;
   font-size: 30px;
@@ -124,15 +125,16 @@ export default {
   grid-column: 2 / span 7;
   grid-row: 1;
   padding: 0px;
-  width: 150%;
+  /* right: 25%; */
+  /* width: 150%; */
 }
 .item3 {
   /* time  */
   grid-column: 9 / span 1;
   grid-row: 1;
-  margin-left: 50%;
-  padding-left: 0px;
-  width: 50%;
+  /* margin-left: 50%;
+  padding-left: 0px; */
+  /* width: 50%; */
 }
 .item4 {
   /* delete  */

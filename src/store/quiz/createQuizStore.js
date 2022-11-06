@@ -17,6 +17,10 @@ const createQuizStore = {
     }
   },
   mutations: {
+    saveQuizToDB(state, n){
+      console.log("userId: " + state.userId);
+      console.log(n.quiz);
+    },
     updateCreateQuizInfo(state, n) {
       state.userId = n.userId;
       state.title = n.title;
