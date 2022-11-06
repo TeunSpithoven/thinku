@@ -1,11 +1,9 @@
 <template>
   <div class="answerCardContainer">
-    <div class="item1">
-        <!-- <div v-if="isCorrect">Correct</div>
-        <div v-if="!isCorrect">X</div> -->
-        <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" />
-        <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
-    </div>
+    <button class="item1" @click="invertIsCorrect">
+      <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" />
+      <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
+    </button>
     <div class="item2">{{ answer }}</div>
     <div class="item3">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
@@ -15,13 +13,40 @@
 
 <script>
 export default {
-    name: 'AnswerCard',
-    props: {
+  name: "AnswerCard",
+  props: {
+    questionNumber: Number,
     number: Number,
     answer: String,
     isCorrect: Boolean,
   },
-}
+  data() {
+    return {
+      answerNumber: -1,
+      answerAnswer: '',
+      answerIsCorrect: false,
+    }
+  },
+  methods: {
+    invertIsCorrect() {
+      this.answerIsCorrect = !this.answerIsCorrect;
+      this.updateAnswer();
+    },
+    updateAnswer() {
+      this.$store.commit('updateAnswer', {
+        questionNumber: this.questionNumber,
+        number: this.answerNumber,
+        answer: this.answerAnswer,
+        isCorrect: this.answerIsCorrect,
+      })
+    },
+  },
+  mounted() {
+    this.answerNumber = this.number;
+    this.answerAnswer = this.answer;
+    this.answerIsCorrect = this.isCorrect;
+  },
+};
 </script>
 
 <style scoped>

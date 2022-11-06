@@ -17,6 +17,7 @@ const createQuizStore = {
     }
   },
   mutations: {
+    // QUIZ
     saveQuizToDB(state, n){
       console.log("userId: " + state.userId);
       console.log(n.quiz);
@@ -37,6 +38,7 @@ const createQuizStore = {
     updateEditQuestion(state, n) {
       state.editQuestion = n.editQuestion;
     },
+    // QUESTION
     addQuestion(state, n) {
       state.questions.push(n.question);
     },
@@ -62,6 +64,28 @@ const createQuizStore = {
         state.questions.splice(index, 1);
       } else {
         state.error = "there must be at least one question in the quiz";
+      }
+    },
+    // ANSWER
+    updateAnswer(state, n) {
+      var questionIndex = state.questions
+      .map((x) => {
+        return x.number;
+      })
+      .indexOf(n.questionNumber);
+      var answerIndex = state.questions[questionIndex].answers
+      .map((x) => {
+        return x.number;
+      })
+      .indexOf(n.number);
+      
+      state.questions[questionIndex].answers[answerIndex].number = n.number;
+      state.questions[questionIndex].answers[answerIndex].answer = n.answer;
+
+      // TODO: get the amount of correct answers
+      var correctAnswers = 1;
+      if(n.isCorrect === true || correctAnswers > 1){
+        state.questions[questionIndex].answers[answerIndex].isCorrect = n.isCorrect;
       }
     },
   },

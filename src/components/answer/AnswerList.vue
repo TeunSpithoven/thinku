@@ -2,6 +2,7 @@
   <ul>
     <li v-for="answer in this.answers" :key="answer.number">
       <AnswerCard
+        :questionNumber="this.questionNumber"
         :number="answer.number"
         :answer="answer.answer"
         :isCorrect="answer.isCorrect"
@@ -19,6 +20,7 @@ export default {
     AnswerCard,
   },
   props: {
+    questionNumber: Number,
     answers: Array,
   },
 };

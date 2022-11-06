@@ -9,7 +9,7 @@
       />
     </div>
     <div id="answers" class="gridItem">
-      <AnswerList :answers="this.answers" />
+      <AnswerList :answers="this.answers" :questionNumber="this.number" />
     </div>
     <div class="antwoordToevoegenContainer">
       <div id="addAnswerButton" class="gridItem">Antwoord Toevoegen</div>
