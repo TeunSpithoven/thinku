@@ -86,10 +86,6 @@ export default {
       this.newQuestion.number = -1;
     },
   },
-  mounted() {
-    console.log('question list mounted');
-    console.log(this.$store.state.cQ.questions);
-  },
 };
 </script>
 

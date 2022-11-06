@@ -101,8 +101,6 @@ export default {
     },
   },
   created() {
-    // console.log(this.$store.state.cQ);
-
     this.$store.commit("updateCreateQuizInfo", {
       userId: this.createQuiz.userId,
       title: this.createQuiz.title,
@@ -112,7 +110,6 @@ export default {
     this.$store.commit("updateCreateQuizQuestions", {
       questions: this.createQuiz.questions,
     });
-    // console.log(this.$store.state.cQ);
   },
 };
 </script>

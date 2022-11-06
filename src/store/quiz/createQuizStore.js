@@ -45,6 +45,7 @@ const createQuizStore = {
 
       state.questions[index].question = n.question;
       state.questions[index].type = n.type;
+      state.questions[index].time = n.time;
     },
     deleteQuestion(state, n) {
       if (state.questions.length > 1) {
