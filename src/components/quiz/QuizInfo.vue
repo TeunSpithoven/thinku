@@ -7,7 +7,7 @@
           id="titleInput"
           class="inputs"
           type="text"
-          :placeholder="this.title"
+          v-model="this.title"
           @change="updateQuizInfoState()"
         />
       </div>
@@ -20,7 +20,7 @@
           id="descriptionInput"
           class="inputs"
           type="text"
-          :placeholder="this.description"
+          v-model="this.description"
           @change="updateQuizInfoState()"
         ></textarea>
       </div>
@@ -43,13 +43,12 @@ export default {
   },
   methods: {
     updateQuizInfoState() {
-      var newTitle = document.getElementById("titleInput").value;
-      var newDescription = document.getElementById("descriptionInput").value;
-      console.log(newTitle);
       this.$store.commit("updateQuizInfo", {
-        title: newTitle,
-        description: newDescription,
+        title: this.title,
+        description: this.description,
       });
+      this.title = this.$store.state.cQ.title;
+      this.description = this.$store.state.cQ.description;
     },
   },
   mounted() {
