@@ -7,7 +7,7 @@
           id="titleInput"
           class="inputs"
           type="text"
-          placeholder="titel"
+          :placeholder="this.title"
           @change="updateQuizInfoState()"
         />
       </div>
@@ -20,7 +20,7 @@
           id="descriptionInput"
           class="inputs"
           type="text"
-          placeholder="description"
+          :placeholder="this.description"
           @change="updateQuizInfoState()"
         ></textarea>
       </div>
@@ -53,7 +53,6 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.$store.state.cQ)
     this.title = this.$store.state.cQ.title;
     this.description = this.$store.state.cQ.description;
   },

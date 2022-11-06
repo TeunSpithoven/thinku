@@ -43,7 +43,7 @@ export default {
         number: 1,
         answers: [
           {
-            number: 1,
+            number: -1,
             answer: "antwoord een",
             isCorrect: false,
           },
@@ -54,7 +54,7 @@ export default {
           },
         ],
       },
-    };
+    }
   },
   methods: {
     addQuestion() {
@@ -82,6 +82,8 @@ export default {
           },
         ],
       },
+
+      this.newQuestion.number = -1;
     },
   },
   mounted() {
