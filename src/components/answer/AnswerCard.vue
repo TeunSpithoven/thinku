@@ -5,9 +5,9 @@
       <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
     </button>
     <div class="item2">{{ answer }}</div>
-    <div class="item3">
+    <button class="item3" @click="deleteAnswer">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
-    </div>
+    </button>
   </div>
 </template>
 
@@ -38,6 +38,12 @@ export default {
         number: this.answerNumber,
         answer: this.answerAnswer,
         isCorrect: this.answerIsCorrect,
+      })
+    },
+    deleteAnswer() {
+      this.$store.commit('deleteAnswer', {
+        questionNumber: this.questionNumber,
+        number: this.answerNumber,
       })
     },
   },

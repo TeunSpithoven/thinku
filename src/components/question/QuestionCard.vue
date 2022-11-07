@@ -12,7 +12,7 @@
       <AnswerList :answers="this.answers" :questionNumber="this.number" />
     </div>
     <div class="antwoordToevoegenContainer">
-      <div id="addAnswerButton" class="gridItem">Antwoord Toevoegen</div>
+      <button id="addAnswerButton" class="gridItem" @click="createAnswer">Antwoord Toevoegen</button>
     </div>
   </div>
 </template>
@@ -34,7 +34,16 @@ export default {
     type: String,
     time: Number,
   },
-  
+  methods: {
+    createAnswer() {
+      this.$store.commit('createAnswer', {
+        questionNumber: this.number,
+        number: this.answers.length + 1,
+        answer: 'nieuw antwoord',
+        isCorrect: false,
+      });
+    },
+  },
 };
 </script>
 

@@ -28,15 +28,14 @@ const createQuizStore = {
       state.description = n.description;
       state.giphyUrl = n.giphyUrl;
     },
-    updateQuizInfo (state, n) {
+    updateQuizTitle (state, n) {
       state.title = n.title;
+    },
+    updateQuizDescription (state, n) {
       state.description = n.description;
     },
     updateCreateQuizQuestions(state, n) {
       state.questions = n.questions;
-    },
-    updateEditQuestion(state, n) {
-      state.editQuestion = n.editQuestion;
     },
     // QUESTION
     addQuestion(state, n) {
@@ -67,6 +66,14 @@ const createQuizStore = {
       }
     },
     // ANSWER
+    createAnswer(state, n) {
+      var questionIndex = state.questions
+      .map((x) => {
+        return x.number;
+      })
+      .indexOf(n.questionNumber)
+      state.questions[questionIndex].answers.push(n)
+    },
     updateAnswer(state, n) {
       var questionIndex = state.questions
       .map((x) => {
@@ -83,9 +90,24 @@ const createQuizStore = {
       state.questions[questionIndex].answers[answerIndex].answer = n.answer;
 
       // TODO: get the amount of correct answers
-      var correctAnswers = 1;
+      var correctAnswers = 2;
       if(n.isCorrect === true || correctAnswers > 1){
         state.questions[questionIndex].answers[answerIndex].isCorrect = n.isCorrect;
+      }
+    },
+    deleteAnswer(state, n) {
+      var questionIndex = state.questions
+      .map((x) => {return x.number;})
+      .indexOf(n.questionNumber);
+
+      if (state.questions[questionIndex].answers.length > 1) {
+        var index = state.questions[questionIndex].answers
+          .map((x) => {return x.number;})
+          .indexOf(n.number);
+
+        state.questions[questionIndex].answers.splice(index, 1);
+      } else {
+        state.error = "there must be at least one answer in a question";
       }
     },
   },

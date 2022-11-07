@@ -8,7 +8,7 @@
           class="inputs"
           type="text"
           v-model="this.title"
-          @change="updateQuizInfoState()"
+          @change="updateQuizTitle()"
         />
       </div>
     </div>
@@ -21,7 +21,7 @@
           class="inputs"
           type="text"
           v-model="this.description"
-          @change="updateQuizInfoState()"
+          @change="updateQuizDescription()"
         ></textarea>
       </div>
     </div>
@@ -39,17 +39,30 @@ export default {
     return {
       title: "",
       description: "",
+
     };
   },
   methods: {
-    updateQuizInfoState() {
-      this.$store.commit("updateQuizInfo", {
+    updateQuizTitle() {
+      this.$store.commit("updateQuizTitle", {
         title: this.title,
-        description: this.description,
       });
       this.title = this.$store.state.cQ.title;
+    },
+    updateQuizDescription() {
+      this.$store.commit("updateQuizDescription", {
+        description: this.description,
+      });
       this.description = this.$store.state.cQ.description;
     },
+    // updateQuizInfoState() {
+    //   this.$store.commit("updateQuizInfo", {
+    //     title: this.title,
+    //     description: this.description,
+    //   });
+    //   this.title = this.$store.state.cQ.title;
+    //   this.description = this.$store.state.cQ.description;
+    // },
   },
   mounted() {
     this.title = this.$store.state.cQ.title;
