@@ -118,7 +118,8 @@ export default {
   grid-row: 1;
   padding-left: 0px;
   padding-right: 0px;
-  padding-top: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .item2 {
   /* question */

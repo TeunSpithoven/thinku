@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggleTypeDropdown()">
+  <button class="initialTypeButton" @click="toggleTypeDropdown()">
     {{ this.type }}
   </button>
   <div v-if="this.typeDropdown" id="typeDropdown">
@@ -43,7 +43,13 @@ export default {
 </script>
 
 <style scoped>
+.initialTypeButton {
+  /* padding-top: 10px; */
+  height: 100%;
+}
 .typeButton {
+  /* padding-top: 10px; */
+  padding-bottom: 0px;
   border: 1px solid #000000;
   /* font-size: 24px;
     line-height: 25px; */

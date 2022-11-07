@@ -14,7 +14,7 @@ const createQuizStore = {
       return state.questions.sort((a, b) => {
         return a.number - b.number
       })
-    }
+    },
   },
   mutations: {
     // QUIZ
@@ -106,6 +106,8 @@ const createQuizStore = {
           .indexOf(n.number);
 
         state.questions[questionIndex].answers.splice(index, 1);
+        state.questions[questionIndex].answers.forEach((answer, index) => answer.number = index)
+        console.log(state.questions[questionIndex].answers)
       } else {
         state.error = "there must be at least one answer in a question";
       }

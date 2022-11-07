@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     createAnswer() {
+      console.log(this.answers.length)
       this.$store.commit('createAnswer', {
         questionNumber: this.number,
         number: this.answers.length + 1,

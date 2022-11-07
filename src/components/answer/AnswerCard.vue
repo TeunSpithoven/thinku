@@ -4,7 +4,12 @@
       <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" />
       <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
     </button>
-    <div class="item2">{{ answer }}</div>
+    <div class="item2"><input
+        class="questionInput"
+        v-model="answerAnswer"
+        @change="updateAnswer"
+        :placeholder="this.answer"
+      /></div>
     <button class="item3" @click="deleteAnswer">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
     </button>
@@ -45,6 +50,9 @@ export default {
         questionNumber: this.questionNumber,
         number: this.answerNumber,
       })
+      // this.$store.commit('sortAnswers', {
+      //   questionNumber: this.questionNumber,
+      // })
     },
   },
   mounted() {
@@ -56,6 +64,11 @@ export default {
 </script>
 
 <style scoped>
+.questionInput {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
 /* TODO: deze grid omzetten naar zo een zonder grid-template-areas */
 .answerCardContainer {
   display: grid;
@@ -67,7 +80,7 @@ export default {
   /* height: 20px; */
 }
 .answerCardContainer > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255);
   text-align: center;
   padding: 2px;
   font-size: 24px;

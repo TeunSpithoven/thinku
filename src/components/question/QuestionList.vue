@@ -21,7 +21,6 @@
       <button class="vraagToevoegen" @click="addQuestion()">
         Vraag Toevoegen
       </button>
-      <button @click="huts()">sortedQuestions</button>
     </div>
   </div>
 </template>
