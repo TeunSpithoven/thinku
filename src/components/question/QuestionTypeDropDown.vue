@@ -46,6 +46,7 @@ export default {
 .initialTypeButton {
   /* padding-top: 10px; */
   height: 100%;
+  width: 100%;
 }
 .typeButton {
   /* padding-top: 10px; */

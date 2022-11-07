@@ -7,13 +7,15 @@ const createQuizStore = {
     questions: [],
 
     editQuestion: -1,
+    renderList: true,
     error: "",
   },
   getters: {
     sortedQuestions (state) {
-      return state.questions.sort((a, b) => {
-        return a.number - b.number
-      })
+      return state.questions
+      // return state.questions.sort((a, b) => {
+      //   return a.number - b.number
+      // })
     },
   },
   mutations: {
@@ -39,7 +41,9 @@ const createQuizStore = {
     },
     // QUESTION
     addQuestion(state, n) {
+      // console.log(state.questions)
       state.questions.push(n.question);
+      // console.log(state.questions)
     },
     updateQuestion(state, n) {
       var index = state.questions
@@ -51,6 +55,16 @@ const createQuizStore = {
       state.questions[index].question = n.question;
       state.questions[index].type = n.type;
       state.questions[index].time = n.time;
+    },
+    updateQuestionList(state, n) {
+      state.questions = n;
+      state.questions.forEach((answer, index) => answer.number = index)
+    },
+    unrenderQuestions(state) {
+      state.renderList = false;
+    },
+    renderQuestions(state) {
+      state.renderList = true;
     },
     deleteQuestion(state, n) {
       if (state.questions.length > 1) {
@@ -107,7 +121,7 @@ const createQuizStore = {
 
         state.questions[questionIndex].answers.splice(index, 1);
         state.questions[questionIndex].answers.forEach((answer, index) => answer.number = index)
-        console.log(state.questions[questionIndex].answers)
+        // console.log(state.questions[questionIndex].answers)
       } else {
         state.error = "there must be at least one answer in a question";
       }

@@ -55,6 +55,7 @@ export default {
       this.$store.commit("deleteQuestion", {
         number: this.number,
       });
+      this.$emit('reloadList');
     },
     updateQuestion() {
       this.$store.commit("updateQuestion", {

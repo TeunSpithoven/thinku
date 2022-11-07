@@ -1,7 +1,8 @@
 <template>
   <div id="questionListContainer" class="gridContainer">
     <div class="grid-item">
-      <ul id="questionList" class="gridContainer">
+      <!-- static list -->
+      <ul v-if="!toggleDrag" id="questionList" class="gridContainer">
         <li
           class="grid-item"
           v-for="q in this.$store.getters.sortedQuestions"
@@ -16,10 +17,27 @@
           ></QuestionCard>
         </li>
       </ul>
+      <!-- draggable list -->
+      <draggable v-model="questionList" :transition=100 v-if="toggleDrag && renderList" class="gridContainer">
+        <template v-slot:item="{ item }">
+          <QuestionCard
+            :question="item.question"
+            :type="item.type"
+            :time="item.time"
+            :answers="item.answers"
+            :number="item.number"
+            @reload-list="reloadList()"
+          ></QuestionCard>
+        </template>
+      </draggable>
     </div>
     <div class="vraagToevoegenContainer grid-item">
       <button class="vraagToevoegen" @click="addQuestion()">
         Vraag Toevoegen
+      </button>
+      <button class="vraagToevoegen" @click="toggleDrag = !toggleDrag">
+        <div v-if="!toggleDrag">Vragen ordenen</div>
+        <div v-if="toggleDrag">Opslaan</div>
       </button>
     </div>
   </div>
@@ -28,13 +46,19 @@
 <script>
 import QuestionCard from "@/components/question/QuestionCard.vue";
 
+import Draggable from "vue3-draggable";
+
 export default {
   name: "QuestionList",
   components: {
     QuestionCard,
+    Draggable,
   },
   data() {
     return {
+      toggleDrag: false,
+      renderList: true,
+
       newQuestion: {
         question: "Nieuwe Vraag",
         type: "meerkeuze",
@@ -53,7 +77,7 @@ export default {
           },
         ],
       },
-    }
+    };
   },
   methods: {
     addQuestion() {
@@ -63,7 +87,7 @@ export default {
         question: this.newQuestion,
       });
 
-      this.newQuestion = {
+      (this.newQuestion = {
         question: "Nieuwe Vraag",
         type: "meerkeuze",
         time: 10,
@@ -80,9 +104,27 @@ export default {
             isCorrect: true,
           },
         ],
-      },
+      }),
+        (this.newQuestion.number = -1);
+      this.reloadList();
+    },
+    reloadList() {
+      console.log('reload');
+      this.renderList = false;
 
-      this.newQuestion.number = -1;
+      this.$nextTick(() => {
+        this.renderList = true;
+      });
+    },
+  },
+  computed: {
+    questionList: {
+      get() {
+        return this.$store.getters.sortedQuestions;
+      },
+      set(value) {
+        this.$store.commit("updateQuestionList", value);
+      },
     },
   },
 };

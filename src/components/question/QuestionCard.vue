@@ -6,6 +6,7 @@
         :number="this.number"
         :type="this.type"
         :time="this.time"
+        @reload-list="reloadList()"
       />
     </div>
     <div id="answers" class="gridItem">
@@ -43,6 +44,9 @@ export default {
         answer: 'nieuw antwoord',
         isCorrect: false,
       });
+    },
+    reloadList() {
+      this.$emit('reloadList');
     },
   },
 };

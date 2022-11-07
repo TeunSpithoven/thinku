@@ -23,6 +23,8 @@
 import QuizInfo from "@/components/quiz/QuizInfo.vue";
 import QuestionList from "@/components/question/QuestionList.vue";
 
+import {createQuiz} from '@/assets/fakeData.js';
+
 export default {
   name: "CreateQuiz",
   components: {
@@ -31,68 +33,69 @@ export default {
   },
   data() {
     return {
-      createQuiz: {
-        userId: 1,
-        title: "mijn quiz",
-        description: "een super coole quiz",
-        giphyUrl: "",
-        questions: [
-        {
-            question: "Derde vraag",
-            type: "meerkeuze",
-            time: 20,
-            number: 3,
-            answers: [
-              {
-                number: 1,
-                answer: "antwoord een",
-                isCorrect: true,
-              },
-              {
-                number: 2,
-                answer: "antwoord twee",
-                isCorrect: false,
-              },
-            ],
-          },
-          {
-            question: "Eerste vraag",
-            type: "meerkeuze",
-            time: 20,
-            number: 2,
-            answers: [
-              {
-                number: 1,
-                answer: "antwoord een",
-                isCorrect: true,
-              },
-              {
-                number: 2,
-                answer: "antwoord twee",
-                isCorrect: false,
-              },
-            ],
-          },
-          {
-            question: "Tweede vraag",
-            type: "meerkeuze",
-            time: 20,
-            number: 1,
-            answers: [
-              {
-                number: 1,
-                answer: "antwoord een",
-                isCorrect: true,
-              },
-              {
-                number: 2,
-                answer: "antwoord twee",
-                isCorrect: true,
-              },
-            ],
-          },
-        ],
-      },
+      createQuiz: createQuiz,
+      // createQuiz: {
+      //   userId: 1,
+      //   title: "mijn quiz",
+      //   description: "een super coole quiz",
+      //   giphyUrl: "",
+      //   questions: [
+      //   {
+      //       question: "Derde vraag",
+      //       type: "meerkeuze",
+      //       time: 20,
+      //       number: 3,
+      //       answers: [
+      //         {
+      //           number: 1,
+      //           answer: "antwoord een",
+      //           isCorrect: true,
+      //         },
+      //         {
+      //           number: 2,
+      //           answer: "antwoord twee",
+      //           isCorrect: false,
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       question: "Eerste vraag",
+      //       type: "meerkeuze",
+      //       time: 20,
+      //       number: 2,
+      //       answers: [
+      //         {
+      //           number: 1,
+      //           answer: "antwoord een",
+      //           isCorrect: true,
+      //         },
+      //         {
+      //           number: 2,
+      //           answer: "antwoord twee",
+      //           isCorrect: false,
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       question: "Tweede vraag",
+      //       type: "meerkeuze",
+      //       time: 20,
+      //       number: 1,
+      //       answers: [
+      //         {
+      //           number: 1,
+      //           answer: "antwoord een",
+      //           isCorrect: true,
+      //         },
+      //         {
+      //           number: 2,
+      //           answer: "antwoord twee",
+      //           isCorrect: true,
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     };
   },
   methods: {
