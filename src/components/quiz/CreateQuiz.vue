@@ -125,8 +125,8 @@ export default {
   display: grid;
   gap: 10px;
   /* padding: 10px; */
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
