@@ -1,6 +1,6 @@
 <template>
-  <ul>
-    <li v-for="answer in this.answers" :key="answer.number">
+  <ul class="answerGroup">
+    <li v-for="answer in this.answers" :key="answer.number" class="cell">
       <AnswerCard
         :questionNumber="this.questionNumber"
         :number="answer.number"
@@ -27,5 +27,14 @@ export default {
 </script>
 
 <style scoped>
+.answerGroup {
+  display:contents;
+}
+.r_group:nth-of-type(2n) > .cell {
+  background-color:rgb(221, 75, 75);
+}
+.cell {
+  background-color: transparent;
 
+}
 </style>

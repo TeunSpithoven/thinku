@@ -97,11 +97,11 @@ export default {
 .gridContainer {
   display: grid;
   gap: 5px;
-  background-color: #c0c0c0;
+  /* background-color: #c0c0c0; */
   padding: 5px;
 }
 .gridItem {
-  background-color: rgba(255, 255, 255);
+  /* background-color: rgba(255, 255, 255); */
   /* text-align: center; */
   padding: 10px;
   /* font-size: 30px; */

@@ -74,16 +74,20 @@ export default {
   display: grid;
   grid-template-areas: "correct antwoord antwoord antwoord antwoord antwoord antwoord antwoord antwoord antwoord verwijder";
   gap: 10px;
-  background-color: #8d8d8d;
+  /* background-color: #8d8d8d; */
   padding: 10px;
   padding-top: 0px;
   /* height: 20px; */
 }
 .answerCardContainer > div {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  background-color: transparent;
   text-align: center;
   padding: 2px;
   font-size: 24px;
+}
+.answerCardContainer:nth-of-type(2n) > div {
+  background-color:rgb(221, 75, 75);
 }
 .item1 {
   width: 100px;

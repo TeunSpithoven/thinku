@@ -68,12 +68,14 @@ export default {
 }
 
 .gridContainer {
-  background-color: #8d8d8d;
+  /* background-color: #8d8d8d; */
   display: grid;
   gap: 10px;
   padding: 10px;
   padding-left: 10%;
   padding-right: 10%;
+  border: 1px solid #000000;
+  border-radius: 10px;
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);

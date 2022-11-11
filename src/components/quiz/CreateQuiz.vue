@@ -4,7 +4,7 @@
     <div class="grid-item">
       <QuizInfo />
     </div>
-    <div class="grid-item">
+    <div id="questionListContainer" class="grid-item">
       <QuestionList />
     </div>
     <div class="grid-item">
@@ -121,7 +121,7 @@ export default {
 
 <style scoped>
 .gridContainer {
-  background-color: #8d8d8d;
+  /* background-color: #8d8d8d; */
   display: grid;
   gap: 10px;
   /* padding: 10px; */
@@ -129,16 +129,20 @@ export default {
   padding-right: 15%;
 }
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(255, 255, 255);
   text-align: center;
   /* deze padding weghalen */
-  padding: 20px;
+  /* padding: 20px; */
   font-size: 30px;
   grid-column: 1 / 5;
 }
 #createQuiz {
   display: grid;
   row-gap: 20px;
+}
+
+#questionListContainer{
+  padding: 0;
 }
 
 #knoppen {
