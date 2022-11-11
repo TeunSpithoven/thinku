@@ -75,6 +75,18 @@ export default {
 .answerGroup {
   display: contents;
 }
+ul > li:nth-of-type(odd) {
+  background-color: #e9e9f9 ;
+}
+ul > li:nth-of-type(even) {
+  background-color: #ffffff ;
+}
+ul > li {
+  border-bottom: 1px solid rgb(221,221,221);
+}
+ul > li:last-child {
+  border-bottom: none;
+}
 .r_group:nth-of-type(2n) > .cell {
   background-color: rgb(221, 75, 75);
 }
