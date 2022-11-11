@@ -40,7 +40,7 @@
       <button class="vraagToevoegen" @click="addQuestion()">
         Vraag Toevoegen
       </button>
-      <button class="vraagToevoegen" @click="toggleDrag = !toggleDrag">
+      <button v-if="questionList.length > 1" class="vraagToevoegen" @click="toggleDrag = !toggleDrag">
         <div v-if="!toggleDrag">Vragen ordenen</div>
         <div v-if="toggleDrag">Opslaan</div>
       </button>
@@ -114,7 +114,6 @@ export default {
       this.reloadList();
     },
     reloadList() {
-      console.log("reload");
       this.renderList = false;
 
       this.$nextTick(() => {
