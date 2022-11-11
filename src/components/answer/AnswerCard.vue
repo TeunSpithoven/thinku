@@ -1,15 +1,21 @@
 <template>
   <div class="answerCardContainer">
-    <button class="item1" @click="invertIsCorrect">
+    <button
+      v-if="this.questionType !== 'open'"
+      class="item1"
+      @click="invertIsCorrect"
+    >
       <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" />
       <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
     </button>
-    <div class="item2"><input
+    <div class="item2">
+      <input
         class="questionInput"
         v-model="answerAnswer"
         @change="updateAnswer"
         :placeholder="this.answer"
-      /></div>
+      />
+    </div>
     <button class="item3" @click="deleteAnswer">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
     </button>
@@ -21,6 +27,7 @@ export default {
   name: "AnswerCard",
   props: {
     questionNumber: Number,
+    questionType: String,
     number: Number,
     answer: String,
     isCorrect: Boolean,
@@ -28,9 +35,9 @@ export default {
   data() {
     return {
       answerNumber: -1,
-      answerAnswer: '',
+      answerAnswer: "",
       answerIsCorrect: false,
-    }
+    };
   },
   methods: {
     invertIsCorrect() {
@@ -38,27 +45,29 @@ export default {
       this.updateAnswer();
     },
     updateAnswer() {
-      this.$store.commit('updateAnswer', {
+      this.$store.commit("updateAnswer", {
         questionNumber: this.questionNumber,
         number: this.answerNumber,
         answer: this.answerAnswer,
         isCorrect: this.answerIsCorrect,
-      })
+      });
     },
     deleteAnswer() {
-      this.$store.commit('deleteAnswer', {
-        questionNumber: this.questionNumber,
-        number: this.answerNumber,
-      })
-      // this.$store.commit('sortAnswers', {
-      //   questionNumber: this.questionNumber,
-      // })
+      if (this.questionType !== "goedfout") {
+        this.$store.commit("deleteAnswer", {
+          questionNumber: this.questionNumber,
+          number: this.answerNumber,
+        });
+      }
     },
   },
   mounted() {
     this.answerNumber = this.number;
     this.answerAnswer = this.answer;
     this.answerIsCorrect = this.isCorrect;
+    if (this.questionType == "open") {
+      this.answerIsCorrect = true;
+    }
   },
 };
 </script>
@@ -87,7 +96,7 @@ export default {
   font-size: 24px;
 }
 .answerCardContainer:nth-of-type(2n) > div {
-  background-color:rgb(221, 75, 75);
+  background-color: rgb(221, 75, 75);
 }
 .item1 {
   width: 100px;
