@@ -1,7 +1,18 @@
 <template>
   <div>
-    <img :src="previewImage" class="uploading-image" />
-    <input class="input" type="file" accept="image/jpeg" @change="uploadImage" />
+    <div @click="clickImage">
+      <img
+        v-if="previewImage != null"
+        :src="previewImage"
+        class="uploading-image"
+      />
+    </div>
+    <input
+      class="input"
+      type="file"
+      accept="image/jpeg"
+      @change="uploadImage"
+    />
   </div>
 </template>
 
@@ -29,7 +40,11 @@ export default {
 
 <style>
 .uploading-image {
-  display: flex;
+  border-radius: 8px;
+  max-width: 100%;
+  max-height: 500px;
 }
-/* .input {} */
+.input {
+  max-width: 300px;
+}
 </style>

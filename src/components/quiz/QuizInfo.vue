@@ -29,7 +29,8 @@
         </div>
       </div>
       <div class="image">
-        <imageUpload class="imageInput" />
+        <label for="quizImage">Selecteer een afbeelding</label>
+        <imageUpload id="quizImage" class="imageInput" />
         <!-- zoek naar een giphy gif -->
         <!-- <input type="text" id="gifInput" />
     <div id="gifContainer"></div> -->
@@ -158,39 +159,13 @@ export default {
   border: 1px solid #000000;
   border-radius: 5px;
 }
-#gifInput {
-  box-sizing: border-box;
-
-  position: absolute;
-  width: 275px;
-  height: 30px;
-  /* left: 596px; */
-  right: 133px;
-  top: 50px;
-
-  border: 1px solid #000000;
-}
-#gifContainer {
-  box-sizing: border-box;
-
-  position: absolute;
-  width: 356px;
-  height: 178px;
-  /* left: 596px; */
-  right: 133px;
-  top: 86px;
-
-  border: 1px solid #000000;
-}
 .imageInput {
   box-sizing: border-box;
 
-  /* position: absolute;
-  width: 100%;
-  left: 596px;
-  right: 45px;
-  top: 70px; */
-  height: 100%;
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  /* height: 100%; */
   
   border: 1px solid #000000;
 }
