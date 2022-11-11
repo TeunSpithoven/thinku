@@ -31,9 +31,6 @@
       <div class="image">
         <label for="quizImage">Selecteer een afbeelding</label>
         <imageUpload id="quizImage" class="imageInput" />
-        <!-- zoek naar een giphy gif -->
-        <!-- <input type="text" id="gifInput" />
-    <div id="gifContainer"></div> -->
       </div>
     </div>
   </div>
@@ -49,8 +46,8 @@ export default {
   },
   data() {
     return {
-      title: "",
-      description: "",
+      title: this.$store.state.cQ.title,
+      description: this.$store.state.cQ.description,
     };
   },
   methods: {

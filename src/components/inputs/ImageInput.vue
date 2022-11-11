@@ -8,6 +8,7 @@
       />
     </div>
     <input
+      id="imageInput"
       class="input"
       type="file"
       accept="image/jpeg"
@@ -18,7 +19,7 @@
 
 <script>
 export default {
-  name: "imageUpload",
+  name: "ImageUpload",
   data() {
     return {
       previewImage: null,
