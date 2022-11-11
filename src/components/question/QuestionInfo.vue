@@ -12,7 +12,9 @@
 
     <div id="title" class="gridItem item2">
       <input
+        id="titleInput"
         class="questionInput"
+        type="text"
         v-model="questionData"
         @change="updateQuestion()"
         :placeholder="this.question"

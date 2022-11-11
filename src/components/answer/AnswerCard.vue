@@ -2,6 +2,7 @@
   <div class="answerCardContainer">
     <button
       v-if="this.questionType !== 'open'"
+      id="isCorrectButton"
       class="item1"
       @click="invertIsCorrect"
     >
@@ -10,13 +11,15 @@
     </button>
     <div class="item2">
       <input
+        id="answerInput"
         class="questionInput"
+        type="text"
         v-model="answerAnswer"
         @change="updateAnswer"
         :placeholder="this.answer"
       />
     </div>
-    <button class="item3" @click="deleteAnswer">
+    <button id="deleteButtton" class="item3" @click="deleteAnswer">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
     </button>
   </div>
