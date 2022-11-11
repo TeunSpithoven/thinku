@@ -1,4 +1,10 @@
 <template>
+  <div id="labels" class="labelGrid">
+    <label for="type" class="label item1">Type</label>
+    <label for="title" class="label item2">Vraag</label>
+    <label for="time" class="label item3">Tijd</label>
+    <label for="delete" class="label item4"></label>
+  </div>
   <div id="info" class="gridContainer">
     <div id="type" class="gridItem item1">
       <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
@@ -14,7 +20,7 @@
     </div>
 
     <input
-      id="timeInput"
+      id="time"
       class="gridItem item3"
       type="number"
       min="2"
@@ -23,7 +29,7 @@
       @change="updateQuestion()"
     />
 
-    <button id="deleteButton" class="gridItem item4" @click="deleteQuestion()">
+    <button id="delete" class="gridItem item4" @click="deleteQuestion()">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
     </button>
   </div>
@@ -82,12 +88,8 @@ export default {
 <style scoped>
 #info {
   position: relative;
-  /* background-color: #8d8d8d; */
-  /* height: 111px;
-  left: 12px;
-  right: 11px;
-  top: 11px; */
   padding: 10px;
+  padding-top: 0px;
 }
 .questionInput {
   width: 100%;
@@ -97,14 +99,22 @@ export default {
 .gridContainer {
   display: grid;
   gap: 5px;
-  /* background-color: #c0c0c0; */
+  padding: 5px;
+  padding-top: 0px;
+}
+.labelGrid {
+  display: grid;
+  gap: 5px;
   padding: 5px;
 }
+.label {
+  text-align: left;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 15px;
+}
 .gridItem {
-  /* background-color: rgba(255, 255, 255); */
-  /* text-align: center; */
   padding: 10px;
-  /* font-size: 30px; */
 
   font-weight: 400;
   font-size: 24px;
@@ -127,16 +137,11 @@ export default {
   grid-column: 2 / span 7;
   grid-row: 1;
   padding: 0px;
-  /* right: 25%; */
-  /* width: 150%; */
 }
 .item3 {
   /* time  */
   grid-column: 9 / span 1;
   grid-row: 1;
-  /* margin-left: 50%;
-  padding-left: 0px; */
-  /* width: 50%; */
 }
 .item4 {
   /* delete  */
