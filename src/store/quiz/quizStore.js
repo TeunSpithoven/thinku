@@ -10,6 +10,7 @@ const quizStore = {
       getAllQuizzes().then((response) => {
         console.log(response);
         state.responseText = response;
+        // state.quizzes = response.json();
       });
     },
   },

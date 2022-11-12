@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+    <button @click="getAllQuizzes">get All Quizzes from API</button>
+    <div>{{ quizzes }}</div>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -35,7 +37,18 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+  data() {
+    return{
+      quizzes: 'quizzes',
+    }
+  },
+  methods: {
+    getAllQuizzes() {
+      this.$store.commit('getAllQuizzes');
+      this.quizzes = this.$store.state.Q.responseText;
+    },
+  },
 }
 </script>
 

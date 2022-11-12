@@ -1,6 +1,7 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
-import { createQuizStore } from './quiz/createQuizStore.js'
+import { quizStore } from './quiz/quizStore.js';
+import { createQuizStore } from './quiz/createQuizStore.js';
 
 export default createStore({
   state: {
@@ -12,6 +13,7 @@ export default createStore({
   actions: {
   },
   modules: {
+    Q: quizStore,
     cQ: createQuizStore,
   }
 })
