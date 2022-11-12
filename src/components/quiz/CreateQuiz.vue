@@ -34,68 +34,6 @@ export default {
   data() {
     return {
       createQuiz: createQuiz,
-      // createQuiz: {
-      //   userId: 1,
-      //   title: "mijn quiz",
-      //   description: "een super coole quiz",
-      //   giphyUrl: "",
-      //   questions: [
-      //   {
-      //       question: "Derde vraag",
-      //       type: "meerkeuze",
-      //       time: 20,
-      //       number: 3,
-      //       answers: [
-      //         {
-      //           number: 1,
-      //           answer: "antwoord een",
-      //           isCorrect: true,
-      //         },
-      //         {
-      //           number: 2,
-      //           answer: "antwoord twee",
-      //           isCorrect: false,
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       question: "Eerste vraag",
-      //       type: "meerkeuze",
-      //       time: 20,
-      //       number: 2,
-      //       answers: [
-      //         {
-      //           number: 1,
-      //           answer: "antwoord een",
-      //           isCorrect: true,
-      //         },
-      //         {
-      //           number: 2,
-      //           answer: "antwoord twee",
-      //           isCorrect: false,
-      //         },
-      //       ],
-      //     },
-      //     {
-      //       question: "Tweede vraag",
-      //       type: "meerkeuze",
-      //       time: 20,
-      //       number: 1,
-      //       answers: [
-      //         {
-      //           number: 1,
-      //           answer: "antwoord een",
-      //           isCorrect: true,
-      //         },
-      //         {
-      //           number: 2,
-      //           answer: "antwoord twee",
-      //           isCorrect: true,
-      //         },
-      //       ],
-      //     },
-      //   ],
-      // },
     };
   },
   methods: {
@@ -110,7 +48,7 @@ export default {
       userId: this.createQuiz.userId,
       title: this.createQuiz.title,
       description: this.createQuiz.description,
-      giphyUrl: this.createQuiz.giphyUrl,
+      image: this.createQuiz.image,
     });
     this.$store.commit("updateCreateQuizQuestions", {
       questions: this.createQuiz.questions,

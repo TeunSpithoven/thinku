@@ -2,7 +2,7 @@ const createQuiz = {
   userId: 1,
   title: "Nieuwe quiz",
   description: "een super coole quiz",
-  giphyUrl: "",
+  image: "",
   questions: [
     {
       question: "Is dit de eerste vraag?",
@@ -49,7 +49,7 @@ const quizzes = [
     userId: 1,
     title: "Thinku Quiz",
     description: "een over deze app",
-    giphyUrl: "",
+    image: "",
     questions: [
       {
         question: "Wat is de naam van deze app?",

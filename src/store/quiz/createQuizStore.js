@@ -1,9 +1,11 @@
+import { createQuiz } from '@/services/QuizService.js';
+
 const createQuizStore = {
   state: {
     userId: 1,
     title: "",
     description: "",
-    giphyUrl: "",
+    image: "",
     questions: [],
 
     editQuestion: -1,
@@ -20,21 +22,38 @@ const createQuizStore = {
   },
   mutations: {
     // QUIZ
-    saveQuizToDB(state, n){
-      console.log("userId: " + state.userId);
+    saveQuizToDB(state){
+      const n = {
+        quiz: {
+          userId: state.userId,
+          title: state.title,
+          description: state.description,
+          image: state.image,
+          questions: state.questions,
+        }
+      }
       console.log(n.quiz);
+      createQuiz(n.quiz).then(response => {
+        console.log(response);
+      });
     },
+    
     updateCreateQuizInfo(state, n) {
       state.userId = n.userId;
       state.title = n.title;
       state.description = n.description;
-      state.giphyUrl = n.giphyUrl;
+      state.image = n.image;
     },
     updateQuizTitle (state, n) {
       state.title = n.title;
     },
     updateQuizDescription (state, n) {
       state.description = n.description;
+    },
+    updateCreateQuizImage(state, n) {
+      // state.image = toString(n.image);
+      state.image = n.image;
+      console.log(state.image);
     },
     updateCreateQuizQuestions(state, n) {
       state.questions = n.questions;
