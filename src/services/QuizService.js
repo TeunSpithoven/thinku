@@ -9,7 +9,7 @@ export async function createQuiz(data) {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-            UserId: data.userId,
+            userId: data.userId,
             title: data.title,
             description: data.description,
             questions: data.questions,
