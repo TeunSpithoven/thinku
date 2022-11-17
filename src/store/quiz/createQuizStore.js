@@ -1,4 +1,4 @@
-import { createQuiz, getQuiz } from "@/services/QuizService.js";
+import { createQuiz, getQuiz, editQuiz } from "@/services/QuizService.js";
 
 import { useToast } from "vue-toastification";
 
@@ -37,6 +37,25 @@ const createQuizStore = {
         createQuiz(n.quiz).then((response) => {
           console.log(response);
           toast.success("Quiz opgeslagen!");
+        });
+      } catch (err) {
+        toast.error(err);
+      }
+    },
+    editQuizToDB(state) {
+      const n = {
+        quiz: {
+          userId: state.userId,
+          title: state.title,
+          description: state.description,
+          image: state.image,
+          questions: state.questions,
+        },
+      };
+      try {
+        editQuiz(n.quiz).then((response) => {
+          console.log(response);
+          toast.success("Wijzigingen opgeslagen!");
         });
       } catch (err) {
         toast.error(err);

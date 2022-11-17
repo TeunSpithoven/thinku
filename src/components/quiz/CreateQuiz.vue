@@ -43,21 +43,18 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.commit("saveQuizToDB", {
-        quiz: this.createQuiz,
-      });
+      if (!this.edit) {
+        this.$store.commit("saveQuizToDB", {
+          quiz: this.createQuiz,
+        });
+      } else if(this.edit) {
+        this.$store.commit("editQuizToDB", {
+          quiz: this.createQuiz,
+        });
+      } else {
+        console.log('createQuiz submit error')
+      }
     },
-  },
-  created() {
-    // this.$store.commit("updateCreateQuizInfo", {
-    //   userId: this.createQuiz.userId,
-    //   title: this.createQuiz.title,
-    //   description: this.createQuiz.description,
-    //   image: this.createQuiz.image,
-    // });
-    // this.$store.commit("updateCreateQuizQuestions", {
-    //   questions: this.createQuiz.questions,
-    // });
   },
 };
 </script>
