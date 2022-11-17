@@ -8,9 +8,8 @@ const quizStore = {
   mutations: {
     getAllQuizzes(state) {
       getAllQuizzes().then((response) => {
-        console.log(response);
         state.responseText = response;
-        // state.quizzes = response.json();
+        state.quizzes = JSON.parse(response);
       });
     },
   },
