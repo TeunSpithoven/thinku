@@ -56,8 +56,13 @@ export default {
         this.$store.commit('updateQuizTitle', {title: value})
       }
     },
-    description() {
-      return this.$store.state.cQ.description;
+    description: {
+      get() {
+        return this.$store.state.cQ.description;
+      },
+      set(value) {
+        this.$store.commit('updateQuizDescription', {description: value})
+      }
     },
   },
   methods: {
