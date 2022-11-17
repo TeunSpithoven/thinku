@@ -6,6 +6,7 @@ const toast = useToast();
 
 const createQuizStore = {
   state: {
+    id: -1,
     userId: 1,
     title: "",
     description: "",
@@ -53,7 +54,7 @@ const createQuizStore = {
         },
       };
       try {
-        editQuiz(n.quiz).then((response) => {
+        editQuiz(state.id, n.quiz).then((response) => {
           console.log(response);
           toast.success("Wijzigingen opgeslagen!");
         });
@@ -64,6 +65,7 @@ const createQuizStore = {
     setEditQuiz(state, n) {
       getQuiz(n.id).then((response) => {
         const resQuiz = JSON.parse(response);
+        state.id = resQuiz.id;
         state.userId = resQuiz.userId;
         state.title = resQuiz.title;
         state.description = resQuiz.description;

@@ -23,9 +23,9 @@ export async function getQuiz(id) {
     return await response.text();
 }
 
-export async function editQuiz(data) {
-    const response = await fetch(`http://localhost:3000/quizzes`, {
-        method: 'UPDATE',
+export async function editQuiz(id, data) {
+    const response = await fetch(`http://localhost:3000/quizzes/${id}`, {
+        method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             userId: data.userId,
