@@ -1,5 +1,9 @@
 import { createQuiz } from '@/services/QuizService.js';
 
+import { useToast } from 'vue-toastification'
+
+const toast = useToast()
+
 const createQuizStore = {
   state: {
     userId: 1,
@@ -10,14 +14,11 @@ const createQuizStore = {
 
     editQuestion: -1,
     renderList: true,
-    error: "",
+    toast: {type: '', text: ''}
   },
   getters: {
     sortedQuestions (state) {
       return state.questions
-      // return state.questions.sort((a, b) => {
-      //   return a.number - b.number
-      // })
     },
   },
   mutations: {
@@ -32,10 +33,15 @@ const createQuizStore = {
           questions: state.questions,
         }
       }
-      console.log(n.quiz);
-      createQuiz(n.quiz).then(response => {
-        console.log(response);
-      });
+      try {
+        createQuiz(n.quiz).then(response => {
+          console.log(response);
+          toast.success("Quiz opgeslagen!");
+        });
+      }
+      catch(err) {
+        toast.error(err);
+      }
     },
     
     updateCreateQuizInfo(state, n) {
