@@ -13,7 +13,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    Q: quizStore,
     cQ: createQuizStore,
+    Q: quizStore,
   }
 })

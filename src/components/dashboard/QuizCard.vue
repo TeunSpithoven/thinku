@@ -6,7 +6,7 @@
       <div v-if="image == null || image == ''">No image</div>
     </div>
     <div id="buttons">
-      <button id="editButton">Bewerken</button>
+      <button id="editButton" @click="editQuiz">Bewerken</button>
       <button id="playButton">Spelen</button>
     </div>
   </div>
@@ -30,6 +30,14 @@ export default {
       description: this.quiz.description,
       image: this.quiz.image,
     };
+  },
+  methods: {
+    editQuiz() {
+      this.$store.commit('setEditQuiz', {
+        id: this.quiz.id,
+      });
+      this.$router.push({ path: '/editQuiz' });
+    },
   },
 };
 </script>

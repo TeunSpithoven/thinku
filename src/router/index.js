@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CreateQuizView from '../views/quiz/CreateQuizView.vue'
+import EditQuizView from '../views/quiz/EditQuizView.vue'
 import DashboardView from '../views/DashboardView.vue'
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path: '/createQuiz',
     name: 'createQuiz',
     component: CreateQuizView
+  },
+  {
+    path: '/editQuiz',
+    name: 'editQuiz',
+    component: EditQuizView
   },
   {
     path: '/about',

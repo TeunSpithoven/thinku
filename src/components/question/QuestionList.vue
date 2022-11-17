@@ -5,7 +5,7 @@
       <ul v-if="!toggleDrag" id="questionList" class="questionGridContainer">
         <li
           class="grid-item"
-          v-for="q in this.$store.getters.sortedQuestions"
+          v-for="q in questionList"
           :key="q.number"
         >
           <QuestionCard
@@ -59,6 +59,9 @@ export default {
     QuestionCard,
     Draggable,
   },
+  props: {
+    edit: Boolean,
+  },
   data() {
     return {
       toggleDrag: false,
@@ -71,7 +74,7 @@ export default {
         number: 1,
         answers: [
           {
-            number: -1,
+            number: 1,
             answer: "antwoord een",
             isCorrect: false,
           },
@@ -83,6 +86,16 @@ export default {
         ],
       },
     };
+  },
+  computed: {
+    questionList: {
+      get() {
+        return this.$store.getters.sortedQuestions;
+      },
+      set(value) {
+        this.$store.commit("updateQuestionList", value);
+      },
+    },
   },
   methods: {
     addQuestion() {
@@ -119,16 +132,6 @@ export default {
       this.$nextTick(() => {
         this.renderList = true;
       });
-    },
-  },
-  computed: {
-    questionList: {
-      get() {
-        return this.$store.getters.sortedQuestions;
-      },
-      set(value) {
-        this.$store.commit("updateQuestionList", value);
-      },
     },
   },
 };

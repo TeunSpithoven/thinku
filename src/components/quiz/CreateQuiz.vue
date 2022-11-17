@@ -1,21 +1,23 @@
 <template>
   <div id="createQuiz" class="gridContainer">
-    <!-- <div class="gridContainer"> -->
+    <div v-if="edit">Quiz Bewerken</div>
     <div class="grid-item">
-      <QuizInfo />
+      <QuizInfo :edit="edit" />
     </div>
     <div id="questionListContainer" class="grid-item">
-      <QuestionList />
+      <QuestionList :edit="edit" />
     </div>
     <div class="grid-item">
       <div id="knoppen">
         <button id="annuleerKnop" @click="this.$router.push({ path: '/' })">
           Annuleer
         </button>
-        <button id="opslaanKnop" @click="submit()">Opslaan</button>
+        <button id="opslaanKnop" @click="submit()">
+          <div v-if="edit">Wijzigingen</div>
+          Opslaan
+        </button>
       </div>
     </div>
-    <!-- </div> -->
   </div>
 </template>
 
@@ -23,13 +25,16 @@
 import QuizInfo from "@/components/quiz/QuizInfo.vue";
 import QuestionList from "@/components/question/QuestionList.vue";
 
-import {createQuiz} from '@/assets/fakeData.js';
+import { createQuiz } from "@/assets/fakeData.js";
 
 export default {
   name: "CreateQuiz",
   components: {
     QuizInfo,
     QuestionList,
+  },
+  props: {
+    edit: Boolean,
   },
   data() {
     return {
@@ -38,21 +43,21 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.commit('saveQuizToDB', {
+      this.$store.commit("saveQuizToDB", {
         quiz: this.createQuiz,
-      })
+      });
     },
   },
   created() {
-    this.$store.commit("updateCreateQuizInfo", {
-      userId: this.createQuiz.userId,
-      title: this.createQuiz.title,
-      description: this.createQuiz.description,
-      image: this.createQuiz.image,
-    });
-    this.$store.commit("updateCreateQuizQuestions", {
-      questions: this.createQuiz.questions,
-    });
+    // this.$store.commit("updateCreateQuizInfo", {
+    //   userId: this.createQuiz.userId,
+    //   title: this.createQuiz.title,
+    //   description: this.createQuiz.description,
+    //   image: this.createQuiz.image,
+    // });
+    // this.$store.commit("updateCreateQuizQuestions", {
+    //   questions: this.createQuiz.questions,
+    // });
   },
 };
 </script>
@@ -79,7 +84,7 @@ export default {
   row-gap: 20px;
 }
 
-#questionListContainer{
+#questionListContainer {
   padding: 0;
 }
 

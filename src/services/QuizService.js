@@ -1,9 +1,3 @@
-export async function getAllQuizzes() {
-    const response = await fetch('http://localhost:3000/quizzes');
-    return await response.text();
-    // return await response.json();
-}
-
 export async function createQuiz(data) {
     const response = await fetch(`http://localhost:3000/quizzes`, {
         method: 'POST',
@@ -17,5 +11,14 @@ export async function createQuiz(data) {
         })
       })
     return await response.text();
-    // return await response.json();
+}
+
+export async function getAllQuizzes() {
+    const response = await fetch('http://localhost:3000/quizzes');
+    return await response.text();
+}
+
+export async function getQuiz(id) {
+    const response = await fetch(`http://localhost:3000/quizzes/${id}`)
+    return await response.text();
 }

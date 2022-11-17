@@ -22,24 +22,6 @@ const createQuiz = {
         },
       ],
     },
-    {
-      question: "Is dit de eerste vraag?",
-      type: "goedfout",
-      time: 20,
-      number: 2,
-      answers: [
-        {
-          number: 1,
-          answer: "ja",
-          isCorrect: false,
-        },
-        {
-          number: 2,
-          answer: "nee",
-          isCorrect: true,
-        },
-      ],
-    },
   ],
 };
 

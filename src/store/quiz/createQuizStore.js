@@ -1,8 +1,8 @@
-import { createQuiz } from '@/services/QuizService.js';
+import { createQuiz, getQuiz } from "@/services/QuizService.js";
 
-import { useToast } from 'vue-toastification'
+import { useToast } from "vue-toastification";
 
-const toast = useToast()
+const toast = useToast();
 
 const createQuizStore = {
   state: {
@@ -14,16 +14,16 @@ const createQuizStore = {
 
     editQuestion: -1,
     renderList: true,
-    toast: {type: '', text: ''}
+    toast: { type: "", text: "" },
   },
   getters: {
-    sortedQuestions (state) {
-      return state.questions
+    sortedQuestions(state) {
+      return state.questions;
     },
   },
   mutations: {
     // QUIZ
-    saveQuizToDB(state){
+    saveQuizToDB(state) {
       const n = {
         quiz: {
           userId: state.userId,
@@ -31,29 +31,46 @@ const createQuizStore = {
           description: state.description,
           image: state.image,
           questions: state.questions,
-        }
-      }
+        },
+      };
       try {
-        createQuiz(n.quiz).then(response => {
+        createQuiz(n.quiz).then((response) => {
           console.log(response);
           toast.success("Quiz opgeslagen!");
         });
-      }
-      catch(err) {
+      } catch (err) {
         toast.error(err);
       }
     },
-    
+    setEditQuiz(state, n) {
+      getQuiz(n.id).then((response) => {
+        const resQuiz = JSON.parse(response);
+        state.userId = resQuiz.userId;
+        state.title = resQuiz.title;
+        state.description = resQuiz.description;
+        state.image = resQuiz.image;
+        state.questions = resQuiz.questions;
+        console.log(resQuiz.questions[0]);
+        toast(`got quiz with id: ${n.id} from api`);
+      });
+    },
+    updateCreateQuiz(state, n) {
+      state.userId = n.userId;
+      state.title = n.title;
+      state.description = n.description;
+      state.image = n.image;
+      state.questions = n.questions;
+    },
     updateCreateQuizInfo(state, n) {
       state.userId = n.userId;
       state.title = n.title;
       state.description = n.description;
       state.image = n.image;
     },
-    updateQuizTitle (state, n) {
+    updateQuizTitle(state, n) {
       state.title = n.title;
     },
-    updateQuizDescription (state, n) {
+    updateQuizDescription(state, n) {
       state.description = n.description;
     },
     updateCreateQuizImage(state, n) {
@@ -83,7 +100,7 @@ const createQuizStore = {
     },
     updateQuestionList(state, n) {
       state.questions = n;
-      state.questions.forEach((answer, index) => answer.number = index)
+      state.questions.forEach((answer, index) => (answer.number = index));
     },
     unrenderQuestions(state) {
       state.renderList = false;
@@ -107,45 +124,52 @@ const createQuizStore = {
     // ANSWER
     createAnswer(state, n) {
       var questionIndex = state.questions
-      .map((x) => {
-        return x.number;
-      })
-      .indexOf(n.questionNumber)
-      state.questions[questionIndex].answers.push(n)
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(n.questionNumber);
+      state.questions[questionIndex].answers.push(n);
     },
     updateAnswer(state, n) {
       var questionIndex = state.questions
-      .map((x) => {
-        return x.number;
-      })
-      .indexOf(n.questionNumber);
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(n.questionNumber);
       var answerIndex = state.questions[questionIndex].answers
-      .map((x) => {
-        return x.number;
-      })
-      .indexOf(n.number);
-      
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(n.number);
+
       state.questions[questionIndex].answers[answerIndex].number = n.number;
       state.questions[questionIndex].answers[answerIndex].answer = n.answer;
 
       // TODO: get the amount of correct answers
       var correctAnswers = 2;
-      if(n.isCorrect === true || correctAnswers > 1){
-        state.questions[questionIndex].answers[answerIndex].isCorrect = n.isCorrect;
+      if (n.isCorrect === true || correctAnswers > 1) {
+        state.questions[questionIndex].answers[answerIndex].isCorrect =
+          n.isCorrect;
       }
     },
     deleteAnswer(state, n) {
       var questionIndex = state.questions
-      .map((x) => {return x.number;})
-      .indexOf(n.questionNumber);
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(n.questionNumber);
 
       if (state.questions[questionIndex].answers.length > 1) {
         var index = state.questions[questionIndex].answers
-          .map((x) => {return x.number;})
+          .map((x) => {
+            return x.number;
+          })
           .indexOf(n.number);
 
         state.questions[questionIndex].answers.splice(index, 1);
-        state.questions[questionIndex].answers.forEach((answer, index) => answer.number = index)
+        state.questions[questionIndex].answers.forEach(
+          (answer, index) => (answer.number = index)
+        );
         // console.log(state.questions[questionIndex].answers)
       } else {
         state.error = "there must be at least one answer in a question";

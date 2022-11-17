@@ -2,11 +2,35 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/dashboard">Dashboard</router-link> |
-    <router-link to="/createQuiz">Create Quiz</router-link> |
+    <router-link to="/createQuiz" @click="resetCreateQuiz"
+      >Create Quiz</router-link
+    >
+    |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
+
+<script>
+import { createQuiz } from "@/assets/fakeData.js";
+
+export default {
+  methods: {
+    resetCreateQuiz() {
+      console.log('resetCreateQuiz');
+      this.$store.commit("updateCreateQuizInfo", {
+        userId: 2,
+        title: "",
+        description: "",
+        image: "",
+      });
+      this.$store.commit("updateCreateQuizQuestions", {
+        questions: createQuiz.questions,
+      });
+    },
+  },
+};
+</script>
 
 <style>
 #app {
