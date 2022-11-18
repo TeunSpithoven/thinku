@@ -37,6 +37,7 @@ export default {
 }
 #buttonsContainer {
   grid-area: buttons;
+  max-height: 100px;
 }
 #quizListContainer {
   grid-area: quizList;

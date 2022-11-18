@@ -27,19 +27,21 @@ export default {
 #dashboardButtons > div > button {
   width: 100%;
   height: 100%;
+  max-height: 100px;
   border: 1px solid #000000;
   border-radius: 10px;
 }
 #dashboardButtons > div > input {
   width: 100%;
   height: 100%;
+  max-height: 80px;
   border: 1px solid #000000;
   border-radius: 10px;
 }
 #searchField {
   grid-area: searchField;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 #createQuiz {
   grid-area: createQuiz;
