@@ -72,7 +72,7 @@ const createQuizStore = {
         state.image = resQuiz.image;
         state.questions = resQuiz.questions;
         console.log(resQuiz.questions[0]);
-        toast(`got quiz with id: ${n.id} from api`);
+        // toast(`got quiz with id: ${n.id} from api`);
       });
     },
     updateCreateQuiz(state, n) {
