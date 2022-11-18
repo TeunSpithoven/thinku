@@ -1,7 +1,7 @@
 <template>
   <div id="dashboardButtons">
     <div id="searchField"><input type="text" placeholder="Search"></div>
-    <div id="createQuiz"><button>Create</button></div>
+    <div id="createQuiz"><button @click="createQuiz">Create</button></div>
     <div id="publicQuizzes"><button>Public</button></div>
     <div id="empty"></div>
   </div>
@@ -10,6 +10,11 @@
 <script>
 export default {
   name: "DashboardButtons",
+  methods: {
+    createQuiz() {
+      this.$router.push({ path: '/createQuiz' });
+    },
+  }
 };
 </script>
 

@@ -9,7 +9,7 @@
     </div>
     <div class="grid-item">
       <div id="knoppen">
-        <button id="annuleerKnop" @click="this.$router.push({ path: '/' })">
+        <button id="annuleerKnop" @click="this.$router.push({ path: '/dashboard' })">
           Annuleer
         </button>
         <button id="opslaanKnop" @click="submit()">

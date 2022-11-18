@@ -11,5 +11,8 @@ export default {
   components: {
     CreateQuiz,
   },
+  mounted() {
+    console.log("EditQuizView mounted");
+  },
 };
 </script>

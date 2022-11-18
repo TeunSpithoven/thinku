@@ -6,7 +6,6 @@
 
 <script>
 import CreateQuiz from "@/components/quiz/CreateQuiz.vue";
-// import { createQuiz } from "@/assets/fakeData.js";
 
 export default {
   name: "CreateQuizView",
@@ -14,15 +13,7 @@ export default {
     CreateQuiz,
   },
   mounted() {
-    // this.$store.commit("updateCreateQuizInfo", {
-    //   userId: 2,
-    //   title: '',
-    //   description: '',
-    //   image: '',
-    // });
-    // this.$store.commit("updateCreateQuizQuestions", {
-    //   questions: createQuiz.questions,
-    // });
+    console.log("CreateQuizView mounted");
   },
 };
 </script>
