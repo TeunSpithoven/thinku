@@ -25,10 +25,25 @@ export default {
     questionType: String,
     answers: Array,
   },
-  data() {
-    return {
-      answerList: [],
-    };
+  // data() {
+  //   return {
+  //     answerList: [],
+  //   };
+  // },
+  computed: {
+    answerList: {
+      get() {
+        console.log(this.questionNumber);
+        const answers = this.$store.getters.sortedQuestionByNumber(this.questionNumber).answers;
+        return answers;
+      },
+      set(value) {
+        this.$store.commit("updateAnswerList", {
+          questionNumber: this.questionNumber,
+          answerList: value
+        });
+      },
+    },
   },
   methods: {
   
@@ -65,8 +80,9 @@ export default {
           isCorrect: false,
         },
       ];
+    } else {
+      this.answerList = this.answers;
     }
-    this.answerList = this.answers;
   },
 };
 </script>

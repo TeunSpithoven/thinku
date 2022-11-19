@@ -21,6 +21,14 @@ const createQuizStore = {
     sortedQuestions(state) {
       return state.questions;
     },
+    sortedQuestionByNumber: (state) => (number) => {
+      var questionIndex = state.questions
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(number);
+      return state.questions[questionIndex];
+    },
   },
   mutations: {
     // QUIZ
@@ -44,15 +52,28 @@ const createQuizStore = {
       }
     },
     editQuizToDB(state) {
+      // get the quiz from state
       const n = {
         quiz: {
           userId: state.userId,
           title: state.title,
           description: state.description,
           image: state.image,
-          questions: state.questions,
+          questions: [],
         },
       };
+      // fill the quiz with the correct question format
+      state.questions.forEach((q) => {
+        const question = {
+          question: q.question,
+          number: q.number,
+          type: q.type,
+          time: q.time,
+          answers: q.answers,
+        };
+        n.quiz.questions.push(question);
+      })
+      // send request to api
       try {
         editQuiz(state.id, n.quiz).then((response) => {
           console.log(response);
@@ -172,6 +193,14 @@ const createQuizStore = {
         state.questions[questionIndex].answers[answerIndex].isCorrect =
           n.isCorrect;
       }
+    },
+    updateAnswerList(state, n) {
+      var questionIndex = state.questions
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(n.questionNumber);
+      state.questions[questionIndex].answers = n.answers;
     },
     deleteAnswer(state, n) {
       var questionIndex = state.questions
