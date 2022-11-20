@@ -11,6 +11,10 @@ const answerStore = {
     getAllAnswers(state) {
       return state.answers;
     },
+    getAllAnswersByQuestionId: (state) => (questionId) => {
+      console.log(questionId);
+      return state.answers;
+    },
     getAnswerById(state, id) {
       const index = state.answers
         .map((x) => {
@@ -28,8 +32,14 @@ const answerStore = {
     },
   },
   mutations: {
-    createAnswer(state, answer) {
-      state.answers.push(answer);
+    addAnswer(state, answer) {
+      state.answers.push({
+        id: state.answers.length + 1,
+        questionId: answer.questionId,
+        number: answer.number,
+        answer: answer.answer,
+        isCorrect: answer.isCorrect,
+      });
     },
     updateAnswer(state, answer) {
       const index = state.answers

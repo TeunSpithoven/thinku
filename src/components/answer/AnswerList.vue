@@ -4,9 +4,9 @@
       <AnswerCard
         :questionNumber="this.questionNumber"
         :questionType="this.questionType"
-        :number="answer.number"
-        :answer="answer.answer"
-        :isCorrect="answer.isCorrect"
+        :number="answer.answer.number"
+        :answer="answer.answer.answer"
+        :isCorrect="answer.answer.isCorrect"
       />
     </li>
   </ul>
@@ -21,7 +21,7 @@ export default {
     AnswerCard,
   },
   props: {
-    questionNumber: Number,
+    questionId: Number,
     questionType: String,
     answers: Array,
   },
@@ -33,13 +33,13 @@ export default {
   computed: {
     answerList: {
       get() {
-        console.log(this.questionNumber);
-        const answers = this.$store.getters.sortedQuestionByNumber(this.questionNumber).answers;
+        console.log(this.questionId);
+        const answers = this.$store.getters.getAllAnswersByQuestionId(this.questionId).answers;
         return answers;
       },
       set(value) {
-        this.$store.commit("updateAnswerList", {
-          questionNumber: this.questionNumber,
+        this.$store.commit("updateAnswers", {
+          questionId: this.questionId,
           answerList: value
         });
       },

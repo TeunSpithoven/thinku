@@ -3,17 +3,14 @@
     <div class="grid-item">
       <!-- static list -->
       <ul v-if="!toggleDrag" id="questionList" class="questionGridContainer">
-        <li
-          class="grid-item"
-          v-for="q in questionList"
-          :key="q.number"
-        >
+        <li class="grid-item" v-for="q in questionList" :key="q.number">
           <QuestionCard
-            :question="q.question"
-            :type="q.type"
-            :time="q.time"
-            :answers="q.answers"
-            :number="q.number"
+            :id="q.question.id"
+            :question="q.question.question"
+            :type="q.question.type"
+            :time="q.question.time"
+            :answers="q.question.answers"
+            :number="q.question.number"
           ></QuestionCard>
         </li>
       </ul>
@@ -26,11 +23,12 @@
       >
         <template v-slot:item="{ item }">
           <QuestionCard
-            :question="item.question"
-            :type="item.type"
-            :time="item.time"
-            :answers="item.answers"
-            :number="item.number"
+            :id="q.question.id"
+            :question="item.question.question"
+            :type="item.question.type"
+            :time="item.question.time"
+            :answers="item.question.answers"
+            :number="item.question.number"
             @reload-list="reloadList()"
           ></QuestionCard>
         </template>
@@ -40,7 +38,11 @@
       <button class="vraagToevoegen" @click="createQuestion()">
         Vraag Toevoegen
       </button>
-      <button v-if="questionList.length > 1" class="vraagToevoegen" @click="toggleDrag = !toggleDrag">
+      <button
+        v-if="questionList.length > 1"
+        class="vraagToevoegen"
+        @click="toggleDrag = !toggleDrag"
+      >
         <div v-if="!toggleDrag">Vragen ordenen</div>
         <div v-if="toggleDrag">Opslaan</div>
       </button>
@@ -99,7 +101,8 @@ export default {
   },
   methods: {
     createQuestion() {
-      this.newQuestion.number = this.$store.state.cQ.questions.length + 1;
+      // this.newQuestion.number = this.$store.state.cQ.questions.length + 1;
+      this.newQuestion.number = this.$store.state.Question.questions.length + 1;
 
       this.$store.commit("createQuestion", {
         question: this.newQuestion,

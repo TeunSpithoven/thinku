@@ -12,6 +12,18 @@ const questionStore = {
     getAllQuestions(state) {
       return state.questions;
     },
+    sortedQuestions(state) {
+      // TODO: sort quesions by number
+      return state.questions;
+    },
+    sortedQuestionByNumber: (state) => (number) => {
+      var questionIndex = state.questions
+        .map((x) => {
+          return x.number;
+        })
+        .indexOf(number);
+      return state.questions[questionIndex];
+    },
     questionAnswers: (state, getters, rootState) => {
       return state.items.map(({ id }) => {
         const answer = rootState.Answer.answers.find(
@@ -27,27 +39,26 @@ const questionStore = {
     },
   },
   actions: {
-    addAnswerToQuestion({ state, commit }, {answer, question}) {
+    createAnswer({ state, commit }, {answer, question}) {
       const existingAnswer = state.questions.find((question) => question.id === answer.id);
       if (!existingAnswer) {
         answer.questionId = question.id;
-        commit("createAnswer", answer);
+        commit("addAnswer", answer);
       } else {
         toast.error('answer already exists');
       }
     },
   },
   mutations: {
-    createQuestion({state, rootState}, question) {
-      const q = {
+    createQuestion(state, question) {
+      state.questions.push({
         id: state.questions.length + 1,
-        quizId: rootState.Quiz.id,
+        quizId: question.quizId,
         question: question.question,
         number: question.number,
         type: question.type,
         time: question.time,
-      };
-      state.questions.push(q);
+      });
     },
     updateQuestion(state, question) {
       var index = state.questions

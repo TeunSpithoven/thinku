@@ -10,7 +10,7 @@
       />
     </div>
     <div id="answers" class="gridItem">
-      <AnswerList :answers="this.answers" :questionNumber="this.number" :questionType="this.type" />
+      <AnswerList :answers="this.answers" :questionId="this.id" :questionType="this.type" />
     </div>
     <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
       <button id="addAnswerButton" class="gridItem" @click="createAnswer">Antwoord Toevoegen</button>
@@ -29,6 +29,7 @@ export default {
     AnswerList,
   },
   props: {
+    id: Number,
     question: String,
     answers: Array,
     number: Number,
@@ -40,6 +41,7 @@ export default {
       // console.log(this.answers.length)
       const correct = this.type == "open";
       this.$store.commit('createAnswer', {
+        questionId: this.id,
         questionNumber: this.number,
         number: this.answers.length + 1,
         answer: 'nieuw antwoord',

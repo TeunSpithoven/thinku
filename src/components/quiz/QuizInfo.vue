@@ -50,7 +50,8 @@ export default {
   computed: {
     title: {
       get() {
-        return this.$store.state.cQ.title;
+        // return this.$store.state.cQ.title;
+        return this.$store.state.Quiz.title;
       },
       set(value) {
         this.$store.commit('updateQuizTitle', {title: value})
@@ -58,7 +59,8 @@ export default {
     },
     description: {
       get() {
-        return this.$store.state.cQ.description;
+        // return this.$store.state.cQ.description;
+        return this.$store.state.Quiz.description;
       },
       set(value) {
         this.$store.commit('updateQuizDescription', {description: value})
@@ -70,13 +72,15 @@ export default {
       this.$store.commit("updateQuizTitle", {
         title: this.title,
       });
-      this.title = this.$store.state.cQ.title;
+      // this.title = this.$store.state.cQ.title;
+      this.title = this.$store.state.Quiz.title;
     },
     updateQuizDescription() {
       this.$store.commit("updateQuizDescription", {
         description: this.description,
       });
-      this.description = this.$store.state.cQ.description;
+      // this.description = this.$store.state.cQ.description;
+      this.description = this.$store.state.Quiz.description;
     },
   },
 };
