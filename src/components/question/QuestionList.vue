@@ -21,7 +21,7 @@
       <draggable
         v-model="questionList"
         :transition="100"
-        v-if="toggleDrag && renderList"
+        v-if="toggleDrag && renderQuestions"
         class="gridContainer"
       >
         <template v-slot:item="{ item }">
@@ -37,7 +37,7 @@
       </draggable>
     </div>
     <div class="vraagToevoegenContainer grid-item">
-      <button class="vraagToevoegen" @click="addQuestion()">
+      <button class="vraagToevoegen" @click="createQuestion()">
         Vraag Toevoegen
       </button>
       <button v-if="questionList.length > 1" class="vraagToevoegen" @click="toggleDrag = !toggleDrag">
@@ -65,7 +65,7 @@ export default {
   data() {
     return {
       toggleDrag: false,
-      renderList: true,
+      renderQuestions: true,
 
       newQuestion: {
         question: "Nieuwe Vraag",
@@ -93,15 +93,15 @@ export default {
         return this.$store.getters.sortedQuestions;
       },
       set(value) {
-        this.$store.commit("updateQuestionList", value);
+        this.$store.commit("updateAllQuestions", value);
       },
     },
   },
   methods: {
-    addQuestion() {
+    createQuestion() {
       this.newQuestion.number = this.$store.state.cQ.questions.length + 1;
 
-      this.$store.commit("addQuestion", {
+      this.$store.commit("createQuestion", {
         question: this.newQuestion,
       });
 
@@ -127,10 +127,10 @@ export default {
       this.reloadList();
     },
     reloadList() {
-      this.renderList = false;
+      this.renderQuestions = false;
 
       this.$nextTick(() => {
-        this.renderList = true;
+        this.renderQuestions = true;
       });
     },
   },

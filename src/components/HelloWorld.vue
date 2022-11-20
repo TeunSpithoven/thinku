@@ -46,7 +46,7 @@ export default {
   methods: {
     getAllQuizzes() {
       this.$store.commit('getAllQuizzes');
-      this.quizzes = this.$store.state.Q.responseText;
+      this.quizzes = this.$store.state.Quiz.responseText;
     },
   },
 }

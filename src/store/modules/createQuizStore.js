@@ -11,11 +11,12 @@ const createQuizStore = {
     title: "",
     description: "",
     image: "",
-    questions: [],
-
-    editQuestion: -1,
-    renderList: true,
     toast: { type: "", text: "" },
+    
+    // questions: [],
+
+    // editQuestion: -1,
+    // renderQuestions: true,
   },
   getters: {
     sortedQuestions(state) {
@@ -123,46 +124,7 @@ const createQuizStore = {
     updateCreateQuizQuestions(state, n) {
       state.questions = n.questions;
     },
-    // QUESTION
-    addQuestion(state, n) {
-      // console.log(state.questions)
-      state.questions.push(n.question);
-      // console.log(state.questions)
-    },
-    updateQuestion(state, n) {
-      var index = state.questions
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(n.number);
-
-      state.questions[index].question = n.question;
-      state.questions[index].type = n.type;
-      state.questions[index].time = n.time;
-    },
-    updateQuestionList(state, n) {
-      state.questions = n;
-      state.questions.forEach((answer, index) => (answer.number = index));
-    },
-    unrenderQuestions(state) {
-      state.renderList = false;
-    },
-    renderQuestions(state) {
-      state.renderList = true;
-    },
-    deleteQuestion(state, n) {
-      if (state.questions.length > 1) {
-        var index = state.questions
-          .map((x) => {
-            return x.number;
-          })
-          .indexOf(n.number);
-
-        state.questions.splice(index, 1);
-      } else {
-        state.error = "there must be at least one question in the quiz";
-      }
-    },
+    
     // ANSWER
     createAnswer(state, n) {
       var questionIndex = state.questions

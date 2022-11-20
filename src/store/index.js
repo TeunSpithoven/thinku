@@ -1,19 +1,15 @@
 import { createStore } from 'vuex';
 
-import { quizStore } from './quiz/quizStore.js';
-import { createQuizStore } from './quiz/createQuizStore.js';
+import { quizStore } from './modules/quizStore.js';
+import { questionStore } from './modules/questionStore.js';
+import { answerStore } from './modules/answerStore.js';
+import { createQuizStore } from './modules/createQuizStore.js';
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
     cQ: createQuizStore,
-    Q: quizStore,
+    Quiz: quizStore,
+    Question: questionStore,
+    Answer: answerStore,
   }
 })

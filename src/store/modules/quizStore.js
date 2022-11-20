@@ -5,6 +5,12 @@ import { getAllQuizzes } from "@/services/QuizService.js";
 
 const quizStore = {
   state: {
+    id: -1,
+    userId: 1,
+    title: "",
+    description: "",
+    image: "",
+    
     responseText: "",
     quizzes: [],
   },

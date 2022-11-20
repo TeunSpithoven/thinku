@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     quizzes () {
-      return this.$store.state.Q.quizzes;
+      return this.$store.state.Quiz.quizzes;
     }
   },
 };
