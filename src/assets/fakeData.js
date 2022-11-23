@@ -1,4 +1,5 @@
 const createQuiz = {
+  id: 1,
   userId: 1,
   title: "Nieuwe quiz",
   description: "een super coole quiz",

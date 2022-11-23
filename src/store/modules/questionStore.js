@@ -39,18 +39,21 @@ const questionStore = {
     },
   },
   actions: {
-    createAnswer({ state, commit }, {answer, question}) {
-      const existingAnswer = state.questions.find((question) => question.id === answer.id);
-      if (!existingAnswer) {
+    createQuestion({ commit }, { question }) {
+      commit('addQuestion', question);
+      question.answers.forEach((answer) => {
+        console.log(`creating answer with number: ${answer.number}, answer: ${answer.answer}`);
         answer.questionId = question.id;
-        commit("addAnswer", answer);
-      } else {
-        toast.error('answer already exists');
-      }
+        commit('createAnswer', answer);
+
+      })
+      // for (let i = 0; i < question.answers.length; i++){
+        // commit('createAnswer', question.answer[i]);
+      // }
     },
   },
   mutations: {
-    createQuestion(state, question) {
+    addQuestion(state, question) {
       state.questions.push({
         id: state.questions.length + 1,
         quizId: question.quizId,

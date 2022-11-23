@@ -5,7 +5,7 @@
       <QuizInfo :edit="edit" />
     </div>
     <div id="questionListContainer" class="grid-item">
-      <QuestionList :edit="edit" />
+      <QuestionList :quizId="this.quiz.id" :edit="edit" />
     </div>
     <div class="grid-item">
       <div id="knoppen">
@@ -38,21 +38,21 @@ export default {
   },
   data() {
     return {
-      createQuiz: createQuiz,
+      quiz: createQuiz,
     };
   },
   methods: {
     submit() {
       if (!this.edit) {
         this.$store.commit("saveQuizToDB", {
-          quiz: this.createQuiz,
+          quiz: this.quiz,
         });
       } else if(this.edit) {
         this.$store.commit("editQuizToDB", {
-          quiz: this.createQuiz,
+          quiz: this.quiz,
         });
       } else {
-        console.log('createQuiz submit error')
+        console.log('quiz submit error')
       }
     },
   },

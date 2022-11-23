@@ -25,16 +25,12 @@ export default {
     questionType: String,
     answers: Array,
   },
-  // data() {
-  //   return {
-  //     answerList: [],
-  //   };
-  // },
   computed: {
     answerList: {
       get() {
         console.log(this.questionId);
-        const answers = this.$store.getters.getAllAnswersByQuestionId(this.questionId).answers;
+        const answers = this.$store.getters.getAllAnswersByQuestionId(this.questionId);
+        console.log(answers);
         return answers;
       },
       set(value) {

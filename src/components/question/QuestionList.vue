@@ -62,6 +62,7 @@ export default {
     Draggable,
   },
   props: {
+    quizId: Number,
     edit: Boolean,
   },
   data() {
@@ -70,6 +71,7 @@ export default {
       renderQuestions: true,
 
       newQuestion: {
+        quizId: 1,
         question: "Nieuwe Vraag",
         type: "meerkeuze",
         time: 10,
@@ -101,32 +103,17 @@ export default {
   },
   methods: {
     createQuestion() {
-      // this.newQuestion.number = this.$store.state.cQ.questions.length + 1;
       this.newQuestion.number = this.$store.state.Question.questions.length + 1;
-
-      this.$store.commit("createQuestion", {
+      this.newQuestion.quizId = this.quizId;
+      
+      console.log(`creating a new question with quizId: ${this.quizId} and number: ${this.newQuestion.number}`);
+      this.$store.dispatch("createQuestion", {
         question: this.newQuestion,
       });
 
-      (this.newQuestion = {
-        question: "Nieuwe Vraag",
-        type: "meerkeuze",
-        time: 10,
-        number: 1,
-        answers: [
-          {
-            number: 1,
-            answer: "antwoord een",
-            isCorrect: false,
-          },
-          {
-            number: 2,
-            answer: "antwoord twee",
-            isCorrect: true,
-          },
-        ],
-      }),
-        (this.newQuestion.number = -1);
+      this.newQuestion.number = -1;
+      this.newQuestion.quizId = -1;
+
       this.reloadList();
     },
     reloadList() {

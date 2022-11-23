@@ -116,67 +116,67 @@ const createQuizStore = {
     // },
     
     // ANSWER
-    createAnswer(state, n) {
-      var questionIndex = state.questions
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(n.questionNumber);
-      state.questions[questionIndex].answers.push(n);
-    },
-    updateAnswer(state, n) {
-      var questionIndex = state.questions
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(n.questionNumber);
-      var answerIndex = state.questions[questionIndex].answers
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(n.number);
+    // createAnswer(state, n) {
+    //   var questionIndex = state.questions
+    //     .map((x) => {
+    //       return x.number;
+    //     })
+    //     .indexOf(n.questionNumber);
+    //   state.questions[questionIndex].answers.push(n);
+    // },
+    // updateAnswer(state, n) {
+    //   var questionIndex = state.questions
+    //     .map((x) => {
+    //       return x.number;
+    //     })
+    //     .indexOf(n.questionNumber);
+    //   var answerIndex = state.questions[questionIndex].answers
+    //     .map((x) => {
+    //       return x.number;
+    //     })
+    //     .indexOf(n.number);
 
-      state.questions[questionIndex].answers[answerIndex].number = n.number;
-      state.questions[questionIndex].answers[answerIndex].answer = n.answer;
+    //   state.questions[questionIndex].answers[answerIndex].number = n.number;
+    //   state.questions[questionIndex].answers[answerIndex].answer = n.answer;
 
-      // TODO: get the amount of correct answers
-      var correctAnswers = 2;
-      if (n.isCorrect === true || correctAnswers > 1) {
-        state.questions[questionIndex].answers[answerIndex].isCorrect =
-          n.isCorrect;
-      }
-    },
-    updateAnswerList(state, n) {
-      var questionIndex = state.questions
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(n.questionNumber);
-      state.questions[questionIndex].answers = n.answers;
-    },
-    deleteAnswer(state, n) {
-      var questionIndex = state.questions
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(n.questionNumber);
+    //   // TODO: get the amount of correct answers
+    //   var correctAnswers = 2;
+    //   if (n.isCorrect === true || correctAnswers > 1) {
+    //     state.questions[questionIndex].answers[answerIndex].isCorrect =
+    //       n.isCorrect;
+    //   }
+    // },
+    // updateAnswerList(state, n) {
+    //   var questionIndex = state.questions
+    //     .map((x) => {
+    //       return x.number;
+    //     })
+    //     .indexOf(n.questionNumber);
+    //   state.questions[questionIndex].answers = n.answers;
+    // },
+    // deleteAnswer(state, n) {
+    //   var questionIndex = state.questions
+    //     .map((x) => {
+    //       return x.number;
+    //     })
+    //     .indexOf(n.questionNumber);
 
-      if (state.questions[questionIndex].answers.length > 1) {
-        var index = state.questions[questionIndex].answers
-          .map((x) => {
-            return x.number;
-          })
-          .indexOf(n.number);
+    //   if (state.questions[questionIndex].answers.length > 1) {
+    //     var index = state.questions[questionIndex].answers
+    //       .map((x) => {
+    //         return x.number;
+    //       })
+    //       .indexOf(n.number);
 
-        state.questions[questionIndex].answers.splice(index, 1);
-        state.questions[questionIndex].answers.forEach(
-          (answer, index) => (answer.number = index)
-        );
-        // console.log(state.questions[questionIndex].answers)
-      } else {
-        state.error = "there must be at least one answer in a question";
-      }
-    },
+    //     state.questions[questionIndex].answers.splice(index, 1);
+    //     state.questions[questionIndex].answers.forEach(
+    //       (answer, index) => (answer.number = index)
+    //     );
+    //     // console.log(state.questions[questionIndex].answers)
+    //   } else {
+    //     state.error = "there must be at least one answer in a question";
+    //   }
+    // },
   },
   actions: {},
   modules: {},

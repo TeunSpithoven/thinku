@@ -7,6 +7,7 @@ vue, vue router, vuex
 sonarcloud
 
 #### status
+handle the answer list in the same way as the quiztion list in state management.
 
 ## Project setup
 ```

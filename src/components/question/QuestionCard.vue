@@ -10,7 +10,7 @@
       />
     </div>
     <div id="answers" class="gridItem">
-      <AnswerList :answers="this.answers" :questionId="this.id" :questionType="this.type" />
+      <AnswerList :questionId="this.id" :questionType="this.type" />
     </div>
     <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
       <button id="addAnswerButton" class="gridItem" @click="createAnswer">Antwoord Toevoegen</button>

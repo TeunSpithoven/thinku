@@ -13,7 +13,15 @@ const answerStore = {
     },
     getAllAnswersByQuestionId: (state) => (questionId) => {
       console.log(questionId);
-      return state.answers;
+      if (state.answers.length > 0) {
+        const answerList = state.answers.filter(answer => {
+          return answer.questionId === questionId;
+        });
+        console.log(answerList);
+        return answerList;
+      } else {
+        console.log("No answers in state");
+      }
     },
     getAnswerById(state, id) {
       const index = state.answers
@@ -32,7 +40,7 @@ const answerStore = {
     },
   },
   mutations: {
-    addAnswer(state, answer) {
+    createAnswer(state, answer) {
       state.answers.push({
         id: state.answers.length + 1,
         questionId: answer.questionId,
