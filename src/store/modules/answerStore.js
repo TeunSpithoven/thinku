@@ -6,6 +6,7 @@ const toast = useToast()
 const answerStore = {
   state: {
     answers: [],
+    renderAnswers: true,
   },
   getters: {
     getAllAnswers(state) {
@@ -23,7 +24,7 @@ const answerStore = {
         console.log("No answers in state");
       }
     },
-    getAnswerById(state, id) {
+    getAnswerById: (state) => (id) => {
       const index = state.answers
         .map((x) => {
           return x.id;
@@ -41,13 +42,9 @@ const answerStore = {
   },
   mutations: {
     createAnswer(state, answer) {
-      state.answers.push({
-        id: state.answers.length + 1,
-        questionId: answer.questionId,
-        number: answer.number,
-        answer: answer.answer,
-        isCorrect: answer.isCorrect,
-      });
+      answer.id = state.answers.length + 1;
+      state.answers.push(answer);
+      // console.log(answer);
     },
     updateAnswer(state, answer) {
       const index = state.answers
@@ -55,8 +52,6 @@ const answerStore = {
           return x.id;
         })
         .indexOf(answer.id);
-        // const index = state.getAnswerIndexById(answer.id);
-
       if (index > -1 && index !== null && index !== undefined) {
         state.answers[index].number = answer.number;
         state.answers[index].answer = answer.answer;
@@ -78,14 +73,19 @@ const answerStore = {
         .indexOf(id);
       if (index > -1 && index !== null && index !== undefined) {
         state.answers.splice(index);
-        toast.success('answer deletet');
+        toast.success('answer deleted');
       } else {
-        console.log("error: the answer you are trying to update was not found");
-        toast.error('answer delete error');
+        console.log(`error: the answer with id: ${id} was not found`);
       }
     },
     deleteAllAnswers(state) {
       state.answers = [];
+    },
+    unrenderAnswers(state) {
+      state.renderAnswers = false;
+    },
+    renderAnswers(state) {
+      state.renderAnswers = true;
     },
   },
 };

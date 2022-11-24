@@ -1,12 +1,13 @@
 <template>
-  <ul class="answerGroup">
-    <li v-for="answer in this.answerList" :key="answer.number" class="cell">
+  <ul v-if="renderAnswers" class="answerGroup">
+    <li v-for="answer in this.answers" :key="answer.id" class="cell">
       <AnswerCard
-        :questionNumber="this.questionNumber"
-        :questionType="this.questionType"
-        :number="answer.answer.number"
-        :answer="answer.answer.answer"
-        :isCorrect="answer.answer.isCorrect"
+        :id="answer.id"
+        :questionId="answer.questionId"
+        :number="answer.number"
+        :answer="answer.answer"
+        :isCorrect="answer.isCorrect"
+        @reloadList="reloadList"
       />
     </li>
   </ul>
@@ -17,32 +18,29 @@ import AnswerCard from "@/components/answer/AnswerCard.vue";
 
 export default {
   name: "AnswerList",
+  emits: ['updateAnswer'],
   components: {
     AnswerCard,
   },
   props: {
     questionId: Number,
+    questionNumber: Number,
     questionType: String,
     answers: Array,
   },
-  computed: {
-    answerList: {
-      get() {
-        console.log(this.questionId);
-        const answers = this.$store.getters.getAllAnswersByQuestionId(this.questionId);
-        console.log(answers);
-        return answers;
-      },
-      set(value) {
-        this.$store.commit("updateAnswers", {
-          questionId: this.questionId,
-          answerList: value
-        });
-      },
-    },
+  data() {
+    return {
+      renderAnswers: true,
+    }
   },
   methods: {
-  
+    reloadList() {
+      this.renderAnswers = false;
+
+      this.$nextTick(() => {
+        this.renderAnswers = true;
+      });
+    },
   },
   watch: {
     questionType(n, o) {

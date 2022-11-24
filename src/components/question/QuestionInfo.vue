@@ -42,10 +42,12 @@ import QuestionTypeDropDown from "./QuestionTypeDropDown.vue";
 
 export default {
   name: "QuestionInfo",
+  emits: ["reloadList"],
   components: {
     QuestionTypeDropDown,
   },
   props: {
+    id: Number,
     question: String,
     number: Number,
     type: String,
@@ -63,16 +65,16 @@ export default {
       this.$store.commit("deleteQuestion", {
         number: this.number,
       });
-      this.$emit('reloadList');
+      this.$emit("reloadList");
     },
     updateQuestion() {
       this.$store.commit("updateQuestion", {
+        id: this.id,
         number: this.number,
         question: this.questionData,
         type: this.questionType,
         time: this.questionTime,
       });
-      // this.questionData = this.questionData;
     },
     updateType(t) {
       this.questionType = t.type;

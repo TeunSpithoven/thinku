@@ -1,7 +1,9 @@
 <template>
   <div id="questionCard" class="gridContainer">
     <div id="quesionInfoContainter" class="gridItem">
+      {{id}}
       <QuestionInfo
+        :id="this.id"
         :question="this.question"
         :number="this.number"
         :type="this.type"
@@ -10,10 +12,17 @@
       />
     </div>
     <div id="answers" class="gridItem">
-      <AnswerList :questionId="this.id" :questionType="this.type" />
+      <AnswerList
+        :questionId="this.id"
+        :answers="this.answers"
+        :questionNumber="this.number"
+        :questionType="this.type"
+      />
     </div>
     <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
-      <button id="addAnswerButton" class="gridItem" @click="createAnswer">Antwoord Toevoegen</button>
+      <button id="addAnswerButton" class="gridItem" @click="createAnswer">
+        Antwoord Toevoegen
+      </button>
     </div>
   </div>
 </template>
@@ -24,6 +33,7 @@ import AnswerList from "@/components/answer/AnswerList.vue";
 
 export default {
   name: "QuestionCard",
+  emits: ["reloadList", "updateAnswer"],
   components: {
     QuestionInfo,
     AnswerList,
@@ -40,16 +50,16 @@ export default {
     createAnswer() {
       // console.log(this.answers.length)
       const correct = this.type == "open";
-      this.$store.commit('createAnswer', {
+      this.$store.commit("createAnswer", {
         questionId: this.id,
         questionNumber: this.number,
         number: this.answers.length + 1,
-        answer: 'nieuw antwoord',
+        answer: "nieuw antwoord",
         isCorrect: correct,
       });
     },
     reloadList() {
-      this.$emit('reloadList');
+      this.$emit("reloadList");
     },
   },
 };

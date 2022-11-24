@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     editQuiz() {
-      this.$store.commit('setEditQuiz', {
+      this.$store.dispatch('getQuizFromDb', {
         id: this.quiz.id,
       });
       this.$router.push({ path: '/editQuiz' });

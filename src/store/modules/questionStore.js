@@ -1,7 +1,7 @@
-// import { getAllQuizzes } from "@/services/QuizService.js";
-
 import { useToast } from "vue-toastification";
 const toast = useToast();
+
+// DEBUG: het veranderen van de quiz id's en numbers gaat niet fout in dit bestand
 
 const questionStore = {
   state: {
@@ -24,6 +24,14 @@ const questionStore = {
         .indexOf(number);
       return state.questions[questionIndex];
     },
+    questionById: (state) => (id) => {
+      var questionIndex = state.questions
+        .map((x) => {
+          return x.id;
+        })
+        .indexOf(id);
+      return state.questions[questionIndex];
+    },
     questionAnswers: (state, getters, rootState) => {
       return state.items.map(({ id }) => {
         const answer = rootState.Answer.answers.find(
@@ -39,29 +47,21 @@ const questionStore = {
     },
   },
   actions: {
-    createQuestion({ commit }, { question }) {
-      commit('addQuestion', question);
+    createQuestion({ rootState, commit }, question) {
+      console.log(question);
+      question.quizId = rootState.Quiz.id;
+      commit("addQuestion", question);
       question.answers.forEach((answer) => {
-        console.log(`creating answer with number: ${answer.number}, answer: ${answer.answer}`);
+        // DEBUG: Hier gaat het ook goed
         answer.questionId = question.id;
-        commit('createAnswer', answer);
-
-      })
-      // for (let i = 0; i < question.answers.length; i++){
-        // commit('createAnswer', question.answer[i]);
-      // }
+        commit("createAnswer", answer);
+      });
     },
   },
   mutations: {
     addQuestion(state, question) {
-      state.questions.push({
-        id: state.questions.length + 1,
-        quizId: question.quizId,
-        question: question.question,
-        number: question.number,
-        type: question.type,
-        time: question.time,
-      });
+      question.id = state.questions.length + 1;
+      state.questions.push(question);
     },
     updateQuestion(state, question) {
       var index = state.questions
@@ -73,17 +73,12 @@ const questionStore = {
       if (index > -1 && index !== null && index !== undefined) {
         state.questions[index].question = question.question;
         state.questions[index].type = question.type;
+        state.questions[index].number = question.number;
         state.questions[index].time = question.time;
         toast.success("question updated");
       } else {
-        console.log(`error: question with id: ${question.id} was not found`);
-        toast.error("answer delete error");
+        console.log(`error: question ${question.id} was not found`);
       }
-    },
-    updateAllQuestions(state, questions) {
-      state.questions = questions;
-      // give the questions a new index based on question.number
-      state.questions.forEach((question, index) => (question.number = index));
     },
     deleteQuestion(state, n) {
       if (state.questions.length > 1) {

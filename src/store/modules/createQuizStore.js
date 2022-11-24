@@ -6,12 +6,12 @@
 
 const createQuizStore = {
   state: {
-    id: -1,
-    userId: 1,
-    title: "",
-    description: "",
-    image: "",
-    toast: { type: "", text: "" },
+    // id: -1,
+    // userId: 1,
+    // title: "",
+    // description: "",
+    // image: "",
+    // toast: { type: "", text: "" },
     
     // questions: [],
 

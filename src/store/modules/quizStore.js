@@ -14,6 +14,24 @@ const quizStore = {
     responseText: "",
     quizzes: [],
   },
+  actions: {
+    getQuizFromDb({ state, dispatch }, quiz) {
+      getQuiz(quiz.id).then((response) => {
+        const resQuiz = JSON.parse(response);
+        state.id = resQuiz.id;
+        state.userId = resQuiz.userId;
+        state.title = resQuiz.title;
+        state.description = resQuiz.description;
+        state.image = resQuiz.image;
+        state.questions = resQuiz.questions;
+        console.log(resQuiz.questions);
+        // Hier de questions en answers aan de state toevoegen
+        resQuiz.questions.forEach((question) => {
+          dispatch('createQuestion', question);
+        });
+      });
+    },
+  },
   mutations: {
     getAllQuizzes(state) {
       getAllQuizzes().then((response) => {
@@ -71,19 +89,6 @@ const quizStore = {
       } catch (err) {
         toast.error(err);
       }
-    },
-    setEditQuiz(state, n) {
-      getQuiz(n.id).then((response) => {
-        const resQuiz = JSON.parse(response);
-        state.id = resQuiz.id;
-        state.userId = resQuiz.userId;
-        state.title = resQuiz.title;
-        state.description = resQuiz.description;
-        state.image = resQuiz.image;
-        state.questions = resQuiz.questions;
-        console.log(resQuiz.questions);
-        // toast(`got quiz with id: ${n.id} from api`);
-      });
     },
     updateCreateQuiz(state, n) {
       state.userId = n.userId;

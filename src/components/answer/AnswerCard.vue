@@ -1,5 +1,6 @@
 <template>
   <div class="answerCardContainer">
+    {{id}}
     <button
       v-if="this.questionType !== 'open'"
       id="isCorrectButton"
@@ -28,9 +29,10 @@
 <script>
 export default {
   name: "AnswerCard",
+  emits: ["reloadList"],
   props: {
-    questionNumber: Number,
-    questionType: String,
+    id: Number,
+    questionId: Number,
     number: Number,
     answer: String,
     isCorrect: Boolean,
@@ -38,29 +40,31 @@ export default {
   data() {
     return {
       answerNumber: -1,
-      answerAnswer: "",
+      answerAnswer: '',
       answerIsCorrect: false,
+      questionType: this.$store.getters.questionById(this.questionId),
     };
   },
   methods: {
     invertIsCorrect() {
       this.answerIsCorrect = !this.answerIsCorrect;
       this.updateAnswer();
+      this.$emit('reloadList');
     },
     updateAnswer() {
       this.$store.commit("updateAnswer", {
-        questionNumber: this.questionNumber,
-        number: this.answerNumber,
+        id: this.id,
+        questionId: this.questionId,
+        number: this.number,
         answer: this.answerAnswer,
         isCorrect: this.answerIsCorrect,
       });
+      this.$emit('reloadList');
     },
     deleteAnswer() {
       if (this.questionType !== "goedfout") {
-        this.$store.commit("deleteAnswer", {
-          questionNumber: this.questionNumber,
-          number: this.answerNumber,
-        });
+        this.$store.commit("deleteAnswer", this.id);
+        this.$emit('reloadList');
       }
     },
   },

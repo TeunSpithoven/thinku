@@ -3,14 +3,14 @@
     <div class="grid-item">
       <!-- static list -->
       <ul v-if="!toggleDrag" id="questionList" class="questionGridContainer">
-        <li class="grid-item" v-for="q in questionList" :key="q.number">
+        <li class="grid-item" v-for="q in questionList" :key="q.id">
           <QuestionCard
-            :id="q.question.id"
-            :question="q.question.question"
-            :type="q.question.type"
-            :time="q.question.time"
-            :answers="q.question.answers"
-            :number="q.question.number"
+            :id="q.id"
+            :question="q.question"
+            :type="q.type"
+            :time="q.time"
+            :answers="q.answers"
+            :number="q.number"
           ></QuestionCard>
         </li>
       </ul>
@@ -23,12 +23,12 @@
       >
         <template v-slot:item="{ item }">
           <QuestionCard
-            :id="q.question.id"
-            :question="item.question.question"
-            :type="item.question.type"
-            :time="item.question.time"
-            :answers="item.question.answers"
-            :number="item.question.number"
+            :id="item.id"
+            :question="item.question"
+            :type="item.type"
+            :time="item.time"
+            :answers="item.answers"
+            :number="item.number"
             @reload-list="reloadList()"
           ></QuestionCard>
         </template>
@@ -47,6 +47,7 @@
         <div v-if="toggleDrag">Opslaan</div>
       </button>
     </div>
+    {{questionList}}
   </div>
 </template>
 
@@ -71,7 +72,6 @@ export default {
       renderQuestions: true,
 
       newQuestion: {
-        quizId: 1,
         question: "Nieuwe Vraag",
         type: "meerkeuze",
         time: 10,
@@ -94,6 +94,7 @@ export default {
   computed: {
     questionList: {
       get() {
+        // console.log(`questions.length: ${this.$store.getters.sortedQuestions.length}`);
         return this.$store.getters.sortedQuestions;
       },
       set(value) {
@@ -104,16 +105,12 @@ export default {
   methods: {
     createQuestion() {
       this.newQuestion.number = this.$store.state.Question.questions.length + 1;
-      this.newQuestion.quizId = this.quizId;
-      
-      console.log(`creating a new question with quizId: ${this.quizId} and number: ${this.newQuestion.number}`);
+      // DEBUG: na de tweede keer klikken
+      // is de eerste vraag al veranderd naar id 2 dus het probleem zit dieper dan hier
+      // niet heel gek - wel gek dat ik het helemaal niet kan vinden hier in
       this.$store.dispatch("createQuestion", {
         question: this.newQuestion,
       });
-
-      this.newQuestion.number = -1;
-      this.newQuestion.quizId = -1;
-
       this.reloadList();
     },
     reloadList() {
@@ -122,6 +119,7 @@ export default {
       this.$nextTick(() => {
         this.renderQuestions = true;
       });
+      // console.log('answers reloaded');
     },
   },
 };
