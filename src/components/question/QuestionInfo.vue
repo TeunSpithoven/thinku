@@ -63,7 +63,7 @@ export default {
   methods: {
     deleteQuestion() {
       this.$store.commit("deleteQuestion", {
-        number: this.number,
+        number: this.id,
       });
       this.$emit("reloadList");
     },

@@ -47,7 +47,10 @@
         <div v-if="toggleDrag">Opslaan</div>
       </button>
     </div>
-    {{questionList}}
+    <div v-for="question in questionList" :key="question.id">
+      {{question.id}}
+      <br>
+    </div>
   </div>
 </template>
 
@@ -69,7 +72,7 @@ export default {
   data() {
     return {
       toggleDrag: false,
-      renderQuestions: true,
+      renderQuestions: this.$store.state.Question.renderQuestions,
 
       newQuestion: {
         question: "Nieuwe Vraag",
@@ -94,12 +97,20 @@ export default {
   computed: {
     questionList: {
       get() {
-        // console.log(`questions.length: ${this.$store.getters.sortedQuestions.length}`);
+        // console.log(this.$store.getters.sortedQuestions);
         return this.$store.getters.sortedQuestions;
       },
       set(value) {
+        // console.log(value);
         this.$store.commit("updateAllQuestions", value);
       },
+    },
+  },
+  watch: {
+    questionList(newList, oldList) {
+      console.log(oldList);
+      console.log('turned into');
+      console.log(newList);
     },
   },
   methods: {
@@ -112,12 +123,11 @@ export default {
       this.reloadList();
     },
     reloadList() {
-      this.renderQuestions = false;
+      this.$store.commit('unrenderQuestions');
 
       this.$nextTick(() => {
-        this.renderQuestions = true;
+        this.$store.commit('renderQuestions');
       });
-      // console.log('answers reloaded');
     },
   },
 };

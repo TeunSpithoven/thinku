@@ -48,7 +48,6 @@ const questionStore = {
   },
   actions: {
     createQuestion({ rootState, commit }, question) {
-      console.log(question);
       question.quizId = rootState.Quiz.id;
       commit("addQuestion", question);
       console.log(question);
@@ -65,6 +64,7 @@ const questionStore = {
       state.questions.push(question);
     },
     updateQuestion(state, question) {
+      console.log('update question');
       var index = state.questions
         .map((x) => {
           return x.id;
@@ -81,13 +81,16 @@ const questionStore = {
         console.log(`error: question ${question.id} was not found`);
       }
     },
+    updateAllQuestions(state, questions) {
+      state.questions = questions;
+    },
     deleteQuestion(state, n) {
       if (state.questions.length > 1) {
         var index = state.questions
           .map((x) => {
-            return x.number;
+            return x.id;
           })
-          .indexOf(n.number);
+          .indexOf(n.id);
 
         state.questions.splice(index, 1);
       } else {

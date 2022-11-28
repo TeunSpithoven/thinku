@@ -103,11 +103,12 @@ const quizStore = {
       state.description = n.description;
       state.image = n.image;
     },
-    updateQuizTitle(state, n) {
-      state.title = n.title;
+    updateQuizTitle(state, title) {
+      state.title = title;
     },
-    updateQuizDescription(state, n) {
-      state.description = n.description;
+    updateQuizDescription(state, description) {
+      state.description = description;
+
     },
     updateCreateQuizImage(state, n) {
       // state.image = toString(n.image);
