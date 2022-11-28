@@ -51,6 +51,7 @@ const questionStore = {
       console.log(question);
       question.quizId = rootState.Quiz.id;
       commit("addQuestion", question);
+      console.log(question);
       question.answers.forEach((answer) => {
         // DEBUG: Hier gaat het ook goed
         answer.questionId = question.id;

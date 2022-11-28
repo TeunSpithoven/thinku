@@ -108,9 +108,7 @@ export default {
       // DEBUG: na de tweede keer klikken
       // is de eerste vraag al veranderd naar id 2 dus het probleem zit dieper dan hier
       // niet heel gek - wel gek dat ik het helemaal niet kan vinden hier in
-      this.$store.dispatch("createQuestion", {
-        question: this.newQuestion,
-      });
+      this.$store.dispatch("createQuestion", this.newQuestion);
       this.reloadList();
     },
     reloadList() {
