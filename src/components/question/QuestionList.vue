@@ -48,8 +48,8 @@
       </button>
     </div>
     <div v-for="question in questionList" :key="question.id">
-      {{question.id}}
-      <br>
+      {{ question.id }}
+      <br />
     </div>
   </div>
 </template>
@@ -109,7 +109,7 @@ export default {
   watch: {
     questionList(newList, oldList) {
       console.log(oldList);
-      console.log('turned into');
+      console.log("turned into");
       console.log(newList);
     },
   },
@@ -123,10 +123,10 @@ export default {
       this.reloadList();
     },
     reloadList() {
-      this.$store.commit('unrenderQuestions');
+      this.$store.commit("unrenderQuestions");
 
       this.$nextTick(() => {
-        this.$store.commit('renderQuestions');
+        this.$store.commit("renderQuestions");
       });
     },
   },

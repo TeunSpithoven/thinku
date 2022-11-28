@@ -64,7 +64,6 @@ const questionStore = {
       state.questions.push(question);
     },
     updateQuestion(state, question) {
-      console.log('update question');
       var index = state.questions
         .map((x) => {
           return x.id;
