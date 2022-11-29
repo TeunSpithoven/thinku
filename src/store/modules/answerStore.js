@@ -1,7 +1,7 @@
 // import { getAllQuizzes } from "@/services/QuizService.js";
 
-import { useToast } from 'vue-toastification'
-const toast = useToast()
+import { useToast } from "vue-toastification";
+const toast = useToast();
 
 const answerStore = {
   state: {
@@ -15,9 +15,10 @@ const answerStore = {
     getAllAnswersByQuestionId: (state) => (questionId) => {
       console.log(questionId);
       if (state.answers.length > 0) {
-        const answerList = state.answers.filter(answer => {
+        const answerList = state.answers.filter((answer) => {
           return answer.questionId === questionId;
         });
+        console.log("answers for this question");
         console.log(answerList);
         return answerList;
       } else {
@@ -34,17 +35,24 @@ const answerStore = {
     },
     getAnswerIndexById(state, id) {
       return state.answers
-      .map((x) => {
-        return x.id;
-      })
-      .indexOf(id);
+        .map((x) => {
+          return x.id;
+        })
+        .indexOf(id);
+    },
+  },
+  actions: {
+    createAnswer({ commit }, answer) {
+      commit("createAnswer", answer);
     },
   },
   mutations: {
+    // TODO: gaat het hier goed? debuggen🪲 veel plezier
     createAnswer(state, answer) {
       answer.id = state.answers.length + 1;
-      state.answers.push(answer);
-      // console.log(answer);
+      console.log("creating answer");
+      console.log({ ...answer });
+      state.answers.push({ ...answer });
     },
     updateAnswer(state, answer) {
       const index = state.answers
@@ -56,10 +64,10 @@ const answerStore = {
         state.answers[index].number = answer.number;
         state.answers[index].answer = answer.answer;
         state.answers[index].isCorrect = answer.isCorrect;
-        toast.success('answer updated');
+        toast.success("answer updated");
       } else {
         console.log("error: the answer you are trying to update was not found");
-        toast.error('answer update error');
+        toast.error("answer update error");
       }
     },
     updateAnswers(state, answers) {
@@ -73,7 +81,7 @@ const answerStore = {
         .indexOf(id);
       if (index > -1 && index !== null && index !== undefined) {
         state.answers.splice(index);
-        toast.success('answer deleted');
+        toast.success("answer deleted");
       } else {
         console.log(`error: the answer with id: ${id} was not found`);
       }

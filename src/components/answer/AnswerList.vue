@@ -1,6 +1,6 @@
 <template>
   <ul v-if="renderAnswers" class="answerGroup">
-    <li v-for="answer in this.answers" :key="answer.id" class="cell">
+    <li v-for="answer in answerList" :key="answer.id" class="cell">
       <AnswerCard
         :id="answer.id"
         :questionId="answer.questionId"
@@ -32,6 +32,17 @@ export default {
     return {
       renderAnswers: true,
     }
+  },
+  computed: {
+    answerList: {
+      get() {
+        // console.log('gettis answes for this question')
+        return this.$store.getters.getAllAnswersByQuestionId(this.questionId);
+      },
+      set(value) {
+        this.$store.commit("updateAnswers", value);
+      },
+    },
   },
   methods: {
     reloadList() {

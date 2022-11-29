@@ -1,6 +1,7 @@
 <template>
   <div class="answerCardContainer">
     {{id}}
+    {{questionId}}
     <button
       v-if="this.questionType !== 'open'"
       id="isCorrectButton"

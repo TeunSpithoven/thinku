@@ -1,7 +1,7 @@
 <template>
   <div id="questionCard" class="gridContainer">
     <div id="quesionInfoContainter" class="gridItem">
-      {{id}}
+      {{ id }}
       <QuestionInfo
         :id="this.id"
         :question="this.question"
@@ -50,13 +50,20 @@ export default {
     createAnswer() {
       // console.log(this.answers.length)
       const correct = this.type == "open";
-      this.$store.commit("createAnswer", {
+      this.$store.dispatch("createAnswer", {
         questionId: this.id,
         questionNumber: this.number,
         number: this.answers.length + 1,
         answer: "nieuw antwoord",
         isCorrect: correct,
       });
+      // this.$store.commit("createAnswer", {
+      //   questionId: this.id,
+      //   questionNumber: this.number,
+      //   number: this.answers.length + 1,
+      //   answer: "nieuw antwoord",
+      //   isCorrect: correct,
+      // });
     },
     reloadList() {
       this.$emit("reloadList");

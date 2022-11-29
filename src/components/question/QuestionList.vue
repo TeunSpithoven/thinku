@@ -50,6 +50,7 @@
     <div v-for="question in questionList" :key="question.id">
       {{ question.id }}
       <br />
+      {{ questionList }}
     </div>
   </div>
 </template>
