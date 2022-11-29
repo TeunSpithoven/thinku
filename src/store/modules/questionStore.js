@@ -61,7 +61,8 @@ const questionStore = {
   mutations: {
     addQuestion(state, question) {
       question.id = state.questions.length + 1;
-      state.questions.push(question);
+      const q = {... question};
+      state.questions.push(q);
     },
     updateQuestion(state, question) {
       var index = state.questions

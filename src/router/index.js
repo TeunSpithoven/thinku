@@ -6,12 +6,9 @@ import DashboardView from '../views/DashboardView.vue'
 const routes = [
   {
     path: '/',
-    redirect: { name: 'dashboard' },
-  },
-  {
-    path: '/dashboard',
     name: 'dashboard',
-    component: DashboardView
+    component: DashboardView,
+    alias: ['/dashboard', '/home'],
   },
   {
     path: '/createQuiz',
