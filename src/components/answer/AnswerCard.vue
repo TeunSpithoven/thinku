@@ -2,6 +2,7 @@
   <div class="answerCardContainer">
     {{id}}
     {{questionId}}
+    {{questionType}}
     <button
       v-if="this.questionType !== 'open'"
       id="isCorrectButton"
@@ -43,8 +44,13 @@ export default {
       answerNumber: -1,
       answerAnswer: '',
       answerIsCorrect: false,
-      questionType: this.$store.getters.questionById(this.questionId),
+      // questionType: this.$store.getters.questionById(this.questionId).type,
     };
+  },
+  computed: {
+    questionType() {
+      return this.$store.getters.questionById(this.questionId).type
+    },
   },
   methods: {
     invertIsCorrect() {

@@ -19,11 +19,11 @@
         :questionType="this.type"
       />
     </div>
-    <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
+    <!-- <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
       <button id="addAnswerButton" class="gridItem" @click="createAnswer">
         Antwoord Toevoegen
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
     createAnswer() {
       // console.log(this.answers.length)
       const correct = this.type == "open";
-      this.$store.dispatch("createAnswer", {
+      this.$store.commit("createAnswer", {
         questionId: this.id,
         questionNumber: this.number,
         number: this.answers.length + 1,

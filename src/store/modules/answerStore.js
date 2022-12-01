@@ -6,24 +6,36 @@ const toast = useToast();
 const answerStore = {
   state: {
     answers: [],
+    id: 1,
     renderAnswers: true,
   },
   getters: {
     getAllAnswers(state) {
+      console.log("allAnswers in store");
+      console.log(state.answers);
       return state.answers;
     },
     getAllAnswersByQuestionId: (state) => (questionId) => {
-      console.log(questionId);
-      if (state.answers.length > 0) {
-        const answerList = state.answers.filter((answer) => {
+      console.log('sorted answers')
+      console.log(state.answers)
+      if (state.answers !== undefined) {
+        console.log(state.id);
+        console.log(state.answers);
+        return state.answers.filter((answer) => {
           return answer.questionId === questionId;
         });
-        console.log("answers for this question");
-        console.log(answerList);
-        return answerList;
-      } else {
-        console.log("No answers in state");
       }
+      // console.log(state.answers.length);
+      // if (state.answers.length > 0) {
+      //   const answerList = state.answers.filter((answer) => {
+      //     return answer.questionId === questionId;
+      //   });
+      //   // console.log("answers for this question");
+      //   // console.log(answerList);
+      //   return answerList;
+      // } else {
+      //   console.log("No answers in state");
+      // }
     },
     getAnswerById: (state) => (id) => {
       const index = state.answers
@@ -41,20 +53,16 @@ const answerStore = {
         .indexOf(id);
     },
   },
-  actions: {
-    createAnswer({ commit }, answer) {
-      commit("createAnswer", answer);
-    },
-  },
   mutations: {
     // TODO: gaat het hier goed? debuggen🪲 veel plezier
     createAnswer(state, answer) {
-      answer.id = state.answers.length + 1;
-      console.log("creating answer");
+      answer.id = state.id;
       console.log({ ...answer });
       state.answers.push({ ...answer });
+      state.id++;
     },
     updateAnswer(state, answer) {
+      console.log("update answer");
       const index = state.answers
         .map((x) => {
           return x.id;
@@ -71,23 +79,25 @@ const answerStore = {
       }
     },
     updateAnswers(state, answers) {
+      console.log("update answers");
+      console.log({ ...answers });
+      if(answers !== undefined && answers.length > 1) {
       state.answers = answers;
+      }
+      console.log(state.answers)
     },
     deleteAnswer(state, id) {
+      console.log("delete answer");
       const index = state.answers
         .map((x) => {
           return x.id;
         })
         .indexOf(id);
       if (index > -1 && index !== null && index !== undefined) {
-        state.answers.splice(index);
-        toast.success("answer deleted");
+        state.answers.splice(index, 1);
       } else {
-        console.log(`error: the answer with id: ${id} was not found`);
+        toast.error(`error: the answer with id: ${id} was not found`);
       }
-    },
-    deleteAllAnswers(state) {
-      state.answers = [];
     },
     unrenderAnswers(state) {
       state.renderAnswers = false;
