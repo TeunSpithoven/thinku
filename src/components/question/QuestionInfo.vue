@@ -1,5 +1,5 @@
 <template>
-  <button id="moveButton"><font-awesome-icon icon="fa-solid fa-up-down" /></button>
+  <!-- <button id="moveButton"><font-awesome-icon icon="fa-solid fa-up-down" /></button> -->
   <div id="labels" class="labelGrid">
     <label for="type" class="label item1">Type</label>
     <label for="title" class="label item2">Vraag</label>
