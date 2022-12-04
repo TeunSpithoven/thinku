@@ -6,23 +6,23 @@ const toast = useToast();
 const questionStore = {
   state: {
     questions: [],
+    id: 1,
     renderQuestions: true,
   },
   getters: {
-    getAllQuestions(state) {
-      return state.questions;
-    },
     sortedQuestions(state) {
-      // TODO: sort quesions by number
+      console.log('sorted questions')
+      console.log(state.questions)
+      state.questions.forEach((q) => {
+        var index = state.questions
+          .map((x) => {
+            return x.id;
+          })
+          .indexOf(q.id);
+
+        q.number = index + 1;
+      });
       return state.questions;
-    },
-    sortedQuestionByNumber: (state) => (number) => {
-      var questionIndex = state.questions
-        .map((x) => {
-          return x.number;
-        })
-        .indexOf(number);
-      return state.questions[questionIndex];
     },
     questionById: (state) => (id) => {
       var questionIndex = state.questions
@@ -32,25 +32,12 @@ const questionStore = {
         .indexOf(id);
       return state.questions[questionIndex];
     },
-    questionAnswers: (state, getters, rootState) => {
-      return state.items.map(({ id }) => {
-        const answer = rootState.Answer.answers.find(
-          (answer) => answer.id === id
-        );
-        return {
-          id: answer.id,
-          answer: answer.answer,
-          isCorrect: answer.isCorrect,
-          number: answer.number,
-        };
-      });
-    },
   },
   actions: {
     createQuestion({ rootState, commit }, question) {
       question.quizId = rootState.Quiz.id;
       commit("addQuestion", question);
-      console.log(question);
+      // console.log(question);
       question.answers.forEach((answer) => {
         // DEBUG: Hier gaat het ook goed
         answer.questionId = question.id;
@@ -60,8 +47,20 @@ const questionStore = {
   },
   mutations: {
     addQuestion(state, question) {
-      question.id = state.questions.length + 1;
-      state.questions.push({ ...question });
+      question.id = state.id;
+      const newQuestion = {
+        id: state.id,
+        quizId: question.quizId,
+        number: question.number,
+        question: question.question,
+        type: question.type,
+        time: question.time,
+      }
+      // console.log({ ...question });
+      console.log(newQuestion);
+      // state.questions.push({ ...question });
+      state.questions.push(newQuestion);
+      state.id++;
     },
     updateQuestion(state, question) {
       var index = state.questions
@@ -81,16 +80,17 @@ const questionStore = {
       }
     },
     updateAllQuestions(state, questions) {
+      console.log({...questions})
       state.questions = questions;
     },
-    deleteQuestion(state, n) {
+    deleteQuestion(state, id) {
       if (state.questions.length > 1) {
         var index = state.questions
           .map((x) => {
             return x.id;
           })
-          .indexOf(n.id);
-
+          .indexOf(id);
+        toast(`deleting question with id ${id}`);
         state.questions.splice(index, 1);
       } else {
         state.error = "there must be at least one question in the quiz";

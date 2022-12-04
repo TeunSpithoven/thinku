@@ -47,11 +47,22 @@
         <div v-if="toggleDrag">Opslaan</div>
       </button>
     </div>
-    <div v-for="question in questionList" :key="question.id">
-      {{ question.id }}
-      <br />
-      {{ questionList }}
-    </div>
+    <!-- <table>
+      <tr>
+        <th>id</th>
+        <th>number</th>
+        <th>question</th>
+        <th>type</th>
+        <th>time</th>
+      </tr>
+      <tr v-for="question in questionList" :key="question.id">
+        <td>{{ question.id }}</td>
+        <td>{{ question.number }}</td>
+        <td>{{ question.question }}</td>
+        <td>{{ question.type }}</td>
+        <td>{{ question.time }}</td>
+      </tr>
+    </table> -->
   </div>
 </template>
 
@@ -98,28 +109,16 @@ export default {
   computed: {
     questionList: {
       get() {
-        // console.log(this.$store.getters.sortedQuestions);
         return this.$store.getters.sortedQuestions;
       },
       set(value) {
-        // console.log(value);
         this.$store.commit("updateAllQuestions", value);
       },
-    },
-  },
-  watch: {
-    questionList(newList, oldList) {
-      console.log(oldList);
-      console.log("turned into");
-      console.log(newList);
     },
   },
   methods: {
     createQuestion() {
       this.newQuestion.number = this.$store.state.Question.questions.length + 1;
-      // DEBUG: na de tweede keer klikken
-      // is de eerste vraag al veranderd naar id 2 dus het probleem zit dieper dan hier
-      // niet heel gek - wel gek dat ik het helemaal niet kan vinden hier in
       this.$store.dispatch("createQuestion", this.newQuestion);
       this.reloadList();
     },
@@ -135,6 +134,23 @@ export default {
 </script>
 
 <style scoped>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 #questionListContainer {
   overflow: auto;
   box-sizing: border-box;
