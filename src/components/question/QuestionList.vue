@@ -143,15 +143,14 @@ export default {
 
   border: 1px solid #000000;
   border-radius: 10px;
+  background-color: #D2FDFF;
 }
 .gridContainer {
-  background-color: rgba(255, 255, 255, 0.8);
   display: grid;
   gap: 10px;
   padding: 10px;
 }
 .questionGridContainer {
-  background-color: rgba(255, 255, 255, 0.8);
   display: grid;
   gap: 10px;
   padding: 10px;

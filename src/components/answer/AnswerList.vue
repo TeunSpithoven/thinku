@@ -109,7 +109,7 @@ ul > li:last-child {
   border-bottom: none;
 }
 .r_group:nth-of-type(2n) > .cell {
-  background-color: rgb(221, 75, 75);
+  background-color: rgb(75, 102, 221);
 }
 .cell {
   background-color: transparent;
