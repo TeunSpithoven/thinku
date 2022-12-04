@@ -1,8 +1,9 @@
 <template>
+  <button id="moveButton"><font-awesome-icon icon="fa-solid fa-up-down" /></button>
   <div id="labels" class="labelGrid">
     <label for="type" class="label item1">Type</label>
     <label for="title" class="label item2">Vraag</label>
-    <label for="time" class="label item3">Tijd</label>
+    <label for="time" class="label item3">Tijd in seconden</label>
     <label for="delete" class="label item4"></label>
   </div>
   <div id="info" class="gridContainer">
@@ -91,7 +92,15 @@ export default {
 #info {
   position: relative;
   padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-top: 0px;
+}
+#moveButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding-right: 10px;
 }
 .questionInput {
   width: 100%;
@@ -102,6 +111,8 @@ export default {
   display: grid;
   gap: 5px;
   padding: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-top: 0px;
 }
 .labelGrid {
@@ -114,6 +125,7 @@ export default {
   font-weight: 400;
   font-size: 24px;
   line-height: 15px;
+  /* color: white; */
 }
 .gridItem {
   padding: 10px;
@@ -122,8 +134,9 @@ export default {
   font-size: 24px;
   line-height: 25px;
 
-  color: #000000;
+  /* color: #000000; */
   border: 1px solid #000000;
+  background-color: #eff3f4;
 }
 .item1 {
   /* type  */
@@ -144,6 +157,7 @@ export default {
   /* time  */
   grid-column: 9 / span 1;
   grid-row: 1;
+  max-width: 100px;
 }
 .item4 {
   /* delete  */

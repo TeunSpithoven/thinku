@@ -1,7 +1,6 @@
 <template>
   <div id="questionCard" class="gridContainer">
     <div id="quesionInfoContainter" class="gridItem">
-      {{ id }}
       <QuestionInfo
         :id="this.id"
         :question="this.question"
@@ -19,11 +18,6 @@
         :questionType="this.type"
       />
     </div>
-    <!-- <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
-      <button id="addAnswerButton" class="gridItem" @click="createAnswer">
-        Antwoord Toevoegen
-      </button>
-    </div> -->
   </div>
 </template>
 
@@ -57,13 +51,6 @@ export default {
         answer: "nieuw antwoord",
         isCorrect: correct,
       });
-      // this.$store.commit("createAnswer", {
-      //   questionId: this.id,
-      //   questionNumber: this.number,
-      //   number: this.answers.length + 1,
-      //   answer: "nieuw antwoord",
-      //   isCorrect: correct,
-      // });
     },
     reloadList() {
       this.$emit("reloadList");
@@ -78,7 +65,7 @@ export default {
 
   position: relative;
   padding: 10px;
-  background-color: #303C6C;
+  background-color: #B4DFE5;
 }
 
 .gridContainer {
@@ -88,31 +75,15 @@ export default {
   padding: 10px;
   padding-left: 10%;
   padding-right: 10%;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
 }
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #B4DFE5;
   text-align: center;
   /* deze padding weghalen */
   padding: 10px;
   font-size: 30px;
   grid-column: 1 / 5;
-}
-.antwoordToevoegenContainer {
-  position: relative;
-  /* height: 80px; */
-  width: 100%;
-}
-
-#addAnswerButton {
-  position: relative;
-  box-sizing: border-box;
-  border: 1px solid #000000;
-  margin-left: 30%;
-  margin-right: 30%;
-  border-radius: 10px;
-
-  font-size: 25px;
 }
 </style>

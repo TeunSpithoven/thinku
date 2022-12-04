@@ -1,8 +1,8 @@
 <template>
   <div class="answerCardContainer">
-    {{id}}
+    <!-- {{id}}
     {{questionId}}
-    {{questionType}}
+    {{questionType}} -->
     <button
       v-if="this.questionType !== 'open'"
       id="isCorrectButton"
@@ -98,10 +98,10 @@ export default {
   grid-template-areas: "correct antwoord antwoord antwoord antwoord antwoord antwoord antwoord antwoord antwoord verwijder";
   gap: 10px;
   /* background-color: #8d8d8d; */
-  padding: 10px;
+  /* padding: 10px; */
   padding-top: 0px;
   /* height: 20px; */
-  background-color: #B4DFE5;
+  /* background-color: #B4DFE5; */
 
 }
 .answerCardContainer > div {

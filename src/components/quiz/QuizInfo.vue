@@ -73,8 +73,7 @@ export default {
   position: relative;
   padding: 10px;
 
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
 }
 .gridContainer {
@@ -94,10 +93,11 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  background-color: #eff3f4;
 }
 #titel {
   position: relative;
-  height: 81px;
+  height: 83px;
 }
 #beschrijving {
   position: relative;
@@ -116,7 +116,7 @@ export default {
   line-height: 29px;
   text-align: left;
 
-  color: #000000;
+  /* color: #000000; */
 }
 
 .inputContainer {

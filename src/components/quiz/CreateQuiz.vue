@@ -64,12 +64,13 @@ export default {
   /* background-color: #8d8d8d; */
   display: grid;
   gap: 10px;
-  /* padding: 10px; */
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-top: 15px;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 .grid-item {
-  background-color: rgb(255, 255, 255);
+  background-color: #D2FDFF;
+  border-radius: 10px;
   text-align: center;
   /* deze padding weghalen */
   /* padding: 20px; */
@@ -89,9 +90,13 @@ export default {
   /* deze moet naar onder worden geduuwd door questionlist */
   position: relative;
   height: 114px;
+  background-color: #FBE8A6;
   /* left: 178px;
   right: 177px; */
   /* top: 750px; */
+}
+#knoppen > button {
+  background-color: white;
 }
 #annuleerKnop {
   box-sizing: border-box;

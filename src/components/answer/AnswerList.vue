@@ -131,11 +131,12 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #f21919;
 }
 .antwoordToevoegenContainer {
   position: relative;
   /* height: 80px; */
+  padding-top: 5px;
   width: 100%;
 }
 
@@ -148,25 +149,27 @@ tr:nth-child(even) {
   border-radius: 10px;
 
   font-size: 25px;
+  background-color: #eff3f4;
 }
 .answerGroup {
   display: contents;
 }
 ul > li:nth-of-type(odd) {
-  background-color: #e9e9f9;
+  background-color: #eff3f4;
 }
 ul > li:nth-of-type(even) {
-  background-color: #ffffff;
+  background-color: #b3b3b3;
 }
 ul > li {
-  border-bottom: 1px solid rgb(221, 221, 221);
+  /* lijn tussen antwoorden */
+  border-bottom: 1px solid rgb(0, 0, 0);
 }
 ul > li:last-child {
   border-bottom: none;
 }
-.r_group:nth-of-type(2n) > .cell {
-  background-color: rgb(75, 102, 221);
-}
+/* .r_group:nth-of-type(2n) > .cell {
+  background-color: rgb(0, 245, 33);
+} */
 .cell {
   background-color: transparent;
 }

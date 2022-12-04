@@ -157,9 +157,9 @@ tr:nth-child(even) {
 
   position: relative;
 
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
-  background-color: #D2FDFF;
+  /* background-color: #D2FDFF; */
 }
 .gridContainer {
   display: grid;
@@ -192,5 +192,6 @@ tr:nth-child(even) {
 
   border: 1px solid #000000;
   border-radius: 10px;
+  background-color: #eff3f4;
 }
 </style>
