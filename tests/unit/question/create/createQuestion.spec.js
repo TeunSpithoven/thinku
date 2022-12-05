@@ -12,9 +12,14 @@ describe("QuestionCard.spec.js", () => {
     });
   });
 
-  test("renders add answer button", () => {
-    const button = cmp.get('[id="addAnswerButton"]');
-
-    expect(button.text()).toBe("Antwoord Toevoegen");
+  test("renders question info", () => {
+    const info = cmp.get('[id="quesionInfoContainter"]');
+    
+    expect(info).toBeDefined();
+  });
+  test("renders answer list", () => {
+    const answers = cmp.get('[id="answers"]');
+    
+    expect(answers).toBeDefined();
   });
 });
