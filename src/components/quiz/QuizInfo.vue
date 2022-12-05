@@ -37,7 +37,7 @@
         </ErrorMessage>
       </Form>
       <div class="image">
-        <label for="quizImage">Selecteer een afbeelding</label>
+        <label for="quizImage">Afbeelding</label>
         <imageUpload id="quizImage" class="imageInput" />
       </div>
     </div>
@@ -124,7 +124,8 @@ export default {
 
   /* border: 1px solid #000000; */
   border-radius: 10px;
-  background-color: #B4DFE5;
+  /* background-color: #B4DFE5; */
+  background-color: #ffc971;
 }
 .gridContainer {
   display: grid;
@@ -143,7 +144,9 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background-color: #eff3f4;
+  border: 3px solid #e2711d;
+  /* background-color: #eff3f4; */
+  background-color: transparent;
 }
 #titel {
   position: relative;
@@ -194,7 +197,8 @@ export default {
   max-width: 100%;
   height: auto;
 
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
+  border: 3px solid #e2711d;
 }
 textarea {
   resize: none;

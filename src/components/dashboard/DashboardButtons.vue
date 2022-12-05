@@ -20,8 +20,10 @@ export default {
 
 <style scoped>
 #dashboardButtons {
+  padding-top:10px;
   width: 100%;
   height: 100%;
+  min-height: 50px;
   line-height: 100%;
   display: grid;
   grid-template-columns: 0.8fr 0.5fr 0.5fr 2.2fr;
@@ -33,14 +35,18 @@ export default {
   width: 100%;
   height: 100%;
   max-height: 100px;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
+  border: 3px solid #e2711d;
+  background-color: #ff9505;
   border-radius: 10px;
 }
 #dashboardButtons > div > input {
   width: 100%;
   height: 100%;
   max-height: 80px;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
+  border: 3px solid #e2711d;
+  background-color: #ff9505;
   border-radius: 10px;
 }
 #searchField {

@@ -69,7 +69,8 @@ export default {
   padding-right: 20%;
 }
 .grid-item {
-  background-color: #D2FDFF;
+  /* background-color: #D2FDFF; */
+  background-color: transparent;
   border-radius: 10px;
   text-align: center;
   /* deze padding weghalen */
@@ -89,7 +90,8 @@ export default {
 #knoppen {
   position: relative;
   height: 114px;
-  background-color: #FBE8A6;
+  /* background-color: #FBE8A6; */
+  background-color: transparent;
 }
 #knoppen > button {
   box-sizing: border-box;
@@ -101,7 +103,8 @@ export default {
   height: 81px;
   right: 0px;
   top: 4px;
-  background-color: #F4976C;
+  /* background-color: #F4976C; */
+  background-color: #ff9505;
   color: white;
 }
 #annuleerKnop {

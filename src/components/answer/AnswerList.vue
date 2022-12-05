@@ -155,14 +155,18 @@ tr:nth-child(even) {
   display: contents;
 }
 ul > li:nth-of-type(odd) {
-  background-color: #eff3f4;
+  background-color: transparent;
+  /* background-color: #eff3f4; */
 }
 ul > li:nth-of-type(even) {
-  background-color: #cac9c9;
+  background-color: transparent;
+  /* background-color: #cac9c9; */
 }
 ul > li {
   /* lijn tussen antwoorden */
-  border-bottom: 1px solid rgb(0, 0, 0);
+  
+  border-bottom: 3px solid #e2711d;
+  /* border-bottom: 1px solid rgb(0, 0, 0); */
 }
 ul > li:last-child {
   border-bottom: none;

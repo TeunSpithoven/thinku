@@ -8,7 +8,7 @@
     <label for="time" class="label item3">Tijd (s)</label>
     <label for="delete" class="label item4"></label>
   </div>
-  type: {{this.type}}
+  <!-- type: {{this.type}} -->
   <Form id="info" class="gridContainer" @submit="nothing">
     <div id="type" class="gridItem item1">
       <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
@@ -208,7 +208,9 @@ export default {
 
   /* color: #000000; */
   /* border: 1px solid #000000; */
-  background-color: #eff3f4;
+  /* background-color: #eff3f4; */
+  background-color: transparent;
+  border: 3px solid #e2711d;
 }
 .item1 {
   /* type  */

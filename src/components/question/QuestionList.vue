@@ -47,22 +47,6 @@
         <div v-if="toggleDrag">Opslaan</div>
       </button>
     </div>
-    <!-- <table>
-      <tr>
-        <th>id</th>
-        <th>number</th>
-        <th>question</th>
-        <th>type</th>
-        <th>time</th>
-      </tr>
-      <tr v-for="question in questionList" :key="question.id">
-        <td>{{ question.id }}</td>
-        <td>{{ question.number }}</td>
-        <td>{{ question.question }}</td>
-        <td>{{ question.type }}</td>
-        <td>{{ question.time }}</td>
-      </tr>
-    </table> -->
   </div>
 </template>
 
@@ -115,8 +99,13 @@ export default {
         this.$store.commit("updateAllQuestions", value);
       },
     },
-    toggleDrag() {
-      return this.$store.state.Question.dragQuestions;
+    toggleDrag: {
+      get() {
+        return this.$store.state.Question.dragQuestions;
+      },
+      set(value) {
+        this.$store.commit("updateDragQuestions", value);
+      },
     },
   },
   methods: {
@@ -137,42 +126,24 @@ export default {
 </script>
 
 <style scoped>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-
 #questionListContainer {
   overflow: auto;
   box-sizing: border-box;
 
   position: relative;
 
-  /* border: 1px solid #000000; */
   border-radius: 10px;
-  /* background-color: #D2FDFF; */
+  background-color: transparent;
 }
 .gridContainer {
   display: grid;
   gap: 10px;
-  padding: 10px;
+  /* padding: 10px; */
 }
 .questionGridContainer {
   display: grid;
   gap: 10px;
-  padding: 10px;
+  /* padding: 10px; */
   padding-bottom: 0px;
 }
 .grid-item {

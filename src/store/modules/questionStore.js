@@ -103,6 +103,9 @@ const questionStore = {
     renderQuestions(state) {
       state.renderQuestions = true;
     },
+    updateDragQuestions(state, value) {
+      state.dragQuestions = value;
+    },
     enableQuestionDrag(state) {
       // console.log('question drag true')
       state.dragQuestions = true;

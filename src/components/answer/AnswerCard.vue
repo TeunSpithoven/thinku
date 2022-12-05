@@ -110,11 +110,7 @@ export default {
   padding: 2px;
   font-size: 24px;
 }
-.answerCardContainer:nth-of-type(2n) > div {
-  /* background-color: rgb(76, 219, 76); */
-}
 .item1 {
-  width: 100px;
   grid-area: correct;
 }
 .item2 {

@@ -65,7 +65,9 @@ export default {
 
   position: relative;
   padding: 10px;
-  background-color: #B4DFE5;
+  /* background-color: #B4DFE5; */
+  /* background-color: white; */
+  background-color: #ffc971;
 }
 
 .gridContainer {
