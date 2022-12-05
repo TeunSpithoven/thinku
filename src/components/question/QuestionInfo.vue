@@ -11,7 +11,7 @@
   type: {{this.type}}
   <Form id="info" class="gridContainer" @submit="nothing">
     <div id="type" class="gridItem item1">
-      <QuestionTypeDropDown @update-type="updateType(n)" :type="this.type" />
+      <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
     </div>
 
     <div id="title" class="gridItem item2">
@@ -134,7 +134,7 @@ export default {
       }
     },
     updateType(n) {
-      console.log(n.type)
+      // console.log(n.type)
       this.questionType = n.type;
       this.updateQuestion();
     },
