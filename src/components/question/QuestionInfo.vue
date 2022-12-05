@@ -1,18 +1,23 @@
 <template>
-  <!-- <button id="moveButton"><font-awesome-icon icon="fa-solid fa-up-down" /></button> -->
+  <!-- <button id="moveButton" @mouseenter="toggleDrag(true)" @mouseleave="toggleDrag(false)">
+    <font-awesome-icon icon="fa-solid fa-up-down" />
+  </button> -->
   <div id="labels" class="labelGrid">
     <label for="type" class="label item1">Type</label>
     <label for="title" class="label item2">Vraag</label>
-    <label for="time" class="label item3">Tijd in seconden</label>
+    <label for="time" class="label item3">Tijd (s)</label>
     <label for="delete" class="label item4"></label>
   </div>
-  <div id="info" class="gridContainer">
+  type: {{this.type}}
+  <Form id="info" class="gridContainer" @submit="nothing">
     <div id="type" class="gridItem item1">
-      <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
+      <QuestionTypeDropDown @update-type="updateType(n)" :type="this.type" />
     </div>
 
     <div id="title" class="gridItem item2">
-      <input
+      <Field
+        name="question"
+        :rules="validateQuestion"
         id="titleInput"
         class="questionInput"
         type="text"
@@ -21,8 +26,13 @@
         :placeholder="this.question"
       />
     </div>
+    <ErrorMessage name="question" v-slot="{ message }">
+      <div class="errorMessage">{{ message }}</div>
+    </ErrorMessage>
 
-    <input
+    <Field
+      name="time"
+      :rules="validateTime"
       id="time"
       class="gridItem item3"
       type="number"
@@ -35,17 +45,21 @@
     <button id="delete" class="gridItem item4" @click="deleteQuestion()">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
     </button>
-  </div>
+  </Form>
 </template>
 
 <script>
 import QuestionTypeDropDown from "./QuestionTypeDropDown.vue";
+import { Form, Field, ErrorMessage } from "vee-validate";
 
 export default {
   name: "QuestionInfo",
   emits: ["reloadList"],
   components: {
     QuestionTypeDropDown,
+    Form,
+    Field,
+    ErrorMessage,
   },
   props: {
     id: Number,
@@ -62,23 +76,76 @@ export default {
     };
   },
   methods: {
+    validateQuestion(value) {
+      // if the field is empty
+      if (!value) {
+        return "This field is required";
+      }
+
+      // if the field shorter than 2 characters
+      if (value.length < 2) {
+        return "This field must have at least two characters";
+      }
+
+      // if the field is longer than 200 characters
+      if (value.length > 200) {
+        return "This field must be shorter than 200 characters";
+      }
+
+      // All is good
+      return true;
+    },
+    validateTime(value) {
+      value = parseInt(value);
+      // if the field is empty
+      if (!value || value == "") {
+        return "This field is required";
+      }
+
+      // if the field shorter than 2 characters
+      if (value < 2) {
+        return "Tijd moet langer zijn dan 1 seconde";
+      }
+
+      // if the field is longer than 200 characters
+      if (value.length > 1000) {
+        return "Tijd mag niet langer zijn dan 1000 seconden";
+      }
+
+      // All is good
+      return true;
+    },
     deleteQuestion() {
       this.$store.commit("deleteQuestion", this.id);
       this.$emit("reloadList");
     },
     updateQuestion() {
-      this.$store.commit("updateQuestion", {
-        id: this.id,
-        number: this.number,
-        question: this.questionData,
-        type: this.questionType,
-        time: this.questionTime,
-      });
+      if (
+        this.validateTime(this.questionTime) &&
+        this.validateQuestion(this.questionData)
+      ) {
+        this.$store.commit("updateQuestion", {
+          id: this.id,
+          number: this.number,
+          question: this.questionData,
+          type: this.questionType,
+          time: parseInt(this.questionTime),
+        });
+      }
     },
-    updateType(t) {
-      this.questionType = t.type;
+    updateType(n) {
+      console.log(n.type)
+      this.questionType = n.type;
       this.updateQuestion();
     },
+    toggleDrag(value) {
+      if (value == true) {
+        this.$store.commit("enableQuestionDrag");
+      } else if (value == false) {
+        this.$store.commit("disableQuestionDrag");
+      }
+    },
+    nothing() {},
   },
   mounted() {
     this.questionData = this.question;
@@ -98,9 +165,14 @@ export default {
 }
 #moveButton {
   position: absolute;
+  line-height: 10px;
   top: 0px;
   right: 0px;
+  width: 50px;
   padding-right: 10px;
+}
+#moveButton :hover {
+  cursor: grab;
 }
 .questionInput {
   width: 100%;
@@ -135,7 +207,7 @@ export default {
   line-height: 25px;
 
   /* color: #000000; */
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   background-color: #eff3f4;
 }
 .item1 {

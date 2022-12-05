@@ -83,7 +83,7 @@ export default {
   },
   data() {
     return {
-      toggleDrag: false,
+      // toggleDrag: false,
       renderQuestions: this.$store.state.Question.renderQuestions,
 
       newQuestion: {
@@ -114,6 +114,9 @@ export default {
       set(value) {
         this.$store.commit("updateAllQuestions", value);
       },
+    },
+    toggleDrag() {
+      return this.$store.state.Question.dragQuestions;
     },
   },
   methods: {
@@ -190,8 +193,8 @@ tr:nth-child(even) {
   position: relative;
   box-sizing: border-box;
 
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
-  background-color: #eff3f4;
+  background-color: #F4976C;
 }
 </style>

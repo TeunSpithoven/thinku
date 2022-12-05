@@ -12,7 +12,7 @@
     </li>
   </ul>
 
-  <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
+  <div v-if="this.questionType !== 'goedfout'" class="antwoordToevoegenContainer">
     <button id="addAnswerButton" class="gridItem" @click="createAnswer">
       Antwoord Toevoegen
     </button>
@@ -51,8 +51,8 @@ export default {
         return this.$store.getters.getAllAnswersByQuestionId(this.questionId);
       },
       set(value) {
-        console.log("set answers");
-        console.log(this.answerList);
+        // console.log("set answers");
+        // console.log(this.answerList);
         this.$store.commit("updateAnswers", value);
       },
     },
@@ -131,7 +131,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #f21919;
+  background-color: #d1afaf;
 }
 .antwoordToevoegenContainer {
   position: relative;
@@ -143,13 +143,13 @@ tr:nth-child(even) {
 #addAnswerButton {
   position: relative;
   box-sizing: border-box;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   margin-left: 30%;
   margin-right: 30%;
   border-radius: 10px;
 
   font-size: 25px;
-  background-color: #eff3f4;
+  background-color: #F4976C;
 }
 .answerGroup {
   display: contents;
@@ -158,7 +158,7 @@ ul > li:nth-of-type(odd) {
   background-color: #eff3f4;
 }
 ul > li:nth-of-type(even) {
-  background-color: #b3b3b3;
+  background-color: #cac9c9;
 }
 ul > li {
   /* lijn tussen antwoorden */

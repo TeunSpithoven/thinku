@@ -87,39 +87,30 @@ export default {
 }
 
 #knoppen {
-  /* deze moet naar onder worden geduuwd door questionlist */
   position: relative;
   height: 114px;
   background-color: #FBE8A6;
-  /* left: 178px;
-  right: 177px; */
-  /* top: 750px; */
 }
 #knoppen > button {
-  background-color: white;
-}
-#annuleerKnop {
   box-sizing: border-box;
-
   position: absolute;
-  width: 126px;
-  height: 50px;
-  left: 2px;
-  top: 4px;
-
-  border: 1px solid #000000;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 #opslaanKnop {
-  box-sizing: border-box;
-
-  position: absolute;
   width: 371px;
   height: 81px;
   right: 0px;
   top: 4px;
-
-  border: 1px solid #000000;
-  border-radius: 10px;
+  background-color: #F4976C;
+  color: white;
+}
+#annuleerKnop {
+  width: 126px;
+  max-height: 40px;
+  left: 2px;
+  top: 4px;
+  border: 1px solid grey;
+  background-color: transparent;
+  font-size: 25px;
 }
 </style>

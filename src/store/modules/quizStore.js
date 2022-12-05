@@ -24,7 +24,7 @@ const quizStore = {
         state.description = resQuiz.description;
         state.image = resQuiz.image;
         state.questions = resQuiz.questions;
-        console.log(resQuiz.questions);
+        // console.log(resQuiz.questions);
         // Hier de questions en answers aan de state toevoegen
         resQuiz.questions.forEach((question) => {
           dispatch('createQuestion', question);
@@ -113,7 +113,7 @@ const quizStore = {
     updateCreateQuizImage(state, n) {
       // state.image = toString(n.image);
       state.image = n.image;
-      console.log(state.image);
+      // console.log(state.image);
     },
     updateCreateQuizQuestions(state, n) {
       state.questions = n.questions;
