@@ -1,7 +1,7 @@
 <template>
   <div id="quizInfo" class="boxShadow">
     <div class="gridContainer">
-      <Form class="info" @submit="nothing">
+      <Form id="quizInfoForm" class="info" @submit="nothing">
         <div id="titel">
           <div class="label">Titel</div>
           <div type="text" class="inputContainer">

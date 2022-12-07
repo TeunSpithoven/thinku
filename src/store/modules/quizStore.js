@@ -3,6 +3,15 @@ import { getAllQuizzes, createQuiz, getQuiz, editQuiz } from "@/services/QuizSer
 import { useToast } from 'vue-toastification'
 const toast = useToast()
 
+export const mutations = {
+  updateCreateQuizInfo(state, n) {
+    state.userId = n.userId;
+    state.title = n.title;
+    state.description = n.description;
+    state.image = n.image;
+  },
+}
+
 const quizStore = {
   state: {
     id: -1,
