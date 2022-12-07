@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     createAnswer() {
-      // console.log(this.answers.length)
       const correct = this.type == "open";
       this.$store.commit("createAnswer", {
         questionId: this.id,
@@ -57,13 +56,6 @@ export default {
         answer: "nieuw antwoord",
         isCorrect: correct,
       });
-      // this.$store.commit("createAnswer", {
-      //   questionId: this.id,
-      //   questionNumber: this.number,
-      //   number: this.answers.length + 1,
-      //   answer: "nieuw antwoord",
-      //   isCorrect: correct,
-      // });
     },
     reloadList() {
       this.$emit("reloadList");
