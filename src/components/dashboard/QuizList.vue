@@ -32,9 +32,10 @@ export default {
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 10px;
-  padding: 10px;
+  /* padding: 10px; */
+  overflow: visible;
 
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
 }
 #gridItem {

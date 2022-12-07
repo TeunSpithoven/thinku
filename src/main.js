@@ -17,8 +17,9 @@ import { faCircle } from "@fortawesome/free-regular-svg-icons";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faUpDown } from "@fortawesome/free-solid-svg-icons";
+import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faPenToSquare, faCircle, faCircleCheck, faTrashCan, faUpDown);
+library.add(faPenToSquare, faCircle, faCircleCheck, faTrashCan, faUpDown, faPlusSquare);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

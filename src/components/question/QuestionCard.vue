@@ -1,5 +1,5 @@
 <template>
-  <div id="questionCard" class="gridContainer">
+  <div id="questionCard" class="gridContainer boxShadow">
     <div id="quesionInfoContainter" class="gridItem">
       <QuestionInfo
         :id="this.id"
@@ -65,8 +65,8 @@ export default {
   position: relative;
   padding: 10px;
   /* background-color: #B4DFE5; */
-  /* background-color: white; */
-  background-color: #ffc971;
+  background-color: white;
+  /* background-color: #ffc971; */
 }
 
 .gridContainer {

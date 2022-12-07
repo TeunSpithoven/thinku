@@ -1,5 +1,5 @@
 <template>
-  <div id="quizCard">
+  <div id="quizCard" class="boxShadow">
     <div id="title">{{ title }}</div>
     <div id="image">
       <img v-if="image != null" :src="image" class="uploading-image" />
@@ -48,6 +48,8 @@ export default {
   grid-auto-columns: 1fr;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 2fr 0.5fr;
+  background-color: white;
+  border-radius: 10px;
   gap: 0px 89px;
   grid-template-areas:
     "title"

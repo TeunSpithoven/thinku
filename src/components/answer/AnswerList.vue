@@ -10,14 +10,23 @@
         @reloadList="reloadList"
       />
     </li>
+    <li
+      v-if="this.questionType !== 'goedfout'"
+      class="cell addAnswer newAddAnswerButton"
+      @click="createAnswer"
+    >
+      <div class="newAddAnswerButton">
+        <font-awesome-icon icon="fa-regular fa-plus-square" />
+        Antwoord
+      </div>
+    </li>
   </ul>
 
-  <div v-if="this.questionType !== 'goedfout'" class="antwoordToevoegenContainer">
+  <!-- <div v-if="this.questionType !== 'goedfout'" class="antwoordToevoegenContainer">
     <button id="addAnswerButton" class="gridItem" @click="createAnswer">
       Antwoord Toevoegen
     </button>
-  </div>
-
+  </div> -->
 </template>
 
 <script>
@@ -117,21 +126,16 @@ export default {
 </script>
 
 <style scoped>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
+.addAnswer {
+  font-size: 20px;
+}
+.newAddAnswerButton {
   width: 100%;
+  transition: 0.7s;
 }
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #d1afaf;
+.newAddAnswerButton :hover {
+  background-color: #dedede;
+  cursor: pointer;
 }
 .antwoordToevoegenContainer {
   position: relative;
@@ -147,9 +151,9 @@ tr:nth-child(even) {
   margin-left: 30%;
   margin-right: 30%;
   border-radius: 10px;
-
   font-size: 25px;
-  background-color: #F4976C;
+  /* background-color: #F4976C; */
+  background-color: #dedede;
 }
 .answerGroup {
   display: contents;
@@ -164,8 +168,9 @@ ul > li:nth-of-type(even) {
 }
 ul > li {
   /* lijn tussen antwoorden */
-  
-  border-bottom: 3px solid #e2711d;
+
+  /* border-bottom: 3px solid #e2711d; */
+  border-bottom: 2px solid #dedede;
   /* border-bottom: 1px solid rgb(0, 0, 0); */
 }
 ul > li:last-child {

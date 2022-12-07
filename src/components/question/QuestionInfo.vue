@@ -10,7 +10,7 @@
   </div>
   <!-- type: {{this.type}} -->
   <Form id="info" class="gridContainer" @submit="nothing">
-    <div id="type" class="gridItem item1">
+    <div id="type" class="gridItem item1 textInput">
       <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
     </div>
 
@@ -19,7 +19,7 @@
         name="question"
         :rules="validateQuestion"
         id="titleInput"
-        class="questionInput"
+        class="textInput"
         type="text"
         v-model="questionData"
         @change="updateQuestion()"
@@ -34,7 +34,7 @@
       name="time"
       :rules="validateTime"
       id="time"
-      class="gridItem item3"
+      class="gridItem item3 textInput"
       type="number"
       min="2"
       max="9999"
@@ -210,7 +210,8 @@ export default {
   /* border: 1px solid #000000; */
   /* background-color: #eff3f4; */
   background-color: transparent;
-  border: 3px solid #e2711d;
+  /* border: 3px solid #e2711d; */
+    /* border: 2px solid #dedede; */
 }
 .item1 {
   /* type  */

@@ -129,6 +129,7 @@ export default {
 #questionListContainer {
   overflow: auto;
   box-sizing: border-box;
+  overflow: visible;
 
   position: relative;
 
@@ -138,6 +139,7 @@ export default {
 .gridContainer {
   display: grid;
   gap: 10px;
+  overflow: visible;
   /* padding: 10px; */
 }
 .questionGridContainer {
@@ -151,6 +153,7 @@ export default {
   text-align: center;
   /* padding: 10px; */
   font-size: 30px;
+  overflow: visible;
   grid-column: 1 / 5;
 }
 .vraagToevoegenContainer {
@@ -163,9 +166,13 @@ export default {
 .vraagToevoegen {
   position: relative;
   box-sizing: border-box;
+  margin-right: 10px;
+  padding: 0px 5px;
 
   /* border: 1px solid #000000; */
   border-radius: 10px;
-  background-color: #F4976C;
+  /* background-color: #F4976C; */
+ background-color:  #dedede;
+
 }
 </style>

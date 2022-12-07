@@ -9,10 +9,10 @@
     </div>
     <div class="grid-item">
       <div id="knoppen">
-        <button id="annuleerKnop" @click="this.$router.push({ path: '/dashboard' })">
+        <button id="annuleerKnop" class="boxShadow" @click="this.$router.push({ path: '/dashboard' })">
           Annuleer
         </button>
-        <button id="opslaanKnop" @click="submit()">
+        <button id="opslaanKnop" class="boxShadow" @click="submit()">
           <div v-if="edit">Wijzigingen</div>
           Opslaan
         </button>
@@ -81,6 +81,7 @@ export default {
 #createQuiz {
   display: grid;
   row-gap: 20px;
+  overflow: visible;
 }
 
 #questionListContainer {

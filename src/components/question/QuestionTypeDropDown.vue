@@ -65,6 +65,7 @@ button {
 #typeDropdown {
   position: relative;
   width: 100%;
+  z-index: 1;
 }
 .buttonList {
   position: absolute;

@@ -1,5 +1,5 @@
 <template>
-  <div id="quizInfo">
+  <div id="quizInfo" class="boxShadow">
     <div class="gridContainer">
       <Form class="info" @submit="nothing">
         <div id="titel">
@@ -9,7 +9,7 @@
               name="title"
               :rules="validateTitle"
               id="titleInput"
-              class="inputs"
+              class="textInput"
               type="text"
               v-model="this.title"
             />
@@ -27,7 +27,7 @@
               as="textarea"
               :rules="validateDescription"
               id="descriptionInput"
-              class="inputs"
+              class="textInput"
               v-model="this.description"
             ></Field>
           </div>
@@ -37,8 +37,8 @@
         </ErrorMessage>
       </Form>
       <div class="image">
-        <label for="quizImage">Afbeelding</label>
-        <imageUpload id="quizImage" class="imageInput" />
+        <label for="quizImage" class="imageLabel">Afbeelding</label>
+        <imageUpload id="quizImage" class="inputDefault" />
       </div>
     </div>
   </div>
@@ -125,7 +125,8 @@ export default {
   /* border: 1px solid #000000; */
   border-radius: 10px;
   /* background-color: #B4DFE5; */
-  background-color: #ffc971;
+  /* background-color: #ffc971; */
+  background-color: white;
 }
 .gridContainer {
   display: grid;
@@ -134,19 +135,11 @@ export default {
   gap: 0px 10px;
   grid-template-areas: "info image";
 }
-.image {
-  grid-area: image;
-}
 .info {
   grid-area: info;
 }
-.inputs {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-  border: 3px solid #e2711d;
-  /* background-color: #eff3f4; */
-  background-color: transparent;
+.image {
+  grid-area: image;
 }
 #titel {
   position: relative;
@@ -164,6 +157,14 @@ export default {
   right: 0px;
   top: 0px;
 
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+
+  /* color: #000000; */
+}
+.imageLabel {
   font-weight: 400;
   font-size: 24px;
   line-height: 29px;
@@ -189,16 +190,6 @@ export default {
 
   /* border: 1px solid #000000; */
   border-radius: 5px;
-}
-.imageInput {
-  box-sizing: border-box;
-
-  border-radius: 8px;
-  max-width: 100%;
-  height: auto;
-
-  /* border: 1px solid #000000; */
-  border: 3px solid #e2711d;
 }
 textarea {
   resize: none;
