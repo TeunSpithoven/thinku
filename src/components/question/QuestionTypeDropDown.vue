@@ -9,6 +9,7 @@
       </li>
     </ul>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -19,6 +20,7 @@ export default {
   },
   data() {
     return {
+      hover: false,
       typeDropdown: false,
       types: ["meerkeuze", "open", "woordwolk", "goedfout"],
     };
@@ -33,9 +35,7 @@ export default {
       this.typeDropdown = !this.typeDropdown;
     },
     updateType(type) {
-      this.$emit("updateType", {
-        type: type,
-      });
+      this.$emit("updateType", {type: type});
       this.toggleTypeDropdown();
     },
   },
@@ -43,6 +43,13 @@ export default {
 </script>
 
 <style scoped>
+.typeDropdownContainer {
+  height: 100%;
+}
+button {
+  height: 100%;
+  width: 100%;
+}
 .initialTypeButton {
   /* padding-top: 10px; */
   height: 100%;
@@ -51,13 +58,25 @@ export default {
 .typeButton {
   /* padding-top: 10px; */
   padding-bottom: 0px;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   /* font-size: 24px;
     line-height: 25px; */
 }
+#typeDropdown {
+  position: relative;
+  width: 100%;
+}
 .buttonList {
   position: absolute;
-  width: auto;
-  background-color: grey;
+  width: inherit;
+  background-color: #eff3f4;
+}
+.buttonList > li {
+  max-height: 100px;
+  line-height: 35px;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+.buttonList > li:last-child {
+  border-bottom: none;
 }
 </style>

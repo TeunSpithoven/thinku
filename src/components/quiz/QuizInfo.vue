@@ -1,11 +1,13 @@
 <template>
   <div id="quizInfo">
     <div class="gridContainer">
-      <div class="info">
+      <Form class="info" @submit="nothing">
         <div id="titel">
           <div class="label">Titel</div>
           <div type="text" class="inputContainer">
-            <input
+            <Field
+              name="title"
+              :rules="validateTitle"
               id="titleInput"
               class="inputs"
               type="text"
@@ -13,21 +15,29 @@
             />
           </div>
         </div>
+        <ErrorMessage name="title" v-slot="{ message }">
+          <div class="errorMessage">{{ message }}</div>
+        </ErrorMessage>
 
         <div id="beschrijving">
           <div class="label">Beschrijving</div>
           <div type="text" class="inputContainer">
-            <textarea
+            <Field
+              name="description"
+              as="textarea"
+              :rules="validateDescription"
               id="descriptionInput"
               class="inputs"
-              type="text"
               v-model="this.description"
-            ></textarea>
+            ></Field>
           </div>
         </div>
-      </div>
+        <ErrorMessage name="description" v-slot="{ message }">
+          <div class="errorMessage">{{ message }}</div>
+        </ErrorMessage>
+      </Form>
       <div class="image">
-        <label for="quizImage">Selecteer een afbeelding</label>
+        <label for="quizImage">Afbeelding</label>
         <imageUpload id="quizImage" class="imageInput" />
       </div>
     </div>
@@ -35,12 +45,16 @@
 </template>
 
 <script>
+import { Form, Field, ErrorMessage } from "vee-validate";
 import imageUpload from "@/components/inputs/ImageInput.vue";
 
 export default {
   name: "QuizInfo",
   components: {
     imageUpload,
+    Form,
+    Field,
+    ErrorMessage,
   },
   props: {
     edit: Boolean,
@@ -51,17 +65,52 @@ export default {
         return this.$store.state.Quiz.title;
       },
       set(value) {
-        this.$store.commit('updateQuizTitle', value)
-      }
+        if (this.validateTitle(value) == true) {
+          this.$store.commit("updateQuizTitle", value);
+        }
+      },
     },
     description: {
       get() {
         return this.$store.state.Quiz.description;
       },
       set(value) {
-        this.$store.commit('updateQuizDescription', value)
-      }
+        if (this.validateDescription(value) == true) {
+          this.$store.commit("updateQuizDescription", value);
+        }
+      },
     },
+  },
+  methods: {
+    validateTitle(value) {
+      // if the field is empty
+      if (!value) {
+        return "This field is required";
+      }
+
+      // if the field shorter than 2 characters
+      if (value.length < 2) {
+        return "This field must have at least two characters";
+      }
+
+      // if the field is longer than 200 characters
+      if (value.length > 200) {
+        return "This field must be shorter than 200 characters";
+      }
+
+      // All is good
+      return true;
+    },
+    validateDescription(value) {
+      // if the field is longer than 200 characters
+      if (value.length > 2000) {
+        return "This field must be shorter than 2000 characters";
+      }
+
+      // All is good
+      return true;
+    },
+    nothing() {},
   },
 };
 </script>
@@ -73,9 +122,10 @@ export default {
   position: relative;
   padding: 10px;
 
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
+  /* background-color: #B4DFE5; */
+  background-color: #ffc971;
 }
 .gridContainer {
   display: grid;
@@ -94,10 +144,13 @@ export default {
   width: 100%;
   height: 100%;
   border-radius: 5px;
+  border: 3px solid #e2711d;
+  /* background-color: #eff3f4; */
+  background-color: transparent;
 }
 #titel {
   position: relative;
-  height: 81px;
+  height: 83px;
 }
 #beschrijving {
   position: relative;
@@ -116,9 +169,15 @@ export default {
   line-height: 29px;
   text-align: left;
 
-  color: #000000;
+  /* color: #000000; */
 }
-
+.errorMessage {
+  color: red;
+  font-size: 20px;
+}
+#ErrorMessage {
+  background-color: black;
+}
 .inputContainer {
   box-sizing: border-box;
   position: absolute;
@@ -128,7 +187,7 @@ export default {
   top: 36px;
   bottom: 0px;
 
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 5px;
 }
 .imageInput {
@@ -137,8 +196,9 @@ export default {
   border-radius: 8px;
   max-width: 100%;
   height: auto;
-  
-  border: 1px solid #000000;
+
+  /* border: 1px solid #000000; */
+  border: 3px solid #e2711d;
 }
 textarea {
   resize: none;

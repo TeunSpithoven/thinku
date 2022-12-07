@@ -12,11 +12,17 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
+  color: rgb(0, 0, 0);
+  min-height: 100vh;
+  /* background-color: #FBE8A6; */
+  background-color: #cc5803;
 }
 
 nav {
   padding: 30px;
+  /* background-color: #e2711d; */
+  background-color: #ff9505;
 }
 
 nav a {

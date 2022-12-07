@@ -1,5 +1,6 @@
 <template>
   <ul id="quizList">
+    <div v-if="quizzes.length < 1">You have no quizzes yet, go and create one</div>
     <li v-for="quiz in quizzes" :key="quiz.id">
       <div id="gridItem">
         <QuizCard :quiz="quiz" />

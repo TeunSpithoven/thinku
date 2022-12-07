@@ -11,16 +11,16 @@ const answerStore = {
   },
   getters: {
     getAllAnswers(state) {
-      console.log("allAnswers in store");
-      console.log(state.answers);
+      // console.log("allAnswers in store");
+      // console.log(state.answers);
       return state.answers;
     },
     getAllAnswersByQuestionId: (state) => (questionId) => {
-      console.log('sorted answers')
-      console.log(state.answers)
+      // console.log('sorted answers')
+      // console.log(state.answers)
       if (state.answers !== undefined) {
-        console.log(state.id);
-        console.log(state.answers);
+        // console.log(state.id);
+        // console.log(state.answers);
         return state.answers.filter((answer) => {
           return answer.questionId === questionId;
         });
@@ -57,12 +57,12 @@ const answerStore = {
     // TODO: gaat het hier goed? debuggen🪲 veel plezier
     createAnswer(state, answer) {
       answer.id = state.id;
-      console.log({ ...answer });
+      // console.log({ ...answer });
       state.answers.push({ ...answer });
       state.id++;
     },
     updateAnswer(state, answer) {
-      console.log("update answer");
+      // console.log("update answer");
       const index = state.answers
         .map((x) => {
           return x.id;
@@ -72,22 +72,22 @@ const answerStore = {
         state.answers[index].number = answer.number;
         state.answers[index].answer = answer.answer;
         state.answers[index].isCorrect = answer.isCorrect;
-        toast.success("answer updated");
+        // toast.success("answer updated");
       } else {
-        console.log("error: the answer you are trying to update was not found");
+        // console.log("error: the answer you are trying to update was not found");
         toast.error("answer update error");
       }
     },
     updateAnswers(state, answers) {
-      console.log("update answers");
-      console.log({ ...answers });
+      // console.log("update answers");
+      // console.log({ ...answers });
       if(answers !== undefined && answers.length > 1) {
       state.answers = answers;
       }
-      console.log(state.answers)
+      // console.log(state.answers)
     },
     deleteAnswer(state, id) {
-      console.log("delete answer");
+      // console.log("delete answer");
       const index = state.answers
         .map((x) => {
           return x.id;

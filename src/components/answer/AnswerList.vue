@@ -12,7 +12,7 @@
     </li>
   </ul>
 
-  <div v-if="this.type !== 'goedfout'" class="antwoordToevoegenContainer">
+  <div v-if="this.questionType !== 'goedfout'" class="antwoordToevoegenContainer">
     <button id="addAnswerButton" class="gridItem" @click="createAnswer">
       Antwoord Toevoegen
     </button>
@@ -51,8 +51,8 @@ export default {
         return this.$store.getters.getAllAnswersByQuestionId(this.questionId);
       },
       set(value) {
-        console.log("set answers");
-        console.log(this.answerList);
+        // console.log("set answers");
+        // console.log(this.answerList);
         this.$store.commit("updateAnswers", value);
       },
     },
@@ -131,42 +131,49 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #d1afaf;
 }
 .antwoordToevoegenContainer {
   position: relative;
   /* height: 80px; */
+  padding-top: 5px;
   width: 100%;
 }
 
 #addAnswerButton {
   position: relative;
   box-sizing: border-box;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   margin-left: 30%;
   margin-right: 30%;
   border-radius: 10px;
 
   font-size: 25px;
+  background-color: #F4976C;
 }
 .answerGroup {
   display: contents;
 }
 ul > li:nth-of-type(odd) {
-  background-color: #e9e9f9;
+  background-color: transparent;
+  /* background-color: #eff3f4; */
 }
 ul > li:nth-of-type(even) {
-  background-color: #ffffff;
+  background-color: transparent;
+  /* background-color: #cac9c9; */
 }
 ul > li {
-  border-bottom: 1px solid rgb(221, 221, 221);
+  /* lijn tussen antwoorden */
+  
+  border-bottom: 3px solid #e2711d;
+  /* border-bottom: 1px solid rgb(0, 0, 0); */
 }
 ul > li:last-child {
   border-bottom: none;
 }
-.r_group:nth-of-type(2n) > .cell {
-  background-color: rgb(221, 75, 75);
-}
+/* .r_group:nth-of-type(2n) > .cell {
+  background-color: rgb(0, 245, 33);
+} */
 .cell {
   background-color: transparent;
 }

@@ -23,7 +23,7 @@ describe("QuestionInfo.spec.js", () => {
   });
 
   test("renders inputs", () => {
-    const title = cmp.get('[id="titleInput"]');
+    const title = cmp.get('[id="title"]');
     const time = cmp.get('[id="time"]');
     const del = cmp.get('[id="delete"]');
 
@@ -32,11 +32,11 @@ describe("QuestionInfo.spec.js", () => {
     expect(del.text()).toBe("");
   })
 
-//   test("title input", () => {
-//     const title = cmp.get('[id="titleInput"]');
+  test("title input", () => {
+    const title = cmp.get('[id="titleInput"]');
 
-//     title.setValue("title input test");
+    title.setValue("title input test");
 
-//     expect(cmp.vm.questionData).toEqual("title input test");
-//   })
+    expect(cmp.vm.questionData).toEqual("title input test");
+  })
 });
