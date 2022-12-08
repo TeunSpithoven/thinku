@@ -47,6 +47,5 @@ it("questionById_1_success", () => {
 
   const result = getters.questionById2(state, {id});
 
-  console.log(result);
   expect(result).toStrictEqual(question1);
 });
