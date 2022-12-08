@@ -8,6 +8,7 @@ const answerStore = {
     answers: [],
     id: 1,
     renderAnswers: true,
+    errorMessage: '',
   },
   getters: {
     getAllAnswers(state) {
@@ -75,6 +76,7 @@ const answerStore = {
         // toast.success("answer updated");
       } else {
         // console.log("error: the answer you are trying to update was not found");
+        state.errorMessage = 'update answer failed';
         toast.error("answer update error");
       }
     },
@@ -107,4 +109,5 @@ const answerStore = {
     },
   },
 };
+export const mutations = answerStore.mutations;
 export { answerStore };
