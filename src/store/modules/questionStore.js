@@ -9,9 +9,8 @@ const questionStore = {
     dragQuestions: false,
   },
   getters: {
+    // this should not be a getter
     sortedQuestions(state) {
-      // console.log('sorted questions')
-      // console.log(state.questions)
       state.questions.forEach((q) => {
         var index = state.questions
           .map((x) => {
@@ -24,6 +23,14 @@ const questionStore = {
       return state.questions;
     },
     questionById: (state) => (id) => {
+      var questionIndex = state.questions
+        .map((x) => {
+          return x.id;
+        })
+        .indexOf(id);
+      return state.questions[questionIndex];
+    },
+    questionById2 (state, { id }) {
       var questionIndex = state.questions
         .map((x) => {
           return x.id;
@@ -114,5 +121,6 @@ const questionStore = {
     },
   },
 };
+export const getters = questionStore.getters;
 export const mutations = questionStore.mutations;
 export { questionStore };
