@@ -8,7 +8,7 @@ const answerStore = {
     answers: [],
     id: 1,
     renderAnswers: true,
-    errorMessage: '',
+    errorMessage: "",
   },
   getters: {
     getAllAnswers(state) {
@@ -38,7 +38,22 @@ const answerStore = {
       //   console.log("No answers in state");
       // }
     },
+    getAllAnswersByQuestionId2(state, { questionId }) {
+      if (state.answers !== undefined) {
+        return state.answers.filter((answer) => {
+          return answer.questionId === questionId;
+        });
+      }
+    },
     getAnswerById: (state) => (id) => {
+      const index = state.answers
+        .map((x) => {
+          return x.id;
+        })
+        .indexOf(id);
+      return state.answers[index];
+    },
+    getAnswerById2(state, { id }) {
       const index = state.answers
         .map((x) => {
           return x.id;
@@ -76,15 +91,15 @@ const answerStore = {
         // toast.success("answer updated");
       } else {
         // console.log("error: the answer you are trying to update was not found");
-        state.errorMessage = 'update answer failed';
+        state.errorMessage = "update answer failed";
         toast.error("answer update error");
       }
     },
     updateAnswers(state, answers) {
       // console.log("update answers");
       // console.log({ ...answers });
-      if(answers !== undefined && answers.length > 1) {
-      state.answers = answers;
+      if (answers !== undefined && answers.length > 1) {
+        state.answers = answers;
       }
       // console.log(state.answers)
     },
@@ -109,5 +124,6 @@ const answerStore = {
     },
   },
 };
+export const getters = answerStore.getters;
 export const mutations = answerStore.mutations;
 export { answerStore };
