@@ -2,34 +2,32 @@ import { mutations } from "@/store/modules/questionStore";
 
 // TODO: move this into a beforeEach method
 const state = {
-    questions: [],
-    id: 1,
-    renderQuestions: true,
-    dragQuestions: false,
+  questions: [],
+  id: 1,
+  renderQuestions: true,
+  dragQuestions: false,
 };
 
 describe("question mutations", () => {
   it("addQuestion", () => {
     const question = {
-      id: -1,
-      userId: 200,
-      title: "testtitle",
-      description: "testdescription",
-      image: "testimage",
-      
-      id: state.id,
-        quizId: question.quizId,
-        number: question.number,
-        question: question.question,
-        type: question.type,
-        time: question.time,
+      quizId: 6,
+      number: 1,
+      question: "testquestion",
+      type: "testtype",
+      time: 80,
     };
 
     mutations.addQuestion(state, question);
 
-    expect(state.userId).toBe(200);
-    expect(state.title).toBe('testtitle');
-    expect(state.description).toBe('testdescription');
-    expect(state.image).toBe('testimage');
+    expect(state.questions.length).toBe(1);
+    expect(state.questions[0]).toStrictEqual({
+      id: 1,
+      quizId: 6,
+      number: 1,
+      question: "testquestion",
+      type: "testtype",
+      time: 80,
+    });
   });
 });

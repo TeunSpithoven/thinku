@@ -1,12 +1,10 @@
 import { useToast } from "vue-toastification";
 const toast = useToast();
 
-// DEBUG: het veranderen van de quiz id's en numbers gaat niet fout in dit bestand
-
 const questionStore = {
   state: {
     questions: [],
-    id: 1, 
+    id: 1,
     renderQuestions: true,
     dragQuestions: false,
   },
@@ -56,7 +54,7 @@ const questionStore = {
         question: question.question,
         type: question.type,
         time: question.time,
-      }
+      };
       // console.log({ ...question });
       // console.log(newQuestion);
       // state.questions.push({ ...question });
@@ -116,4 +114,5 @@ const questionStore = {
     },
   },
 };
+export const mutations = questionStore.mutations;
 export { questionStore };
