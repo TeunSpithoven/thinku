@@ -30,4 +30,25 @@ describe("question mutations", () => {
       time: 80,
     });
   });
+  it("updateQuestion", () => {
+    const question = {
+      id: 1,
+      number: 2,
+      question: "updatedQuestion",
+      type: "updatetesttype",
+      time: 81,
+    };
+
+    mutations.updateQuestion(state, question);
+
+    expect(state.questions.length).toBe(1);
+    expect(state.questions[0]).toStrictEqual({
+      id: 1,
+      quizId: 6,
+      number: 2,
+      question: "updatedQuestion",
+      type: "updatetesttype",
+      time: 81,
+    });
+  });
 });
