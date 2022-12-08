@@ -16,3 +16,17 @@ it("unrenderQuestions_success", () => {
 
   expect(state.renderQuestions).toBe(false);
 });
+it("updateDragQuestions_true_success", () => {
+  const input = true;
+
+  mutations.updateDragQuestions(state, input);
+
+  expect(state.dragQuestions).toBe(input);
+});
+it("updateDragQuestions_false_success", () => {
+  const input = false;
+
+  mutations.updateDragQuestions(state, input);
+
+  expect(state.dragQuestions).toBe(input);
+});
