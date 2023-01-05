@@ -127,7 +127,7 @@ export default {
 
 <style scoped>
 #questionListContainer {
-  overflow: auto;
+  /* overflow: auto; */
   box-sizing: border-box;
   overflow: visible;
 
