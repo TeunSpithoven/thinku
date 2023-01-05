@@ -5,6 +5,7 @@
         v-if="previewImage != null"
         :src="previewImage"
         class="uploading-image"
+        alt="upload-image"
       />
     </div>
     <input

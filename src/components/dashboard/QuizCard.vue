@@ -2,7 +2,7 @@
   <div id="quizCard" class="boxShadow">
     <div id="title">{{ title }}</div>
     <div id="image">
-      <img v-if="image != null" :src="image" class="uploading-image" />
+      <img v-if="image != null" :src="image" class="uploading-image" alt="uploading image"/>
       <div v-if="image == null || image == ''">No image</div>
     </div>
     <div id="buttons">
