@@ -2,19 +2,18 @@
   <!-- <button id="moveButton" @mouseenter="toggleDrag(true)" @mouseleave="toggleDrag(false)">
     <font-awesome-icon icon="fa-solid fa-up-down" />
   </button> -->
-  <div id="labels" class="labelGrid">
-    <label for="type" class="label item1">Type</label>
-    <label for="title" class="label item2">Vraag</label>
-    <label for="time" class="label item3">Tijd (s)</label>
-    <label for="delete" class="label item4"></label>
-  </div>
   <!-- type: {{this.type}} -->
   <Form id="info" class="gridContainer" @submit="nothing">
-    <div id="type" class="gridItem item1 textInput">
-      <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
+    <div id="type" class="gridItem item1">
+      <label for="type" class="label">Type</label>
+      <br />
+      <div class="textInput">
+        <QuestionTypeDropDown @update-type="updateType" :type="this.type" />
+      </div>
     </div>
 
     <div id="title" class="gridItem item2">
+      <label for="title" class="label item2">Vraag</label>
       <Field
         name="question"
         :rules="validateQuestion"
@@ -29,18 +28,20 @@
     <ErrorMessage name="question" v-slot="{ message }">
       <div class="errorMessage">{{ message }}</div>
     </ErrorMessage>
-
-    <Field
-      name="time"
-      :rules="validateTime"
-      id="time"
-      class="gridItem item3 textInput"
-      type="number"
-      min="2"
-      max="9999"
-      v-model="this.questionTime"
-      @change="updateQuestion()"
-    />
+    <div id="time" class="gridItem item3">
+      <label for="time" class="label item3">Tijd (s)</label>
+      <Field
+        name="time"
+        :rules="validateTime"
+        id="timeInput"
+        class="textInput"
+        type="number"
+        min="2"
+        max="9999"
+        v-model="this.questionTime"
+        @change="updateQuestion()"
+      />
+    </div>
 
     <button id="delete" class="gridItem item4" @click="deleteQuestion()">
       <font-awesome-icon icon="fa-solid fa-trash-can" />
@@ -186,11 +187,7 @@ export default {
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-}
-.labelGrid {
-  display: grid;
-  gap: 5px;
-  padding: 5px;
+  margin-bottom: 10px;
 }
 .label {
   text-align: left;
@@ -205,13 +202,14 @@ export default {
   font-weight: 400;
   font-size: 24px;
   line-height: 25px;
+  max-height: 60px;
 
   /* color: #000000; */
   /* border: 1px solid #000000; */
   /* background-color: #eff3f4; */
   background-color: transparent;
   /* border: 3px solid #e2711d; */
-    /* border: 2px solid #dedede; */
+  /* border: 2px solid #dedede; */
 }
 .item1 {
   /* type  */
@@ -221,6 +219,7 @@ export default {
   padding-right: 0px;
   padding-top: 0px;
   padding-bottom: 0px;
+  min-width: 150px;
 }
 .item2 {
   /* question */
@@ -230,6 +229,7 @@ export default {
 }
 .item3 {
   /* time  */
+  padding: 0px;
   grid-column: 9 / span 1;
   grid-row: 1;
   max-width: 100px;
@@ -238,5 +238,6 @@ export default {
   /* delete  */
   grid-column: 10 / span 1;
   grid-row: 1;
+  padding-left: 0px;
 }
 </style>

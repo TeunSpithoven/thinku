@@ -9,8 +9,8 @@
       class="item1"
       @click="invertIsCorrect"
     >
-      <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-circle-check" />
-      <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-circle" />
+      <font-awesome-icon v-if="isCorrect" icon="fa-solid fa-square-check" />
+      <font-awesome-icon v-if="!isCorrect" icon="fa-regular fa-square-check" />
     </button>
     <div class="item2">
       <input
@@ -23,7 +23,7 @@
       />
     </div>
     <button id="deleteButtton" class="item3" @click="deleteAnswer">
-      <font-awesome-icon icon="fa-solid fa-trash-can" />
+      <font-awesome-icon icon="fa-solid fa-xmark" />
     </button>
   </div>
 </template>
