@@ -42,6 +42,9 @@ npm run lint
 -views
     the screens for the end users
 
+## Wireframes
+#### Figma project
+https://www.figma.com/file/g01o8EJnuFIbQIrSjzImxX/Thinku-Wireframes?node-id=0%3A1&t=cwh5psXGyNEGRaek-1
 
 ## Deployment
 #### Configure a catch-all fallback for routing
