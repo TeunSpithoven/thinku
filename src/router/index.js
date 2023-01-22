@@ -3,6 +3,7 @@ import PlayQuizView from '../views/quiz/PlayQuizView.vue'
 import CreateQuizView from '../views/quiz/CreateQuizView.vue'
 import EditQuizView from '../views/quiz/EditQuizView.vue'
 import DashboardView from '../views/DashboardView.vue'
+import JoinRoomView from '../views/play/JoinRoomView.vue'
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: '/play',
     name: 'playQuiz',
     component: PlayQuizView
+  },
+  {
+    path: '/join',
+    name: 'joinRoom',
+    component: JoinRoomView
   },
   {
     path: '/createQuiz',

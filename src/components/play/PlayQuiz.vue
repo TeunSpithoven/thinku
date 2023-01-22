@@ -1,9 +1,6 @@
 <template>
-  <div id="playQuiz">
-    Play a Quiz
-    <br />
-    {{ quiz }}
-  </div>
+  <div id="playQuiz">Play a Quiz!</div>
+  <!-- title, roomcode and studd go here -->
 </template>
 
 <script>

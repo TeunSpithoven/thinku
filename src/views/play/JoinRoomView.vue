@@ -1,15 +1,15 @@
 <template>
     <div>
-      <PlayQuiz />
+      <JoinRoom />
     </div>
   </template>
   
   <script>
-  import PlayQuiz from "@/components/play/PlayQuiz.vue";
+  import JoinRoom from "@/components/play/JoinRoom.vue";
   export default {
-    name: "PlayQuizView",
+    name: "JoinRoomView",
     components: {
-      PlayQuiz,
+      JoinRoom,
     },
   };
   </script>

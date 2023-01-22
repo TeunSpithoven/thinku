@@ -1,7 +1,8 @@
 <template>
   <nav>
     <router-link to="/dashboard">Dashboard</router-link> |
-    <router-link to="/createQuiz">Create Quiz</router-link>
+    <router-link to="/createQuiz">Create Quiz</router-link> |
+    <router-link to="/join">Join Room</router-link>
   </nav>
   <router-view />
 </template>
