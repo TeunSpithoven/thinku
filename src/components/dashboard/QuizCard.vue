@@ -7,7 +7,7 @@
     </div>
     <div id="buttons">
       <button id="editButton" @click="editQuiz">Bewerken</button>
-      <button id="playButton">Spelen</button>
+      <button id="playButton" @click="playQuiz">Spelen</button>
     </div>
   </div>
 </template>
@@ -37,6 +37,11 @@ export default {
         id: this.quiz.id,
       });
       this.$router.push({ path: '/editQuiz' });
+    },
+    playQuiz() {
+      this.$store.commit('setPlayQuiz', this.quiz.id);
+      // action that does something with the playStore state
+      this.$router.push({ path: '/play' });
     },
   },
 };

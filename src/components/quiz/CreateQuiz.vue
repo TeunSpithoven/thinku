@@ -44,7 +44,7 @@ export default {
   methods: {
     submit() {
       if (!this.edit) {
-        this.$store.commit("saveQuizToDB", {
+        this.$store.dispatch("saveQuizToDB", {
           quiz: this.quiz,
         });
       } else if(this.edit) {

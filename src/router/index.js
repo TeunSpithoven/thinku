@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import PlayQuizView from '../views/quiz/PlayQuizView.vue'
 import CreateQuizView from '../views/quiz/CreateQuizView.vue'
 import EditQuizView from '../views/quiz/EditQuizView.vue'
 import DashboardView from '../views/DashboardView.vue'
@@ -9,6 +10,11 @@ const routes = [
     name: 'dashboard',
     component: DashboardView,
     alias: ['/dashboard', '/home'],
+  },
+  {
+    path: '/play',
+    name: 'playQuiz',
+    component: PlayQuizView
   },
   {
     path: '/createQuiz',

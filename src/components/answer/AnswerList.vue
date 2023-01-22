@@ -1,5 +1,6 @@
 <template>
   <ul v-if="renderAnswers" class="answerGroup">
+    {{  answerList }}
     <li class="cell" v-for="answer in answerList" :key="answer.id">
       <AnswerCard
         :id="answer.id"

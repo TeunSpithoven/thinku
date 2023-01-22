@@ -15,6 +15,43 @@ const quizStore = {
     quizzes: [],
   },
   actions: {
+    saveQuizToDB({ rootState, state }) {
+      const q = rootState.Question.questions
+      const questions = [];
+      q.forEach((question) => {
+        question.answers = [];
+        questions.push(question);
+      });
+      const answers = rootState.Answer.answers;
+      console.log("answers");
+      console.log(answers);
+      questions.forEach((question) => {
+        answers.forEach((answer) => {
+          if(answer.questionId === question.id) {
+            question.answers.push(answer);
+          }
+        });
+      });
+      console.log(JSON.parse(JSON.stringify(questions)));
+      const n = {
+        quiz: {
+          userId: state.userId,
+          title: state.title,
+          description: state.description,
+          image: state.image,
+          questions: JSON.parse(JSON.stringify(questions)),
+        },
+      };
+      console.log(n.quiz);
+      try {
+        createQuiz(n.quiz).then((response) => {
+          console.log(response);
+          toast.success("Quiz opgeslagen!");
+        });
+      } catch (err) {
+        toast.error(err);
+      }
+    },
     getQuizFromDb({ state, dispatch }, quiz) {
       getQuiz(quiz.id).then((response) => {
         const resQuiz = JSON.parse(response);
@@ -38,25 +75,6 @@ const quizStore = {
         state.responseText = response;
         state.quizzes = JSON.parse(response);
       });
-    },
-    saveQuizToDB(state) {
-      const n = {
-        quiz: {
-          userId: state.userId,
-          title: state.title,
-          description: state.description,
-          image: state.image,
-          questions: state.questions,
-        },
-      };
-      try {
-        createQuiz(n.quiz).then((response) => {
-          console.log(response);
-          toast.success("Quiz opgeslagen!");
-        });
-      } catch (err) {
-        toast.error(err);
-      }
     },
     editQuizToDB(state) {
       // get the quiz from state
