@@ -4,6 +4,7 @@ import CreateQuizView from '../views/quiz/CreateQuizView.vue'
 import EditQuizView from '../views/quiz/EditQuizView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import JoinRoomView from '../views/play/JoinRoomView.vue'
+import HostQuizView from '../views/play/HostQuizView.vue'
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
     name: 'dashboard',
     component: DashboardView,
     alias: ['/dashboard', '/home'],
+  },
+  {
+    path: '/host',
+    name: 'hostQuiz',
+    component: HostQuizView
   },
   {
     path: '/play',

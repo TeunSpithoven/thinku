@@ -41,7 +41,7 @@ export default {
     playQuiz() {
       this.$store.commit('setPlayQuiz', this.quiz.id);
       // action that does something with the playStore state
-      this.$router.push({ path: '/play' });
+      this.$router.push({ path: '/host' });
     },
   },
 };

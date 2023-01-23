@@ -7,6 +7,8 @@ import "vue-toastification/dist/index.css";
 import router from "./router";
 import store from "./store";
 import "./assets/tailwind.css";
+import VueSocketIO from 'vue-3-socket.io'
+import SocketIO from 'socket.io-client'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -24,9 +26,15 @@ import { faSquareCheck as faSquareCheckEmpty }  from "@fortawesome/free-regular-
 
 library.add(faPenToSquare, faCircle, faCircleCheck, faTrashCan, faUpDown, faPlusSquare, faXmark, faSquareCheck, faSquareCheckEmpty);
 
+const optionsVueIO = {
+  debug: true,
+  connection: SocketIO('http://localhost:3000')
+}
+
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
   .use(store)
+  .use(new VueSocketIO(optionsVueIO))
   .use(router)
   .use(Toast, {
     transition: "Vue-Toastification__bounce",

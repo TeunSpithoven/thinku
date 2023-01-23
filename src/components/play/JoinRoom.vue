@@ -1,7 +1,9 @@
 <template>
   <div id="joinRoom">
-    Join a Room
-    <input type="text" id="roomName" placeholder="Room" />
+    Room code
+    <br/>
+    <input type="text" id="roomName" v-model="roomName" placeholder="HDSUIC" />
+    <br/>
     <button @click="join">Join</button>
   </div>
 </template>
@@ -10,14 +12,23 @@
 export default {
   name: "JoinRoom",
   components: {},
-  data() {
-    return {
-      user: {
-        userId: 1,
-        userName: "testTeun",
+  computed: {
+    student: {
+      get() {
+        return this.$store.getters.getStudent;
       },
-      roomName: "",
-    };
+      set(value) {
+        this.$store.commit("setStudent", value);
+      },
+    },
+    roomName: {
+      get() {
+        return this.$store.getters.getRoomName;
+      },
+      set(value) {
+        this.$store.commit("setRoomName", value);
+      },
+    },
   },
   methods: {
     join() {
